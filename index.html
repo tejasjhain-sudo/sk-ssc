@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SSC by SK | Direction & Distance Reasoning</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>SSC by SK | Created by Tejas</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- FontAwesome Icons -->
+  <!-- FontAwesome 6 Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <script>
     tailwind.config = {
@@ -17,6 +17,7 @@
             brand: {
               50: "#eef2ff",
               100: "#e0e7ff",
+              200: "#c7d2fe",
               500: "#6366f1",
               600: "#4f46e5",
               700: "#4338ca",
@@ -32,16 +33,21 @@
     @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
     body {
       font-family: "Plus Jakarta Sans", sans-serif;
+      -webkit-tap-highlight-color: transparent;
     }
     .question-card {
-      transition: all 0.2s ease-in-out;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
     }
     .option-btn {
-      transition: all 0.15s ease-in-out;
+      transition: all 0.12s ease-in-out;
+      touch-action: manipulation;
+    }
+    .option-btn:active {
+      transform: scale(0.985);
     }
     ::-webkit-scrollbar {
-      width: 6px;
-      height: 6px;
+      width: 5px;
+      height: 5px;
     }
     ::-webkit-scrollbar-track {
       background: transparent;
@@ -53,58 +59,66 @@
     .dark ::-webkit-scrollbar-thumb {
       background: #475569;
     }
+    @supports (padding-bottom: env(safe-area-inset-bottom)) {
+      .safe-bottom {
+        padding-bottom: calc(0.75rem + env(safe-area-inset-bottom));
+      }
+    }
   </style>
 </head>
-<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen transition-colors duration-300">
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen transition-colors duration-200 pb-20 lg:pb-8">
 
-  <!-- TOP HEADER -->
-  <header class="sticky top-0 z-40 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <!-- TOP HEADER WITH "CREATED BY TEJAS" -->
+  <header class="sticky top-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16 sm:h-20">
         
-        <!-- Logo & Header Text -->
-        <div class="flex items-center gap-3">
-          <div class="h-10 w-10 sm:h-12 sm:w-12 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-500 flex items-center justify-center text-white shadow-lg shadow-indigo-500/30">
-            <i class="fa-solid fa-compass text-xl"></i>
+        <!-- Logo & Header Branding -->
+        <div class="flex items-center gap-2.5 sm:gap-3.5">
+          <div class="h-9 w-9 sm:h-12 sm:w-12 rounded-xl bg-gradient-to-tr from-brand-600 via-indigo-600 to-indigo-400 flex items-center justify-center text-white shadow-md shadow-indigo-500/25 shrink-0">
+            <i class="fa-solid fa-compass text-base sm:text-xl"></i>
           </div>
           <div>
-            <div class="flex items-center gap-2">
-              <span class="text-xl sm:text-2xl font-black tracking-tight text-slate-900 dark:text-white uppercase">
+            <div class="flex items-center flex-wrap gap-1.5 sm:gap-2">
+              <span class="text-lg sm:text-2xl font-black tracking-tight text-slate-900 dark:text-white uppercase">
                 SSC <span class="text-brand-600 dark:text-brand-500">by SK</span>
               </span>
-              <span class="text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded-full bg-brand-100 text-brand-700 dark:bg-brand-900/50 dark:text-brand-300">
-                OFFICIAL
+              
+              <!-- PROMINENT "CREATED BY TEJAS" HEADER BADGE -->
+              <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] sm:text-xs font-bold bg-amber-50 text-amber-800 dark:bg-amber-950/60 dark:text-amber-300 border border-amber-300 dark:border-amber-700/60 shadow-xs">
+                <i class="fa-solid fa-crown text-[9px] sm:text-[10px] text-amber-500"></i>
+                <span>Created by Tejas</span>
               </span>
             </div>
-            <p class="text-xs text-slate-500 dark:text-slate-400 font-medium hidden sm:block">
-              Directions & Distances Reasoning Practice Suite
+            <p class="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 font-medium hidden md:block">
+              Direction & Distance Reasoning &bull; Questions 1 to 24 &bull; Mobile & Tablet Ready
             </p>
           </div>
         </div>
 
-        <!-- Controls & Stats -->
-        <div class="flex items-center gap-2 sm:gap-4">
+        <!-- Controls & Actions -->
+        <div class="flex items-center gap-1.5 sm:gap-3">
           <!-- Mode Switcher -->
-          <div class="bg-slate-100 dark:bg-slate-800 p-1 rounded-xl flex items-center text-xs font-semibold">
-            <button id="modePracticeBtn" onclick="setMode('practice')" class="px-3 py-1.5 rounded-lg transition-all bg-white dark:bg-slate-700 text-brand-700 dark:text-white shadow-sm flex items-center gap-1.5">
+          <div class="bg-slate-100 dark:bg-slate-800 p-0.5 sm:p-1 rounded-xl flex items-center text-[11px] sm:text-xs font-semibold">
+            <button id="modePracticeBtn" onclick="setMode('practice')" class="px-2.5 sm:px-3 py-1.5 rounded-lg transition-all bg-white dark:bg-slate-700 text-brand-700 dark:text-white shadow-sm flex items-center gap-1 sm:gap-1.5">
               <i class="fa-solid fa-graduation-cap"></i>
-              <span>Practice</span>
+              <span class="hidden xs:inline sm:inline">Practice</span>
             </button>
-            <button id="modeExamBtn" onclick="setMode('exam')" class="px-3 py-1.5 rounded-lg transition-all text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white flex items-center gap-1.5">
+            <button id="modeExamBtn" onclick="setMode('exam')" class="px-2.5 sm:px-3 py-1.5 rounded-lg transition-all text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white flex items-center gap-1 sm:gap-1.5">
               <i class="fa-solid fa-stopwatch"></i>
-              <span>Mock Test</span>
+              <span class="hidden xs:inline sm:inline">Mock Test</span>
             </button>
           </div>
 
-          <!-- Dark/Light Toggle -->
-          <button onclick="toggleDarkMode()" class="h-10 w-10 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 flex items-center justify-center transition" title="Toggle Theme">
-            <i id="themeIcon" class="fa-regular fa-moon"></i>
+          <!-- Dark/Light Mode Toggle -->
+          <button onclick="toggleDarkMode()" class="h-9 w-9 sm:h-10 sm:w-10 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 flex items-center justify-center transition" title="Toggle Theme">
+            <i id="themeIcon" class="fa-regular fa-moon text-sm sm:text-base"></i>
           </button>
 
-          <!-- Submit Button in Exam Mode -->
-          <button id="actionHeaderBtn" onclick="openSubmitModal()" class="hidden bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs sm:text-sm px-4 py-2 rounded-xl shadow-md transition flex items-center gap-2">
+          <!-- Exam Mode Submit Button -->
+          <button id="actionHeaderBtn" onclick="openSubmitModal()" class="hidden bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white font-semibold text-xs sm:text-sm px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl shadow-md transition flex items-center gap-1.5">
             <i class="fa-solid fa-paper-plane"></i>
-            <span>Submit Test</span>
+            <span>Submit</span>
           </button>
         </div>
 
@@ -112,79 +126,90 @@
     </div>
   </header>
 
-  <!-- SUB-BANNER WITH STATS & SEARCH -->
-  <section class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 py-3 sm:py-4">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between gap-4">
-      
-      <!-- Quick Score & Progress -->
-      <div class="flex items-center gap-3 sm:gap-6 text-sm">
-        <div class="flex items-center gap-2 font-medium">
-          <span class="text-slate-500 dark:text-slate-400">Total:</span>
-          <span id="statTotal" class="font-bold text-slate-800 dark:text-white">19 Qs</span>
+  <!-- SUB-BAR: STATS, TIMER & SEARCH -->
+  <section class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 py-2.5 sm:py-3.5 sticky top-16 sm:top-20 z-30 shadow-xs">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-2.5 sm:gap-4">
+        
+        <!-- Live Counters -->
+        <div class="flex items-center justify-between sm:justify-start gap-3 sm:gap-6 text-xs sm:text-sm overflow-x-auto pb-1 sm:pb-0">
+          <div class="flex items-center gap-1.5">
+            <span class="text-slate-400 font-medium">Total:</span>
+            <span id="statTotal" class="font-bold text-slate-900 dark:text-white bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded-md">24 Qs</span>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <span class="text-slate-400 font-medium">Selected:</span>
+            <span id="statAttempted" class="font-bold text-brand-600 dark:text-brand-400">0</span>
+          </div>
+          <div id="scoreWrapper" class="hidden items-center gap-1.5">
+            <span class="text-slate-400 font-medium">Score:</span>
+            <span id="statScore" class="font-bold text-emerald-600 dark:text-emerald-400">0 / 24</span>
+          </div>
+          
+          <!-- Exam Countdown Timer -->
+          <div id="examTimerBadge" class="hidden items-center gap-1.5 bg-rose-50 text-rose-600 dark:bg-rose-950/50 dark:text-rose-400 px-2.5 py-1 rounded-lg font-mono font-bold text-xs">
+            <i class="fa-regular fa-clock animate-pulse"></i>
+            <span id="examTimerText">25:00</span>
+          </div>
         </div>
-        <div class="flex items-center gap-2 font-medium">
-          <span class="text-slate-500 dark:text-slate-400">Attempted:</span>
-          <span id="statAttempted" class="font-bold text-brand-600 dark:text-brand-400">0</span>
-        </div>
-        <div class="flex items-center gap-2 font-medium">
-          <span class="text-slate-500 dark:text-slate-400">Score:</span>
-          <span id="statScore" class="font-bold text-emerald-600 dark:text-emerald-400">0 / 19</span>
-        </div>
-        <!-- Exam Timer -->
-        <div id="examTimerBadge" class="hidden items-center gap-2 bg-rose-50 text-rose-600 dark:bg-rose-950/40 dark:text-rose-400 px-3 py-1 rounded-lg font-mono font-bold text-xs">
-          <i class="fa-regular fa-clock animate-pulse"></i>
-          <span id="examTimerText">20:00</span>
-        </div>
-      </div>
 
-      <!-- Quick Action Filters -->
-      <div class="flex items-center gap-2 w-full sm:w-auto">
-        <div class="relative flex-1 sm:w-60">
-          <i class="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
-          <input 
-            type="text" 
-            id="searchInput" 
-            oninput="handleSearch()" 
-            placeholder="Search question or keyword..." 
-            class="w-full pl-8 pr-3 py-1.5 text-xs bg-slate-100 dark:bg-slate-800 rounded-lg border border-transparent focus:border-brand-500 focus:bg-white dark:focus:bg-slate-900 focus:outline-none transition"
-          />
-        </div>
-        <button onclick="revealAllAnswers()" id="btnRevealAll" class="text-xs bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 px-3 py-2 rounded-lg font-medium text-slate-700 dark:text-slate-300 transition flex items-center gap-1.5 whitespace-nowrap">
-          <i class="fa-regular fa-eye"></i>
-          <span>Show All Answers</span>
-        </button>
-        <button onclick="resetAllProgress()" class="text-xs text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/30 px-3 py-2 rounded-lg font-medium transition flex items-center gap-1">
-          <i class="fa-solid fa-rotate-left"></i>
-          <span>Reset</span>
-        </button>
-      </div>
+        <!-- Quick Filters & Search -->
+        <div class="flex items-center gap-2">
+          <div class="relative flex-1 sm:w-64">
+            <i class="fa-solid fa-search absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+            <input 
+              type="text" 
+              id="searchInput" 
+              oninput="handleSearch()" 
+              placeholder="Search questions or terms..." 
+              class="w-full pl-7 pr-3 py-1.5 text-xs bg-slate-100 dark:bg-slate-800 rounded-lg border border-transparent focus:border-brand-500 focus:bg-white dark:focus:bg-slate-900 focus:outline-none transition"
+            />
+          </div>
 
+          <button onclick="revealAllAnswers()" id="btnRevealAll" class="text-xs bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 px-2.5 sm:px-3 py-1.5 rounded-lg font-medium text-slate-700 dark:text-slate-300 transition flex items-center gap-1 whitespace-nowrap">
+            <i class="fa-regular fa-eye text-[11px]"></i>
+            <span class="hidden sm:inline">Show All</span>
+          </button>
+
+          <button onclick="resetAllProgress()" title="Reset All" class="text-xs text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/30 px-2.5 py-1.5 rounded-lg font-medium transition flex items-center gap-1">
+            <i class="fa-solid fa-rotate-left text-[11px]"></i>
+            <span class="hidden sm:inline">Reset</span>
+          </button>
+
+          <!-- Mobile Navigator Drawer Trigger -->
+          <button onclick="toggleMobileNav()" class="lg:hidden text-xs bg-brand-50 dark:bg-brand-950/60 text-brand-700 dark:text-brand-300 hover:bg-brand-100 px-2.5 py-1.5 rounded-lg font-semibold border border-brand-200 dark:border-brand-900 transition flex items-center gap-1.5">
+            <i class="fa-solid fa-grip text-xs"></i>
+            <span>Q-Grid</span>
+          </button>
+        </div>
+
+      </div>
     </div>
   </section>
 
-  <!-- MAIN CONTENT LAYOUT -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+  <!-- MAIN CONTENT -->
+  <main class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-5 sm:py-7">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
       
-      <!-- QUESTIONS LIST COLUMN -->
-      <div class="lg:col-span-8 space-y-6" id="questionsContainer">
-        <!-- Rendered by JavaScript -->
+      <!-- QUESTIONS LIST -->
+      <div class="lg:col-span-8 space-y-4 sm:space-y-6" id="questionsContainer">
+        <!-- Rendered dynamically -->
       </div>
 
-      <!-- SIDEBAR PALETTE & TOPICS -->
-      <aside class="lg:col-span-4 space-y-6">
+      <!-- DESKTOP / TABLET STICKY SIDEBAR -->
+      <aside class="hidden lg:block lg:col-span-4 space-y-6">
         
-        <!-- Question Jump Palette -->
-        <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-5 shadow-sm sticky top-24">
+        <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-5 shadow-sm sticky top-36">
           <div class="flex items-center justify-between mb-4">
-            <h3 class="font-bold text-slate-900 dark:text-white text-sm uppercase tracking-wide flex items-center gap-2">
+            <h3 class="font-bold text-slate-900 dark:text-white text-xs sm:text-sm uppercase tracking-wide flex items-center gap-2">
               <i class="fa-solid fa-table-cells text-brand-600"></i>
               Question Navigator
             </h3>
-            <span class="text-xs text-slate-400" id="paletteCount">19 Questions</span>
+            <span class="text-xs text-slate-400 font-semibold" id="paletteCount">24 Questions</span>
           </div>
 
-          <div class="grid grid-cols-5 sm:grid-cols-6 gap-2" id="navigatorGrid">
+          <!-- Navigator Grid -->
+          <div class="grid grid-cols-6 gap-2" id="navigatorGridDesktop">
             <!-- Rendered by JS -->
           </div>
 
@@ -195,7 +220,7 @@
             </div>
             <div class="flex items-center gap-1.5">
               <span class="w-3 h-3 rounded bg-brand-600 text-white inline-block"></span>
-              <span>Attempted</span>
+              <span>Selected</span>
             </div>
             <div class="flex items-center gap-1.5">
               <span class="w-3 h-3 rounded bg-amber-500 text-white inline-block"></span>
@@ -203,41 +228,36 @@
             </div>
           </div>
 
-          <!-- Quick Tip Card -->
-          <div class="mt-5 p-4 rounded-xl bg-gradient-to-br from-indigo-50 to-blue-50 dark:from-slate-800/80 dark:to-indigo-950/40 border border-indigo-100/60 dark:border-slate-700/50">
+          <!-- Shortcut Reference Card -->
+          <div class="mt-5 p-3.5 rounded-xl bg-gradient-to-br from-indigo-50 to-blue-50 dark:from-slate-800/80 dark:to-indigo-950/40 border border-indigo-100/70 dark:border-slate-700/60">
             <div class="flex items-start gap-2.5">
-              <div class="text-brand-600 dark:text-brand-400 text-lg mt-0.5">
+              <div class="text-brand-600 dark:text-brand-400 text-base mt-0.5">
                 <i class="fa-solid fa-lightbulb"></i>
               </div>
-              <div>
-                <h4 class="text-xs font-bold text-slate-900 dark:text-slate-200">Exam Shortcut Rule</h4>
-                <p class="text-[11px] text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
-                  Start from origin $(0,0)$:<br>
-                  • East: $+X$ &bull; West: $-X$<br>
-                  • North: $+Y$ &bull; South: $-Y$<br>
-                  • Pythagorean Triplets: $(3,4,5)$, $(5,12,13)$, $(8,15,17)$.
-                </p>
+              <div class="text-[11px] text-slate-600 dark:text-slate-300 space-y-1">
+                <div class="font-bold text-slate-900 dark:text-white">Exam Speed Rules</div>
+                <p>&bull; North = +Y, South = -Y</p>
+                <p>&bull; East = +X, West = -X</p>
+                <p>&bull; Pythagorean triplets: (3,4,5), (5,12,13)</p>
+                <p>&bull; Distance = &radic;(&Delta;x&sup2; + &Delta;y&sup2;)</p>
               </div>
             </div>
           </div>
 
-          <!-- Free Topicwise SSC List -->
+          <!-- Free Topicwise List -->
           <div class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800">
             <h4 class="text-xs font-bold text-slate-700 dark:text-slate-300 mb-2 uppercase tracking-wider flex items-center gap-1.5">
               <i class="fa-solid fa-book-bookmark text-brand-500"></i> Free SSC Topics
             </h4>
-            <div class="flex flex-wrap gap-1.5 max-h-44 overflow-y-auto pr-1">
-              <span class="text-[10px] bg-brand-50 dark:bg-brand-950/60 text-brand-700 dark:text-brand-300 px-2 py-0.5 rounded font-semibold">SSC Directions</span>
+            <div class="flex flex-wrap gap-1.5 max-h-36 overflow-y-auto pr-1">
+              <span class="text-[10px] bg-brand-100 dark:bg-brand-900/60 text-brand-800 dark:text-brand-200 px-2 py-0.5 rounded font-semibold">SSC Directions</span>
               <span class="text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded">Data Interpretation</span>
               <span class="text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded">Geometry</span>
               <span class="text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded">Linear Equations</span>
               <span class="text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded">Number Systems</span>
-              <span class="text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded">Quadratic Equations</span>
               <span class="text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded">Coding Decoding</span>
               <span class="text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded">Puzzles</span>
               <span class="text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded">Syllogisms</span>
-              <span class="text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded">Number Series</span>
-              <span class="text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded">Venn Diagram</span>
             </div>
           </div>
 
@@ -248,40 +268,83 @@
     </div>
   </main>
 
-  <!-- RESULT MODAL FOR EXAM MODE -->
-  <div id="resultModal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden items-center justify-center p-4">
-    <div class="bg-white dark:bg-slate-900 rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-200 dark:border-slate-800 text-center">
-      <div class="w-16 h-16 rounded-2xl bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 mx-auto flex items-center justify-center text-3xl mb-4">
+  <!-- MOBILE / TABLET FLOATING SLIDE-OVER DRAWER -->
+  <div id="mobileDrawer" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs hidden transition-opacity">
+    <div class="absolute bottom-0 left-0 right-0 max-h-[85vh] bg-white dark:bg-slate-900 rounded-t-3xl p-5 shadow-2xl border-t border-slate-200 dark:border-slate-800 overflow-y-auto safe-bottom">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-grip text-brand-600"></i>
+          <h3 class="font-bold text-sm text-slate-900 dark:text-white uppercase tracking-wider">Quick Navigator (1 - 24)</h3>
+        </div>
+        <button onclick="toggleMobileNav()" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-900 flex items-center justify-center">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="grid grid-cols-6 sm:grid-cols-8 gap-2.5 my-4" id="navigatorGridMobile">
+        <!-- Rendered by JS -->
+      </div>
+
+      <div class="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-around text-xs text-slate-500">
+        <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded bg-slate-200 dark:bg-slate-700"></span> Unattempted</span>
+        <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded bg-brand-600"></span> Selected</span>
+        <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded bg-amber-500"></span> Marked</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FIXED BOTTOM BAR FOR MOBILE -->
+  <div class="lg:hidden fixed bottom-0 left-0 right-0 z-30 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 px-4 py-2 safe-bottom shadow-lg flex items-center justify-between">
+    <div class="flex items-center gap-2 text-xs font-semibold text-slate-700 dark:text-slate-300">
+      <span class="text-slate-400">Selected:</span>
+      <span id="mobileBottomAnswered" class="text-brand-600 font-bold">0</span> / 24
+    </div>
+    <div class="flex items-center gap-2">
+      <button onclick="toggleMobileNav()" class="bg-brand-600 text-white active:scale-95 px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-md">
+        <i class="fa-solid fa-list-ol"></i>
+        <span>Jump to Q</span>
+      </button>
+      <button id="mobileSubmitBtn" onclick="openSubmitModal()" class="hidden bg-emerald-600 text-white active:scale-95 px-3 py-1.5 rounded-xl text-xs font-bold items-center gap-1.5 shadow-md">
+        <i class="fa-solid fa-check"></i>
+        <span>Submit</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- EXAM RESULT MODAL -->
+  <div id="resultModal" class="fixed inset-0 z-50 bg-slate-900/70 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white dark:bg-slate-900 rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-200 dark:border-slate-800 text-center animate-fade-in">
+      <div class="w-16 h-16 rounded-2xl bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 mx-auto flex items-center justify-center text-3xl mb-4 shadow-md">
         <i class="fa-solid fa-trophy"></i>
       </div>
-      <h3 class="text-2xl font-bold text-slate-900 dark:text-white">Exam Completed!</h3>
-      <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Here is your performance summary for SSC by SK test:</p>
+      <h3 class="text-2xl font-black text-slate-900 dark:text-white">Exam Completed!</h3>
+      <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">SSC by SK &bull; Created by Tejas</p>
 
-      <div class="grid grid-cols-3 gap-3 my-6">
-        <div class="bg-slate-50 dark:bg-slate-800 p-3 rounded-xl">
-          <span class="text-xs text-slate-400 block font-medium">Attempted</span>
-          <span id="modalAttempted" class="text-xl font-bold text-slate-800 dark:text-white">0</span>
+      <div class="grid grid-cols-3 gap-2.5 my-5">
+        <div class="bg-slate-50 dark:bg-slate-800/80 p-3 rounded-2xl border border-slate-100 dark:border-slate-800">
+          <span class="text-[11px] text-slate-400 block font-semibold">Attempted</span>
+          <span id="modalAttempted" class="text-lg sm:text-xl font-black text-slate-800 dark:text-white">0</span>
         </div>
-        <div class="bg-emerald-50 dark:bg-emerald-950/30 p-3 rounded-xl">
-          <span class="text-xs text-emerald-600 dark:text-emerald-400 block font-medium">Correct</span>
-          <span id="modalCorrect" class="text-xl font-bold text-emerald-600 dark:text-emerald-400">0</span>
+        <div class="bg-emerald-50 dark:bg-emerald-950/40 p-3 rounded-2xl border border-emerald-100 dark:border-emerald-900/40">
+          <span class="text-[11px] text-emerald-600 dark:text-emerald-400 block font-semibold">Correct</span>
+          <span id="modalCorrect" class="text-lg sm:text-xl font-black text-emerald-600 dark:text-emerald-400">0</span>
         </div>
-        <div class="bg-rose-50 dark:bg-rose-950/30 p-3 rounded-xl">
-          <span class="text-xs text-rose-600 dark:text-rose-400 block font-medium">Wrong</span>
-          <span id="modalWrong" class="text-xl font-bold text-rose-600 dark:text-rose-400">0</span>
+        <div class="bg-rose-50 dark:bg-rose-950/40 p-3 rounded-2xl border border-rose-100 dark:border-rose-900/40">
+          <span class="text-[11px] text-rose-600 dark:text-rose-400 block font-semibold">Wrong</span>
+          <span id="modalWrong" class="text-lg sm:text-xl font-black text-rose-600 dark:text-rose-400">0</span>
         </div>
       </div>
 
-      <div class="bg-slate-100 dark:bg-slate-800/80 p-3 rounded-xl mb-6 flex justify-between items-center text-sm font-semibold">
-        <span class="text-slate-600 dark:text-slate-300">Total Marks (1 pt each):</span>
-        <span id="modalTotalMarks" class="text-brand-600 dark:text-brand-400 font-bold text-base">0 / 19</span>
+      <div class="bg-slate-100 dark:bg-slate-800/90 p-3.5 rounded-2xl mb-5 flex justify-between items-center text-xs sm:text-sm font-semibold">
+        <span class="text-slate-600 dark:text-slate-300">Final Score:</span>
+        <span id="modalTotalMarks" class="text-brand-600 dark:text-brand-400 font-black text-base sm:text-lg">0 / 24</span>
       </div>
 
-      <div class="flex items-center gap-3">
-        <button onclick="closeSubmitModal()" class="flex-1 px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium text-sm transition">
+      <div class="flex items-center gap-2.5">
+        <button onclick="closeSubmitModal()" class="flex-1 px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 font-semibold text-xs sm:text-sm transition">
           Review Answers
         </button>
-        <button onclick="restartExam()" class="flex-1 px-4 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm transition">
+        <button onclick="restartExam()" class="flex-1 px-4 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs sm:text-sm transition shadow-md shadow-brand-500/30">
           Retake Test
         </button>
       </div>
@@ -289,263 +352,328 @@
   </div>
 
   <!-- FOOTER -->
-  <footer class="mt-16 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 py-8 text-center text-xs text-slate-500 dark:text-slate-400">
-    <div class="max-w-7xl mx-auto px-4 space-y-2">
-      <p class="font-semibold text-slate-700 dark:text-slate-300 text-sm">
-        SSC BY SK &copy; 2026 &bull; Direction Sense & Reasoning Exam Portal
+  <footer class="mt-12 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 py-6 text-center text-xs text-slate-500 dark:text-slate-400">
+    <div class="max-w-7xl mx-auto px-4 space-y-1.5">
+      <p class="font-bold text-slate-800 dark:text-slate-200">
+        SSC BY SK &copy; 2026 &bull; Created with &hearts; by Tejas
       </p>
-      <p>Questions curated for SSC CGL, CHSL, MTS, CPO, GD, and other competitive examinations.</p>
+      <p class="text-[11px]">Fully optimized for Mobile, Tablet, and Desktop practice.</p>
     </div>
   </footer>
 
-  <!-- SCRIPT DATA & LOGIC -->
+  <!-- SCRIPT -->
   <script>
     const questionsData = [
-      {
-        id: 6,
-        text: "Town Q is to the north of Town P. Town R is to the west of Town Q. Town S is to the north of Town R. Town T is to the east of Town S. What is the position of Town T with respect to Town R? (All positions are arranged in GRID pattern).",
-        options: {
-          A: "East",
-          B: "South",
-          C: "North-east",
-          D: "South-east"
-        },
-        correct: "C",
-        explanation: "1. Town R is taken as reference point (0, 0).<br>2. Town S is north of Town R &rarr; Position is (0, +y).<br>3. Town T is east of Town S &rarr; Position is (+x, +y).<br>Therefore, Town T is in the <b>North-east</b> direction with respect to Town R."
-      },
-      {
-        id: 7,
-        text: "A man is standing in the park facing North. He turns 90&deg; towards the left and walks 40 km. He again takes a 90&deg; turn towards the right and walks 50 km. He takes the next 90&deg; turn towards the right and walks 60 km. Lastly, he takes 90&deg; turn towards the right and walks 50 km. How much distance is he from the starting point?",
-        options: {
-          A: "40 km",
-          B: "60 km",
-          C: "50 km",
-          D: "20 km"
-        },
-        correct: "D",
-        explanation: "Start point = (0, 0), initial facing = North.<br>&bull; 90&deg; Left turn (facing West) & walks 40 km &rarr; (-40, 0).<br>&bull; 90&deg; Right turn (facing North) & walks 50 km &rarr; (-40, 50).<br>&bull; 90&deg; Right turn (facing East) & walks 60 km &rarr; (-40 + 60, 50) = (20, 50).<br>&bull; 90&deg; Right turn (facing South) & walks 50 km &rarr; (20, 50 - 50) = (20, 0).<br>Distance from (0, 0) to (20, 0) = <b>20 km</b>."
-      },
-      {
-        id: 8,
-        text: "Shruti departs from her home and walks 47 m towards the west. She then turns right and walks 18 m. She turns left and walks 53 m. She takes a final left turn and walks 30 m. How far is she from a pole which is exactly 12 m to the south of her home?<br><span class='text-xs text-slate-400'>(Assume that all the turns are 90&deg; turns only.)</span>",
-        options: {
-          A: "100 m",
-          B: "105 m",
-          C: "90 m",
-          D: "110 m"
-        },
-        correct: "A",
-        explanation: "Home = (0, 0).<br>&bull; 47 m West &rarr; (-47, 0).<br>&bull; Turns right (North) and walks 18 m &rarr; (-47, 18).<br>&bull; Turns left (West) and walks 53 m &rarr; (-47 - 53, 18) = (-100, 18).<br>&bull; Turns left (South) and walks 30 m &rarr; (-100, 18 - 30) = (-100, -12).<br>Pole is 12 m south of home &rarr; (0, -12).<br>Distance between (-100, -12) and (0, -12) = |-100 - 0| = <b>100 m</b>."
-      },
-      {
-        id: 9,
-        text: "Indira starts from point A, which is 7 km towards East of point B. From point A, she drives 4 km towards East. From here, she takes a left turn and drives 9 km. She then takes a left turn, drives 9 km and stops at point C. If from point C, Indira drives 9 km towards South, how far will she be from point B?",
-        options: {
-          A: "2 km",
-          B: "4 km",
-          C: "1 km",
-          D: "3 km"
-        },
-        correct: "A",
-        explanation: "Let Point B = (0, 0).<br>&bull; Point A is 7 km East of B &rarr; A = (7, 0).<br>&bull; From A, drives 4 km East &rarr; (11, 0).<br>&bull; Left turn (North) 9 km &rarr; (11, 9).<br>&bull; Left turn (West) 9 km &rarr; (11 - 9, 9) = (2, 9) [Point C].<br>&bull; From C, drives 9 km South &rarr; (2, 9 - 9) = (2, 0).<br>Distance from Point B (0, 0) to (2, 0) = 2 - 0 = <b>2 km</b>."
-      },
-      {
-        id: 10,
-        text: "P is to the north of Q. T is to the east of Q and S is to the east of P. S is to the north-east of T and south-west of R. What is the position of R with respect to Q? (All positions are arranged in GRID pattern)",
-        options: {
-          A: "North-east",
-          B: "South-west",
-          C: "East",
-          D: "South"
-        },
-        correct: "A",
-        explanation: "Let Q = (0, 0).<br>&bull; P is north of Q: (0, +y).<br>&bull; T is east of Q: (+x, 0).<br>&bull; S is east of P: (+xS, +yP). Since S is North-East of T, xS > xT > 0 and yP > 0.<br>&bull; S is South-West of R &rarr; R is North-East of S.<br>&bull; Therefore, R has coordinates (xR, yR) with xR > 0 and yR > 0.<br>With respect to Q (0, 0), point R is in the <b>North-east</b> direction."
-      },
-      {
-        id: 11,
-        text: "Salman starts from his office and drives 29 km towards South. Then he turns right and drives 16 km, again he turns right and drives 29 km. Finally he turns right and drives 13 km. At what distance is he from his start point in a straight line?",
-        options: {
-          A: "29 km",
-          B: "3 km",
-          C: "16 km",
-          D: "13 km"
-        },
-        correct: "B",
-        explanation: "Start point = (0, 0).<br>&bull; Drives 29 km South &rarr; (0, -29).<br>&bull; Turns right (West) and drives 16 km &rarr; (-16, -29).<br>&bull; Turns right (North) and drives 29 km &rarr; (-16, 0).<br>&bull; Turns right (East) and drives 13 km &rarr; (-16 + 13, 0) = (-3, 0).<br>Straight line distance from (0, 0) to (-3, 0) = |-3| = <b>3 km</b>."
-      },
-      {
-        id: 12,
-        text: "Mehar drives 19 km East from his home. He then takes a left turn and drives 11 km. He again takes a left turn and drives 19 km. How far is he from starting point in a straight line?",
-        options: {
-          A: "30 km",
-          B: "11 km",
-          C: "19 km",
-          D: "21 km"
-        },
-        correct: "B",
-        explanation: "Start point = (0, 0).<br>&bull; 19 km East &rarr; (19, 0).<br>&bull; Left turn (North) 11 km &rarr; (19, 11).<br>&bull; Left turn (West) 19 km &rarr; (19 - 19, 11) = (0, 11).<br>Straight line distance from (0, 0) to (0, 11) = <b>11 km</b>."
-      },
-      {
-        id: 13,
-        text: "Manoj starts from point A and drives X km towards the south and then turns left and drives Y km. He then takes a right turn and drives for 4 km to reach point D. If Manoj drove a total of 17 km between Points A and D, and both X and Y are perfect squares where X > Y, then what is the value of X ?",
-        options: {
-          A: "4",
-          B: "11",
-          C: "5",
-          D: "9"
-        },
-        correct: "D",
-        explanation: "Total distance = X + Y + 4 = 17 km &rarr; X + Y = 13 km.<br>Both X and Y are perfect squares and X > Y.<br>The perfect squares summing to 13 are 9 and 4 (3&sup2; = 9, 2&sup2; = 4).<br>Since X > Y, X = 9 and Y = 4.<br>Hence, the value of X is <b>9</b>."
-      },
-      {
-        id: 14,
-        text: "X, from his house, ran 200 steps towards the east and then ran 30 steps after turning to his right to reach a monastery. He then ran 30 steps towards his right and reached a point W. He then turned again towards his right and ran 30 steps. From there, turning towards his right he ran 130 steps. He then turned towards his left and ran 10 steps to reach a bakery. In which direction is the bakery with respect to X’s house?",
-        options: {
-          A: "East",
-          B: "South-East",
-          C: "North-East",
-          D: "North"
-        },
-        correct: "C",
-        explanation: "House = (0, 0).<br>&bull; 200 steps East &rarr; (200, 0).<br>&bull; Right (South) 30 steps &rarr; (200, -30) [Monastery].<br>&bull; Right (West) 30 steps &rarr; (170, -30) [Point W].<br>&bull; Right (North) 30 steps &rarr; (170, 0).<br>&bull; Right (East) 130 steps &rarr; (170 + 130, 0) = (300, 0).<br>&bull; Left (North) 10 steps &rarr; (300, 10) [Bakery].<br>Bakery is at (+300, +10), which is in the <b>North-East</b> of X's house."
-      },
-      {
-        id: 15,
-        text: "Shalini drives 5 km North, then she turns East and drives 12 km. After this, she turns North and drives 4 km. Again she turns East and drives 5 km. What is the total distance covered by Shalini?",
-        options: {
-          A: "22 km",
-          B: "9 km",
-          C: "12 km",
-          D: "26 km"
-        },
-        correct: "D",
-        explanation: "Total distance covered is the sum of all segments:<br>Total Distance = 5 km + 12 km + 4 km + 5 km = <b>26 km</b>."
-      },
-      {
-        id: 16,
-        text: "Manohar cycles X km towards west and then turns right and cycles Y km to reach his office. Now, the shortest distance between the starting point and his office is 13 km. What can be the value of X and Y, respectively, (in km)?",
-        options: {
-          A: "12 and 5",
-          B: "8 and 5",
-          C: "11 and 6",
-          D: "6 and 7"
-        },
-        correct: "A",
-        explanation: "By Pythagoras theorem: X&sup2; + Y&sup2; = 13&sup2; = 169.<br>Evaluating options:<br>&bull; A: 12&sup2; + 5&sup2; = 144 + 25 = 169 (Exact match!)<br>&bull; B: 8&sup2; + 5&sup2; = 64 + 25 = 89<br>&bull; C: 11&sup2; + 6&sup2; = 121 + 36 = 157<br>&bull; D: 6&sup2; + 7&sup2; = 36 + 49 = 85<br>Therefore, values are <b>12 and 5</b>."
-      },
-      {
-        id: 17,
-        text: "A boy walks 15 m north, turns right and walks 20 m. Again, he turns right and walks 15 m. Finally, he turns to his left and moves 20 m. What is the distance now from his original position?",
-        options: {
-          A: "40 m",
-          B: "46 m",
-          C: "50 m",
-          D: "45 m"
-        },
-        correct: "A",
-        explanation: "Origin = (0, 0).<br>&bull; 15 m North &rarr; (0, 15).<br>&bull; Turn right (East) 20 m &rarr; (20, 15).<br>&bull; Turn right (South) 15 m &rarr; (20, 0).<br>&bull; Turn left (East) 20 m &rarr; (20 + 20, 0) = (40, 0).<br>Distance from original position = <b>40 m</b>."
-      },
-      {
-        id: 18,
-        text: "B is west of E. A is north-west of B. F is north-east of B. D is south-east of F, such that F is north-west of E and D is south-east of E as well. If C is south-west of E, what is the position of A with respect to E? (All positions are arranged in GRID pattern)",
-        options: {
-          A: "South-east",
-          B: "North-east",
-          C: "South-west",
-          D: "North-west"
-        },
-        correct: "D",
-        explanation: "1. B is west of E &rarr; relative to E, B is at (-x, 0).<br>2. A is north-west of B &rarr; A is to the West and North of B.<br>3. Moving west from an already west point keeps it west, and moving north gives positive y.<br>Thus, A is strictly West and North of E, which is <b>North-west</b>."
-      },
-      {
-        id: 19,
-        text: "Gurman drove 28 km towards the West, took a left turn and drove 22 km. She then took a right turn and drove 18 km. She again took a right turn and drove 22 km. How far is she from starting point in a straight line?",
-        options: {
-          A: "28 km",
-          B: "32 km",
-          C: "26 km",
-          D: "46 km"
-        },
-        correct: "D",
-        explanation: "Start point = (0, 0).<br>&bull; West 28 km &rarr; (-28, 0).<br>&bull; Left turn (South) 22 km &rarr; (-28, -22).<br>&bull; Right turn (West) 18 km &rarr; (-28 - 18, -22) = (-46, -22).<br>&bull; Right turn (North) 22 km &rarr; (-46, -22 + 22) = (-46, 0).<br>Distance from starting point = |-46| = <b>46 km</b>."
-      },
-      {
-        id: 20,
-        text: "Pooja drives 4 km towards east from point A. She takes a right turn and drives 2 km. Then she takes a left turn and drives 3 km. Again, she takes a left turn and drives 2 km to reach point B. How far and towards which direction should she drive now in order to reach point A again?",
-        options: {
-          A: "7 km towards west",
-          B: "4 km towards south",
-          C: "4 km towards east",
-          D: "5 km towards north"
-        },
-        correct: "A",
-        explanation: "Point A = (0, 0).<br>&bull; East 4 km &rarr; (4, 0).<br>&bull; Right turn (South) 2 km &rarr; (4, -2).<br>&bull; Left turn (East) 3 km &rarr; (4 + 3, -2) = (7, -2).<br>&bull; Left turn (North) 2 km &rarr; (7, -2 + 2) = (7, 0) [Point B].<br>To return to Point A (0, 0) from Point B (7, 0), she needs to go <b>7 km towards west</b>."
-      },
-      {
-        id: 21,
-        text: "Point A is 30 m to the east of Point B. Point C is 43 m to the south of Point A. Point C is 45 m to the east of Point D. Point E is 14 m to the south of Point D. Point F is 35 m to the east of Point E. In which direction is Point B with respect to Point F?",
-        options: {
-          A: "North-east",
-          B: "North-west",
-          C: "South-west",
-          D: "West"
-        },
-        correct: "B",
-        explanation: "Let Point B = (0, 0).<br>&bull; Point A = (30, 0)<br>&bull; Point C = (30, -43)<br>&bull; Point D = (30 - 45, -43) = (-15, -43)<br>&bull; Point E = (-15, -43 - 14) = (-15, -57)<br>&bull; Point F = (-15 + 35, -57) = (20, -57)<br>Direction of Point B (0, 0) from Point F (20, -57):<br>&Delta;x = -20 (West), &Delta;y = +57 (North).<br>Therefore, Point B is in the <b>North-west</b> direction from Point F."
-      },
-      {
-        id: 22,
-        text: "Rohit drives 3 km towards north from point A. He takes a left turn and drives 4 km. Again he takes a left turn and drives 6 km. Finally, he takes a left turn and drives 4 km to reach point B. How far and towards which direction should he drive in order to reach point A again?",
-        options: {
-          A: "4 km towards south",
-          B: "3 km towards east",
-          C: "3 km towards north",
-          D: "2 km towards west"
-        },
-        correct: "C",
-        explanation: "Point A = (0, 0).<br>&bull; North 3 km &rarr; (0, 3).<br>&bull; Left turn (West) 4 km &rarr; (-4, 3).<br>&bull; Left turn (South) 6 km &rarr; (-4, -3).<br>&bull; Left turn (East) 4 km &rarr; (0, -3) [Point B].<br>To return to Point A (0, 0) from Point B (0, -3), Rohit must go <b>3 km towards north</b>."
-      },
-      {
-        id: 23,
-        text: "Nitin departs from his home and walks 45 m towards the east. He then turns left and walks 48 m. He turns left again and walks 27 m. He takes a final left turn and walks 55 m. How far is he from a pole which is exactly 7 m to the south of his home?<br><span class='text-xs text-slate-400'>(Assume that all the turns are 90&deg; turns only.)</span>",
-        options: {
-          A: "28 m",
-          B: "16 m",
-          C: "31 m",
-          D: "18 m"
-        },
-        correct: "D",
-        explanation: "Home = (0, 0).<br>&bull; 45 m East &rarr; (45, 0).<br>&bull; Turns left (North) 48 m &rarr; (45, 48).<br>&bull; Turns left (West) 27 m &rarr; (45 - 27, 48) = (18, 48).<br>&bull; Turns left (South) 55 m &rarr; (18, 48 - 55) = (18, -7).<br>The pole is located 7 m south of home &rarr; (0, -7).<br>Distance between (18, -7) and (0, -7) is |18 - 0| = <b>18 m</b>."
-      },
-      {
-        id: 24,
-        text: "Shilpa goes to a park every day for walking. One morning, she started walking from her home and walked 40 km towards the north. Then she turned to the right and walked 60 km. Again, she turned right and walked 40 km. Lastly, she took a left turn and walked 30 km. How far is she from her home?",
-        options: {
-          A: "140 km",
-          B: "90 km",
-          C: "100 km",
-          D: "60 km"
-        },
-        correct: "B",
-        explanation: "Home = (0, 0).<br>&bull; North 40 km &rarr; (0, 40).<br>&bull; Right turn (East) 60 km &rarr; (60, 40).<br>&bull; Right turn (South) 40 km &rarr; (60, 0).<br>&bull; Left turn (East) 30 km &rarr; (60 + 30, 0) = (90, 0).<br>Distance from home = <b>90 km</b>."
-      }
-    ];
+  {
+    "id": 1,
+    "text": "Sona goes to a park every day for walking. One morning, she started walking from her home and walked 40 km towards the north. Then she turned to the right and walked 60 km. Again, she turned right and walked 40 km. Lastly, she took a left turn and walked 60 km. In which direction and how far is she from her home?",
+    "options": {
+      "A": "East, 90 km",
+      "B": "West, 120 km",
+      "C": "West, 60 km",
+      "D": "East, 120 km"
+    },
+    "correct": "D",
+    "explanation": "Home = (0, 0).<br>&bull; North 40 km &rarr; (0, 40).<br>&bull; Turn right (East) 60 km &rarr; (60, 40).<br>&bull; Turn right (South) 40 km &rarr; (60, 0).<br>&bull; Turn left (East) 60 km &rarr; (60 + 60, 0) = (120, 0).<br>Coordinates: (+120, 0) &rarr; Direction is <b>East</b> and straight distance is <b>120 km</b>."
+  },
+  {
+    "id": 2,
+    "text": "A person starts from point Z and moves 7 km towards the South. He turns right and moves 5 km, turns right, and moves 3 km, then turns right and moves 1 km. He takes a left turn and moves 4 km to reach a point X. How much and in which direction does he need to move now to reach point Z?",
+    "options": {
+      "A": "4 km South",
+      "B": "4 km East",
+      "C": "4 km West",
+      "D": "6 km East"
+    },
+    "correct": "B",
+    "explanation": "Point Z = (0, 0).<br>&bull; South 7 km &rarr; (0, -7).<br>&bull; Right (West) 5 km &rarr; (-5, -7).<br>&bull; Right (North) 3 km &rarr; (-5, -4).<br>&bull; Right (East) 1 km &rarr; (-4, -4).<br>&bull; Left (North) 4 km &rarr; (-4, -4 + 4) = (-4, 0) [Point X].<br>From X (-4, 0) to reach Z (0, 0), he needs to travel +4 km East &rarr; <b>4 km East</b>."
+  },
+  {
+    "id": 3,
+    "text": "Anurag and Bhavna started driving from the same point. Anurag drove North for 11 km, then turns right and covers 13 km. Bhavna goes West and covers 15 km, then turns right and covers 11 km. How far apart are they from each other in a straight line?",
+    "options": {
+      "A": "28 km",
+      "B": "26 km",
+      "C": "52 km",
+      "D": "50 km"
+    },
+    "correct": "A",
+    "explanation": "Starting point = (0, 0).<br>&bull; Anurag: North 11 km &rarr; (0, 11), then right (East) 13 km &rarr; (13, 11).<br>&bull; Bhavna: West 15 km &rarr; (-15, 0), then right (North) 11 km &rarr; (-15, 11).<br>Both are at the same North elevation (y = 11).<br>Straight line distance between them = 13 - (-15) = 13 + 15 = <b>28 km</b>."
+  },
+  {
+    "id": 4,
+    "text": "Point A is 35 m to the north of Point B. Point C is 28 m to the west of Point B. Point D is 25 m to the south of Point C. Point E is 14 m to the west of Point D. Point F is 40 m to the north of Point E. In which direction is Point B with respect to Point F?",
+    "options": {
+      "A": "West",
+      "B": "North-east",
+      "C": "North",
+      "D": "South-east"
+    },
+    "correct": "D",
+    "explanation": "Let Point B = (0, 0).<br>&bull; Point A is 35 m north of B &rarr; (0, 35).<br>&bull; Point C is 28 m west of B &rarr; (-28, 0).<br>&bull; Point D is 25 m south of C &rarr; (-28, -25).<br>&bull; Point E is 14 m west of D &rarr; (-28 - 14, -25) = (-42, -25).<br>&bull; Point F is 40 m north of E &rarr; (-42, -25 + 40) = (-42, 15).<br>Vector from F (-42, 15) to B (0, 0): &Delta;x = +42 (East), &Delta;y = -15 (South).<br>Therefore, Point B is in the <b>South-east</b> with respect to Point F."
+  },
+  {
+    "id": 5,
+    "text": "Aunt Gloria walked out of her house and walked 65 m towards the east. She took a left turn and walked 28 m. Again, she took a left turn and walked 110 m to reach a public library. How far (shortest distance) and in which direction is the library from Aunt Gloria\u2019s house?",
+    "options": {
+      "A": "48 m, North-East",
+      "B": "48 m, North-West",
+      "C": "53 m, North-East",
+      "D": "53 m, North-West"
+    },
+    "correct": "D",
+    "explanation": "House = (0, 0).<br>&bull; 65 m East &rarr; (65, 0).<br>&bull; Left turn (North) 28 m &rarr; (65, 28).<br>&bull; Left turn (West) 110 m &rarr; (65 - 110, 28) = (-45, 28) [Library].<br>Direction: West and North &rarr; <b>North-West</b>.<br>Shortest distance = &radic;(45&sup2; + 28&sup2;) = &radic;(2025 + 784) = &radic;2809 = <b>53 m</b>."
+  },
+  {
+    "id": 6,
+    "text": "Town Q is to the north of Town P. Town R is to the west of Town Q. Town S is to the north of Town R. Town T is to the east of Town S. What is the position of Town T with respect to Town R? (All positions are arranged in GRID pattern).",
+    "options": {
+      "A": "East",
+      "B": "South",
+      "C": "North-east",
+      "D": "South-east"
+    },
+    "correct": "C",
+    "explanation": "1. Town R is taken as reference point (0, 0).<br>2. Town S is north of Town R &rarr; Position is (0, +y).<br>3. Town T is east of Town S &rarr; Position is (+x, +y).<br>Therefore, Town T is in the <b>North-east</b> direction with respect to Town R."
+  },
+  {
+    "id": 7,
+    "text": "A man is standing in the park facing North. He turns 90&deg; towards the left and walks 40 km. He again takes a 90&deg; turn towards the right and walks 50 km. He takes the next 90&deg; turn towards the right and walks 60 km. Lastly, he takes 90&deg; turn towards the right and walks 50 km. How much distance is he from the starting point?",
+    "options": {
+      "A": "40 km",
+      "B": "60 km",
+      "C": "50 km",
+      "D": "20 km"
+    },
+    "correct": "D",
+    "explanation": "Start point = (0, 0), initial facing = North.<br>&bull; 90&deg; Left turn (facing West) & walks 40 km &rarr; (-40, 0).<br>&bull; 90&deg; Right turn (facing North) & walks 50 km &rarr; (-40, 50).<br>&bull; 90&deg; Right turn (facing East) & walks 60 km &rarr; (-40 + 60, 50) = (20, 50).<br>&bull; 90&deg; Right turn (facing South) & walks 50 km &rarr; (20, 50 - 50) = (20, 0).<br>Distance from (0, 0) to (20, 0) = <b>20 km</b>."
+  },
+  {
+    "id": 8,
+    "text": "Shruti departs from her home and walks 47 m towards the west. She then turns right and walks 18 m. She turns left and walks 53 m. She takes a final left turn and walks 30 m. How far is she from a pole which is exactly 12 m to the south of her home?<br><span class='text-xs text-slate-400'>(Assume that all the turns are 90&deg; turns only.)</span>",
+    "options": {
+      "A": "100 m",
+      "B": "105 m",
+      "C": "90 m",
+      "D": "110 m"
+    },
+    "correct": "A",
+    "explanation": "Home = (0, 0).<br>&bull; 47 m West &rarr; (-47, 0).<br>&bull; Turns right (North) and walks 18 m &rarr; (-47, 18).<br>&bull; Turns left (West) and walks 53 m &rarr; (-47 - 53, 18) = (-100, 18).<br>&bull; Turns left (South) and walks 30 m &rarr; (-100, 18 - 30) = (-100, -12).<br>Pole is 12 m south of home &rarr; (0, -12).<br>Distance between (-100, -12) and (0, -12) = |-100 - 0| = <b>100 m</b>."
+  },
+  {
+    "id": 9,
+    "text": "Indira starts from point A, which is 7 km towards East of point B. From point A, she drives 4 km towards East. From here, she takes a left turn and drives 9 km. She then takes a left turn, drives 9 km and stops at point C. If from point C, Indira drives 9 km towards South, how far will she be from point B?",
+    "options": {
+      "A": "2 km",
+      "B": "4 km",
+      "C": "1 km",
+      "D": "3 km"
+    },
+    "correct": "A",
+    "explanation": "Let Point B = (0, 0).<br>&bull; Point A is 7 km East of B &rarr; A = (7, 0).<br>&bull; From A, drives 4 km East &rarr; (11, 0).<br>&bull; Left turn (North) 9 km &rarr; (11, 9).<br>&bull; Left turn (West) 9 km &rarr; (11 - 9, 9) = (2, 9) [Point C].<br>&bull; From C, drives 9 km South &rarr; (2, 9 - 9) = (2, 0).<br>Distance from Point B (0, 0) to (2, 0) = 2 - 0 = <b>2 km</b>."
+  },
+  {
+    "id": 10,
+    "text": "P is to the north of Q. T is to the east of Q and S is to the east of P. S is to the north-east of T and south-west of R. What is the position of R with respect to Q? (All positions are arranged in GRID pattern)",
+    "options": {
+      "A": "North-east",
+      "B": "South-west",
+      "C": "East",
+      "D": "South"
+    },
+    "correct": "A",
+    "explanation": "Let Q = (0, 0).<br>&bull; P is north of Q: (0, +y).<br>&bull; T is east of Q: (+x, 0).<br>&bull; S is east of P: (+xS, +yP). Since S is North-East of T, xS > xT > 0 and yP > 0.<br>&bull; S is South-West of R &rarr; R is North-East of S.<br>&bull; Therefore, R has coordinates (xR, yR) with xR > 0 and yR > 0.<br>With respect to Q (0, 0), point R is in the <b>North-east</b> direction."
+  },
+  {
+    "id": 11,
+    "text": "Salman starts from his office and drives 29 km towards South. Then he turns right and drives 16 km, again he turns right and drives 29 km. Finally he turns right and drives 13 km. At what distance is he from his start point in a straight line?",
+    "options": {
+      "A": "29 km",
+      "B": "3 km",
+      "C": "16 km",
+      "D": "13 km"
+    },
+    "correct": "B",
+    "explanation": "Start point = (0, 0).<br>&bull; Drives 29 km South &rarr; (0, -29).<br>&bull; Turns right (West) and drives 16 km &rarr; (-16, -29).<br>&bull; Turns right (North) and drives 29 km &rarr; (-16, 0).<br>&bull; Turns right (East) and drives 13 km &rarr; (-16 + 13, 0) = (-3, 0).<br>Straight line distance from (0, 0) to (-3, 0) = |-3| = <b>3 km</b>."
+  },
+  {
+    "id": 12,
+    "text": "Mehar drives 19 km East from his home. He then takes a left turn and drives 11 km. He again takes a left turn and drives 19 km. How far is he from starting point in a straight line?",
+    "options": {
+      "A": "30 km",
+      "B": "11 km",
+      "C": "19 km",
+      "D": "21 km"
+    },
+    "correct": "B",
+    "explanation": "Start point = (0, 0).<br>&bull; 19 km East &rarr; (19, 0).<br>&bull; Left turn (North) 11 km &rarr; (19, 11).<br>&bull; Left turn (West) 19 km &rarr; (19 - 19, 11) = (0, 11).<br>Straight line distance from (0, 0) to (0, 11) = <b>11 km</b>."
+  },
+  {
+    "id": 13,
+    "text": "Manoj starts from point A and drives X km towards the south and then turns left and drives Y km. He then takes a right turn and drives for 4 km to reach point D. If Manoj drove a total of 17 km between Points A and D, and both X and Y are perfect squares where X > Y, then what is the value of X ?",
+    "options": {
+      "A": "4",
+      "B": "11",
+      "C": "5",
+      "D": "9"
+    },
+    "correct": "D",
+    "explanation": "Total distance = X + Y + 4 = 17 km &rarr; X + Y = 13 km.<br>Both X and Y are perfect squares and X > Y.<br>The perfect squares summing to 13 are 9 and 4 (3&sup2; = 9, 2&sup2; = 4).<br>Since X > Y, X = 9 and Y = 4.<br>Hence, the value of X is <b>9</b>."
+  },
+  {
+    "id": 14,
+    "text": "X, from his house, ran 200 steps towards the east and then ran 30 steps after turning to his right to reach a monastery. He then ran 30 steps towards his right and reached a point W. He then turned again towards his right and ran 30 steps. From there, turning towards his right he ran 130 steps. He then turned towards his left and ran 10 steps to reach a bakery. In which direction is the bakery with respect to X\u2019s house?",
+    "options": {
+      "A": "East",
+      "B": "South-East",
+      "C": "North-East",
+      "D": "North"
+    },
+    "correct": "C",
+    "explanation": "House = (0, 0).<br>&bull; 200 steps East &rarr; (200, 0).<br>&bull; Right (South) 30 steps &rarr; (200, -30) [Monastery].<br>&bull; Right (West) 30 steps &rarr; (170, -30) [Point W].<br>&bull; Right (North) 30 steps &rarr; (170, 0).<br>&bull; Right (East) 130 steps &rarr; (170 + 130, 0) = (300, 0).<br>&bull; Left (North) 10 steps &rarr; (300, 10) [Bakery].<br>Bakery is at (+300, +10), which is in the <b>North-East</b> of X's house."
+  },
+  {
+    "id": 15,
+    "text": "Shalini drives 5 km North, then she turns East and drives 12 km. After this, she turns North and drives 4 km. Again she turns East and drives 5 km. What is the total distance covered by Shalini?",
+    "options": {
+      "A": "22 km",
+      "B": "9 km",
+      "C": "12 km",
+      "D": "26 km"
+    },
+    "correct": "D",
+    "explanation": "Total distance covered is the sum of all segments:<br>Total Distance = 5 km + 12 km + 4 km + 5 km = <b>26 km</b>."
+  },
+  {
+    "id": 16,
+    "text": "Manohar cycles X km towards west and then turns right and cycles Y km to reach his office. Now, the shortest distance between the starting point and his office is 13 km. What can be the value of X and Y, respectively, (in km)?",
+    "options": {
+      "A": "12 and 5",
+      "B": "8 and 5",
+      "C": "11 and 6",
+      "D": "6 and 7"
+    },
+    "correct": "A",
+    "explanation": "By Pythagoras theorem: X&sup2; + Y&sup2; = 13&sup2; = 169.<br>Evaluating options:<br>&bull; A: 12&sup2; + 5&sup2; = 144 + 25 = 169 (Exact match!)<br>&bull; B: 8&sup2; + 5&sup2; = 64 + 25 = 89<br>&bull; C: 11&sup2; + 6&sup2; = 121 + 36 = 157<br>&bull; D: 6&sup2; + 7&sup2; = 36 + 49 = 85<br>Therefore, values are <b>12 and 5</b>."
+  },
+  {
+    "id": 17,
+    "text": "A boy walks 15 m north, turns right and walks 20 m. Again, he turns right and walks 15 m. Finally, he turns to his left and moves 20 m. What is the distance now from his original position?",
+    "options": {
+      "A": "40 m",
+      "B": "46 m",
+      "C": "50 m",
+      "D": "45 m"
+    },
+    "correct": "A",
+    "explanation": "Origin = (0, 0).<br>&bull; 15 m North &rarr; (0, 15).<br>&bull; Turn right (East) 20 m &rarr; (20, 15).<br>&bull; Turn right (South) 15 m &rarr; (20, 0).<br>&bull; Turn left (East) 20 m &rarr; (20 + 20, 0) = (40, 0).<br>Distance from original position = <b>40 m</b>."
+  },
+  {
+    "id": 18,
+    "text": "B is west of E. A is north-west of B. F is north-east of B. D is south-east of F, such that F is north-west of E and D is south-east of E as well. If C is south-west of E, what is the position of A with respect to E? (All positions are arranged in GRID pattern)",
+    "options": {
+      "A": "South-east",
+      "B": "North-east",
+      "C": "South-west",
+      "D": "North-west"
+    },
+    "correct": "D",
+    "explanation": "1. B is west of E &rarr; relative to E, B is at (-x, 0).<br>2. A is north-west of B &rarr; A is to the West and North of B.<br>3. Moving west from an already west point keeps it west, and moving north gives positive y.<br>Thus, A is strictly West and North of E, which is <b>North-west</b>."
+  },
+  {
+    "id": 19,
+    "text": "Gurman drove 28 km towards the West, took a left turn and drove 22 km. She then took a right turn and drove 18 km. She again took a right turn and drove 22 km. How far is she from starting point in a straight line?",
+    "options": {
+      "A": "28 km",
+      "B": "32 km",
+      "C": "26 km",
+      "D": "46 km"
+    },
+    "correct": "D",
+    "explanation": "Start point = (0, 0).<br>&bull; West 28 km &rarr; (-28, 0).<br>&bull; Left turn (South) 22 km &rarr; (-28, -22).<br>&bull; Right turn (West) 18 km &rarr; (-28 - 18, -22) = (-46, -22).<br>&bull; Right turn (North) 22 km &rarr; (-46, -22 + 22) = (-46, 0).<br>Distance from starting point = |-46| = <b>46 km</b>."
+  },
+  {
+    "id": 20,
+    "text": "Pooja drives 4 km towards east from point A. She takes a right turn and drives 2 km. Then she takes a left turn and drives 3 km. Again, she takes a left turn and drives 2 km to reach point B. How far and towards which direction should she drive now in order to reach point A again?",
+    "options": {
+      "A": "7 km towards west",
+      "B": "4 km towards south",
+      "C": "4 km towards east",
+      "D": "5 km towards north"
+    },
+    "correct": "A",
+    "explanation": "Point A = (0, 0).<br>&bull; East 4 km &rarr; (4, 0).<br>&bull; Right turn (South) 2 km &rarr; (4, -2).<br>&bull; Left turn (East) 3 km &rarr; (4 + 3, -2) = (7, -2).<br>&bull; Left turn (North) 2 km &rarr; (7, -2 + 2) = (7, 0) [Point B].<br>To return to Point A (0, 0) from Point B (7, 0), she needs to go <b>7 km towards west</b>."
+  },
+  {
+    "id": 21,
+    "text": "Point A is 30 m to the east of Point B. Point C is 43 m to the south of Point A. Point C is 45 m to the east of Point D. Point E is 14 m to the south of Point D. Point F is 35 m to the east of Point E. In which direction is Point B with respect to Point F?",
+    "options": {
+      "A": "North-east",
+      "B": "North-west",
+      "C": "South-west",
+      "D": "West"
+    },
+    "correct": "B",
+    "explanation": "Let Point B = (0, 0).<br>&bull; Point A = (30, 0)<br>&bull; Point C = (30, -43)<br>&bull; Point D = (30 - 45, -43) = (-15, -43)<br>&bull; Point E = (-15, -43 - 14) = (-15, -57)<br>&bull; Point F = (-15 + 35, -57) = (20, -57)<br>Direction of Point B (0, 0) from Point F (20, -57):<br>&Delta;x = -20 (West), &Delta;y = +57 (North).<br>Therefore, Point B is in the <b>North-west</b> direction from Point F."
+  },
+  {
+    "id": 22,
+    "text": "Rohit drives 3 km towards north from point A. He takes a left turn and drives 4 km. Again he takes a left turn and drives 6 km. Finally, he takes a left turn and drives 4 km to reach point B. How far and towards which direction should he drive in order to reach point A again?",
+    "options": {
+      "A": "4 km towards south",
+      "B": "3 km towards east",
+      "C": "3 km towards north",
+      "D": "2 km towards west"
+    },
+    "correct": "C",
+    "explanation": "Point A = (0, 0).<br>&bull; North 3 km &rarr; (0, 3).<br>&bull; Left turn (West) 4 km &rarr; (-4, 3).<br>&bull; Left turn (South) 6 km &rarr; (-4, -3).<br>&bull; Left turn (East) 4 km &rarr; (0, -3) [Point B].<br>To return to Point A (0, 0) from Point B (0, -3), Rohit must go <b>3 km towards north</b>."
+  },
+  {
+    "id": 23,
+    "text": "Nitin departs from his home and walks 45 m towards the east. He then turns left and walks 48 m. He turns left again and walks 27 m. He takes a final left turn and walks 55 m. How far is he from a pole which is exactly 7 m to the south of his home?<br><span class='text-xs text-slate-400'>(Assume that all the turns are 90&deg; turns only.)</span>",
+    "options": {
+      "A": "28 m",
+      "B": "16 m",
+      "C": "31 m",
+      "D": "18 m"
+    },
+    "correct": "D",
+    "explanation": "Home = (0, 0).<br>&bull; 45 m East &rarr; (45, 0).<br>&bull; Turns left (North) 48 m &rarr; (45, 48).<br>&bull; Turns left (West) 27 m &rarr; (45 - 27, 48) = (18, 48).<br>&bull; Turns left (South) 55 m &rarr; (18, 48 - 55) = (18, -7).<br>The pole is located 7 m south of home &rarr; (0, -7).<br>Distance between (18, -7) and (0, -7) is |18 - 0| = <b>18 m</b>."
+  },
+  {
+    "id": 24,
+    "text": "Shilpa goes to a park every day for walking. One morning, she started walking from her home and walked 40 km towards the north. Then she turned to the right and walked 60 km. Again, she turned right and walked 40 km. Lastly, she took a left turn and walked 30 km. How far is she from her home?",
+    "options": {
+      "A": "140 km",
+      "B": "90 km",
+      "C": "100 km",
+      "D": "60 km"
+    },
+    "correct": "B",
+    "explanation": "Home = (0, 0).<br>&bull; North 40 km &rarr; (0, 40).<br>&bull; Right turn (East) 60 km &rarr; (60, 40).<br>&bull; Right turn (South) 40 km &rarr; (60, 0).<br>&bull; Left turn (East) 30 km &rarr; (60 + 30, 0) = (90, 0).<br>Distance from home = <b>90 km</b>."
+  }
+];
 
     let currentMode = "practice";
     let userSelections = {};
     let markedForReview = {};
     let revealedAnswers = {};
-    let examTimeSeconds = 20 * 60;
+    let examTimeSeconds = 25 * 60;
     let timerInterval = null;
 
     if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
       document.documentElement.classList.add("dark");
-      document.getElementById("themeIcon").className = "fa-regular fa-sun";
+      document.getElementById("themeIcon").className = "fa-regular fa-sun text-sm sm:text-base";
     }
 
     function toggleDarkMode() {
       const isDark = document.documentElement.classList.toggle("dark");
-      document.getElementById("themeIcon").className = isDark ? "fa-regular fa-sun" : "fa-regular fa-moon";
+      document.getElementById("themeIcon").className = isDark ? "fa-regular fa-sun text-sm sm:text-base" : "fa-regular fa-moon text-sm sm:text-base";
+    }
+
+    function toggleMobileNav() {
+      const drawer = document.getElementById("mobileDrawer");
+      drawer.classList.toggle("hidden");
     }
 
     function setMode(mode) {
@@ -553,21 +681,26 @@
       const practiceBtn = document.getElementById("modePracticeBtn");
       const examBtn = document.getElementById("modeExamBtn");
       const actionHeaderBtn = document.getElementById("actionHeaderBtn");
+      const mobileSubmitBtn = document.getElementById("mobileSubmitBtn");
       const timerBadge = document.getElementById("examTimerBadge");
       const btnRevealAll = document.getElementById("btnRevealAll");
 
       if (mode === "practice") {
-        practiceBtn.className = "px-3 py-1.5 rounded-lg transition-all bg-white dark:bg-slate-700 text-brand-700 dark:text-white shadow-sm flex items-center gap-1.5";
-        examBtn.className = "px-3 py-1.5 rounded-lg transition-all text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white flex items-center gap-1.5";
+        practiceBtn.className = "px-2.5 sm:px-3 py-1.5 rounded-lg transition-all bg-white dark:bg-slate-700 text-brand-700 dark:text-white shadow-sm flex items-center gap-1 sm:gap-1.5";
+        examBtn.className = "px-2.5 sm:px-3 py-1.5 rounded-lg transition-all text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white flex items-center gap-1 sm:gap-1.5";
         actionHeaderBtn.classList.add("hidden");
+        mobileSubmitBtn.classList.add("hidden");
+        mobileSubmitBtn.classList.remove("flex");
         timerBadge.classList.add("hidden");
         timerBadge.classList.remove("flex");
         btnRevealAll.classList.remove("hidden");
         clearInterval(timerInterval);
       } else {
-        examBtn.className = "px-3 py-1.5 rounded-lg transition-all bg-white dark:bg-slate-700 text-brand-700 dark:text-white shadow-sm flex items-center gap-1.5";
-        practiceBtn.className = "px-3 py-1.5 rounded-lg transition-all text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white flex items-center gap-1.5";
+        examBtn.className = "px-2.5 sm:px-3 py-1.5 rounded-lg transition-all bg-white dark:bg-slate-700 text-brand-700 dark:text-white shadow-sm flex items-center gap-1 sm:gap-1.5";
+        practiceBtn.className = "px-2.5 sm:px-3 py-1.5 rounded-lg transition-all text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white flex items-center gap-1 sm:gap-1.5";
         actionHeaderBtn.classList.remove("hidden");
+        mobileSubmitBtn.classList.remove("hidden");
+        mobileSubmitBtn.classList.add("flex");
         timerBadge.classList.remove("hidden");
         timerBadge.classList.add("flex");
         btnRevealAll.classList.add("hidden");
@@ -576,20 +709,20 @@
         startExamTimer();
       }
       renderQuestions();
-      renderNavigator();
+      renderNavigators();
       updateStats();
     }
 
     function startExamTimer() {
       clearInterval(timerInterval);
-      examTimeSeconds = 20 * 60;
+      examTimeSeconds = 25 * 60;
       updateTimerDisplay();
       timerInterval = setInterval(() => {
         examTimeSeconds--;
         updateTimerDisplay();
         if (examTimeSeconds <= 0) {
           clearInterval(timerInterval);
-          alert("Time is up! Submitting your test automatically.");
+          alert("Exam time has expired! Auto-submitting your test.");
           openSubmitModal();
         }
       }, 1000);
@@ -614,10 +747,10 @@
 
       if (filtered.length === 0) {
         container.innerHTML = `
-          <div class="p-12 text-center bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800">
-            <i class="fa-solid fa-folder-open text-4xl text-slate-400 mb-3"></i>
-            <h4 class="text-base font-bold text-slate-700 dark:text-slate-200">No questions found</h4>
-            <p class="text-xs text-slate-400 mt-1">Try clearing your search query.</p>
+          <div class="p-10 text-center bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800">
+            <i class="fa-solid fa-magnifying-glass text-3xl text-slate-400 mb-2"></i>
+            <h4 class="text-sm font-bold text-slate-700 dark:text-slate-200">No matching questions found</h4>
+            <p class="text-xs text-slate-400 mt-0.5">Try searching another term or question number.</p>
           </div>
         `;
         return;
@@ -630,31 +763,34 @@
 
         const card = document.createElement("div");
         card.id = `q-card-${q.id}`;
-        card.className = `question-card bg-white dark:bg-slate-900 rounded-2xl border ${isMarked ? "border-amber-400 dark:border-amber-500 ring-2 ring-amber-400/20" : "border-slate-200 dark:border-slate-800"} p-5 sm:p-6 shadow-sm`;
+        card.className = `question-card bg-white dark:bg-slate-900 rounded-2xl border ${isMarked ? "border-amber-400 dark:border-amber-500 ring-2 ring-amber-400/20" : "border-slate-200 dark:border-slate-800"} p-4 sm:p-6 shadow-xs`;
 
         let cardHTML = `
-          <div class="flex items-start justify-between gap-4 mb-4">
-            <div class="flex items-center gap-2.5">
-              <span class="inline-flex items-center justify-center w-8 h-8 rounded-xl bg-brand-50 text-brand-700 dark:bg-brand-950/60 dark:text-brand-300 font-bold text-xs">
+          <!-- Question Header -->
+          <div class="flex items-start justify-between gap-3 mb-3 sm:mb-4">
+            <div class="flex items-center gap-2">
+              <span class="inline-flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-brand-50 text-brand-700 dark:bg-brand-950/60 dark:text-brand-300 font-bold text-xs">
                 #${q.id}
               </span>
-              <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">
-                Direction Sense
+              <span class="text-[11px] font-semibold uppercase tracking-wider text-slate-400">
+                Question ${q.id}
               </span>
             </div>
-            <div class="flex items-center gap-2">
+            <div class="flex items-center gap-1.5">
               <button onclick="toggleBookmark(${q.id})" title="Mark for review" class="text-xs px-2.5 py-1.5 rounded-lg border transition ${isMarked ? "bg-amber-50 text-amber-600 border-amber-300 dark:bg-amber-950/30" : "border-slate-200 dark:border-slate-800 text-slate-400 hover:text-slate-600"}">
                 <i class="${isMarked ? "fa-solid" : "fa-regular"} fa-bookmark"></i>
-                <span class="hidden sm:inline ml-1">${isMarked ? "Marked" : "Mark"}</span>
+                <span class="hidden sm:inline ml-1 text-xs">${isMarked ? "Marked" : "Mark"}</span>
               </button>
             </div>
           </div>
 
-          <div class="text-slate-900 dark:text-slate-100 text-sm sm:text-base leading-relaxed font-medium mb-5">
+          <!-- Question Body -->
+          <div class="text-slate-900 dark:text-slate-100 text-xs sm:text-base leading-relaxed font-medium mb-4 sm:mb-5">
             ${q.text}
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-5">
+          <!-- Options Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5 mb-3 sm:mb-4">
         `;
 
         ["A", "B", "C", "D"].forEach(letter => {
@@ -662,22 +798,20 @@
           let btnClass = "border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-800/40 text-slate-700 dark:text-slate-300 hover:border-brand-300 dark:hover:border-slate-700";
           let badgeClass = "bg-white dark:bg-slate-700 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-600";
 
-          if (currentMode === "practice") {
-            if (userChoice) {
-              if (letter === q.correct) {
-                btnClass = "border-emerald-500 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-200 font-semibold ring-1 ring-emerald-500";
-                badgeClass = "bg-emerald-600 text-white border-transparent";
-              } else if (userChoice === letter) {
-                btnClass = "border-rose-500 bg-rose-50 dark:bg-rose-950/40 text-rose-800 dark:text-rose-200 font-semibold ring-1 ring-rose-500";
-                badgeClass = "bg-rose-600 text-white border-transparent";
-              }
-            } else if (isRevealed && letter === q.correct) {
-              btnClass = "border-emerald-500 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-200 font-semibold";
+          // IMPORTANT: DO NOT SHOW REAL ANSWER ON CLICK!
+          // Only show real answer if isRevealed is TRUE (when user clicked 'Show answer' or after submitting test)
+          if (isRevealed) {
+            if (letter === q.correct) {
+              btnClass = "border-emerald-500 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-200 font-bold ring-1 ring-emerald-500";
               badgeClass = "bg-emerald-600 text-white border-transparent";
+            } else if (userChoice === letter) {
+              btnClass = "border-rose-400 bg-rose-50 dark:bg-rose-950/40 text-rose-800 dark:text-rose-200 font-bold ring-1 ring-rose-400";
+              badgeClass = "bg-rose-600 text-white border-transparent";
             }
           } else {
+            // Option clicked: ONLY select it! Keep it neutral brand color, NEVER reveal if right or wrong.
             if (userChoice === letter) {
-              btnClass = "border-brand-600 bg-brand-50 dark:bg-brand-950/50 text-brand-700 dark:text-brand-300 font-bold ring-1 ring-brand-500";
+              btnClass = "border-brand-600 bg-brand-50 dark:bg-brand-950/60 text-brand-700 dark:text-brand-300 font-bold ring-2 ring-brand-500/30";
               badgeClass = "bg-brand-600 text-white border-transparent";
             }
           }
@@ -685,47 +819,49 @@
           cardHTML += `
             <button 
               onclick="selectOption(${q.id}, '${letter}')"
-              class="option-btn text-left p-3 rounded-xl border flex items-center gap-3 ${btnClass}"
+              class="option-btn text-left p-2.5 sm:p-3 rounded-xl border flex items-center gap-2.5 sm:gap-3 min-h-[46px] ${btnClass}"
             >
-              <span class="w-7 h-7 rounded-lg flex items-center justify-center font-bold text-xs shrink-0 ${badgeClass}">
+              <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg flex items-center justify-center font-bold text-xs shrink-0 ${badgeClass}">
                 ${letter}
               </span>
-              <span class="text-sm font-medium leading-snug">${optText}</span>
+              <span class="text-xs sm:text-sm font-medium leading-snug">${optText}</span>
             </button>
           `;
         });
 
         cardHTML += `</div>`;
 
+        // "Show answer" button (Answer only shows when clicked!)
         if (currentMode === "practice") {
           cardHTML += `
-            <div class="flex items-center justify-between pt-3 border-t border-slate-100 dark:border-slate-800/80">
+            <div class="flex items-center justify-between pt-2 sm:pt-3 border-t border-slate-100 dark:border-slate-800/80">
               <button 
                 onclick="toggleAnswer(${q.id})" 
-                class="inline-flex items-center gap-2 text-xs font-semibold text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 py-1.5 px-3 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-950/40 transition"
+                class="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 py-1 px-2.5 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-950/40 transition"
               >
                 <i class="fa-regular ${isRevealed ? "fa-eye-slash" : "fa-lightbulb"}"></i>
-                <span>${isRevealed ? "Hide Answer" : "Show Answer & Explanation"}</span>
+                <span>${isRevealed ? "Hide answer" : "Show answer"}</span>
               </button>
 
-              ${userChoice ? `
-                <span class="text-xs font-semibold ${userChoice === q.correct ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400"} flex items-center gap-1.5">
+              ${isRevealed && userChoice ? `
+                <span class="text-xs font-bold ${userChoice === q.correct ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400"} flex items-center gap-1">
                   <i class="fa-solid ${userChoice === q.correct ? "fa-circle-check" : "fa-circle-xmark"}"></i>
-                  ${userChoice === q.correct ? "Correct Answer!" : "Incorrect"}
+                  ${userChoice === q.correct ? "Correct!" : "Incorrect"}
                 </span>
               ` : ""}
             </div>
           `;
         }
 
-        if (isRevealed || (currentMode === "practice" && userChoice)) {
+        // Solution Block: ONLY visible when isRevealed is TRUE
+        if (isRevealed) {
           cardHTML += `
-            <div class="mt-4 p-4 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 animate-fade-in">
-              <div class="flex items-center gap-2 text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wide mb-2">
+            <div class="mt-3 sm:mt-4 p-3.5 sm:p-4 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80">
+              <div class="flex items-center gap-1.5 text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wide mb-1.5">
                 <i class="fa-solid fa-check-circle"></i>
-                <span>Correct Option: Option ${q.correct} (${q.options[q.correct]})</span>
+                <span>Correct Answer: Option ${q.correct} (${q.options[q.correct]})</span>
               </div>
-              <div class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 space-y-1.5 leading-relaxed">
+              <div class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 space-y-1 leading-relaxed">
                 <div class="font-semibold text-slate-700 dark:text-slate-200">Step-by-step Solution:</div>
                 <div>${q.explanation}</div>
               </div>
@@ -738,6 +874,7 @@
       });
     }
 
+    // Clicking an option only selects it; never reveals answer
     function selectOption(qId, letter) {
       if (userSelections[qId] === letter) {
         delete userSelections[qId];
@@ -745,10 +882,11 @@
         userSelections[qId] = letter;
       }
       renderQuestions(document.getElementById("searchInput").value);
-      renderNavigator();
+      renderNavigators();
       updateStats();
     }
 
+    // Only revealed when clicking "Show answer"
     function toggleAnswer(qId) {
       revealedAnswers[qId] = !revealedAnswers[qId];
       renderQuestions(document.getElementById("searchInput").value);
@@ -760,19 +898,19 @@
         revealedAnswers[q.id] = !allRevealed;
       });
       document.getElementById("btnRevealAll").innerHTML = allRevealed ? 
-        "<i class='fa-regular fa-eye'></i><span>Show All Answers</span>" : 
-        "<i class='fa-regular fa-eye-slash'></i><span>Hide All Answers</span>";
+        "<i class='fa-regular fa-eye text-[11px]'></i><span class='hidden sm:inline'>Show All</span>" : 
+        "<i class='fa-regular fa-eye-slash text-[11px]'></i><span class='hidden sm:inline'>Hide All</span>";
       renderQuestions(document.getElementById("searchInput").value);
     }
 
     function toggleBookmark(qId) {
       markedForReview[qId] = !markedForReview[qId];
       renderQuestions(document.getElementById("searchInput").value);
-      renderNavigator();
+      renderNavigators();
     }
 
     function resetAllProgress() {
-      if (confirm("Are you sure you want to reset your answers and progress?")) {
+      if (confirm("Reset all chosen answers and progress?")) {
         userSelections = {};
         markedForReview = {};
         revealedAnswers = {};
@@ -780,7 +918,7 @@
           startExamTimer();
         }
         renderQuestions();
-        renderNavigator();
+        renderNavigators();
         updateStats();
       }
     }
@@ -790,30 +928,37 @@
       renderQuestions(query);
     }
 
-    function renderNavigator() {
-      const grid = document.getElementById("navigatorGrid");
+    function renderNavigators() {
+      renderNavGrid("navigatorGridDesktop");
+      renderNavGrid("navigatorGridMobile");
+    }
+
+    function renderNavGrid(containerId) {
+      const grid = document.getElementById(containerId);
+      if (!grid) return;
       grid.innerHTML = "";
 
       questionsData.forEach(q => {
         const isAttempted = !!userSelections[q.id];
         const isMarked = !!markedForReview[q.id];
-        const isCorrect = userSelections[q.id] === q.correct;
 
         let bgClass = "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:bg-slate-200";
 
         if (isMarked) {
           bgClass = "bg-amber-500 text-white font-bold border-amber-600";
         } else if (isAttempted) {
-          if (currentMode === "practice") {
-            bgClass = isCorrect ? "bg-emerald-600 text-white font-bold border-emerald-700" : "bg-rose-500 text-white font-bold border-rose-600";
-          } else {
-            bgClass = "bg-brand-600 text-white font-bold border-brand-700";
-          }
+          bgClass = "bg-brand-600 text-white font-bold border-brand-700";
         }
 
         const btn = document.createElement("button");
-        btn.onclick = () => scrollToQuestion(q.id);
-        btn.className = `h-9 rounded-xl border text-xs flex items-center justify-center transition-all ${bgClass}`;
+        btn.onclick = () => {
+          scrollToQuestion(q.id);
+          const drawer = document.getElementById("mobileDrawer");
+          if (!drawer.classList.contains("hidden")) {
+            drawer.classList.add("hidden");
+          }
+        };
+        btn.className = `h-9 rounded-xl border text-xs flex items-center justify-center transition-all ${bgClass} active:scale-95`;
         btn.innerText = q.id;
         grid.appendChild(btn);
       });
@@ -832,13 +977,9 @@
 
     function updateStats() {
       const attemptedCount = Object.keys(userSelections).length;
-      let correctCount = 0;
-      questionsData.forEach(q => {
-        if (userSelections[q.id] === q.correct) correctCount++;
-      });
-
       document.getElementById("statAttempted").innerText = attemptedCount;
-      document.getElementById("statScore").innerText = `${correctCount} / ${questionsData.length}`;
+      const mbBottom = document.getElementById("mobileBottomAnswered");
+      if (mbBottom) mbBottom.innerText = attemptedCount;
     }
 
     function openSubmitModal() {
@@ -863,9 +1004,10 @@
       const modal = document.getElementById("resultModal");
       modal.classList.add("hidden");
       modal.classList.remove("flex");
+      // Once exam is submitted, reveal all answers to review
       questionsData.forEach(q => revealedAnswers[q.id] = true);
       renderQuestions();
-      renderNavigator();
+      renderNavigators();
     }
 
     function restartExam() {
@@ -875,7 +1017,7 @@
     }
 
     renderQuestions();
-    renderNavigator();
+    renderNavigators();
     updateStats();
   </script>
 </body>

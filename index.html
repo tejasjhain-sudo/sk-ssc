@@ -309,7 +309,74 @@
     </div>
   </div>
 
-  <!-- EXAM RESULT MODAL -->
+  <!-- STEP 1: PRE-SUBMIT NAME & DETAILS MODAL -->
+  <div id="submitPromptModal" class="fixed inset-0 z-50 bg-slate-900/75 backdrop-blur-sm hidden items-center justify-center p-3 sm:p-4 overflow-y-auto">
+    <div class="bg-white dark:bg-slate-900 rounded-3xl max-w-md w-full p-6 sm:p-7 shadow-2xl border border-slate-200 dark:border-slate-800 text-left animate-fade-in my-auto">
+      
+      <!-- Icon & Header -->
+      <div class="flex items-center gap-3 pb-4 border-b border-slate-100 dark:border-slate-800">
+        <div class="w-12 h-12 rounded-2xl bg-blue-100 dark:bg-blue-950/60 text-blue-700 dark:text-blue-400 flex items-center justify-center text-xl shrink-0 shadow-xs">
+          <i class="fa-solid fa-file-signature"></i>
+        </div>
+        <div>
+          <h3 class="text-lg sm:text-xl font-black text-slate-900 dark:text-white">Submit Exam</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400">Please enter your name to submit your test.</p>
+        </div>
+      </div>
+
+      <!-- Quick Attempt Summary -->
+      <div class="my-4 p-3 bg-slate-50 dark:bg-slate-800/80 rounded-2xl border border-slate-100 dark:border-slate-700/60 flex items-center justify-between text-xs">
+        <div class="flex items-center gap-1.5 font-bold text-slate-700 dark:text-slate-200">
+          <i class="fa-solid fa-circle-check text-emerald-600"></i>
+          <span>Answered: <strong id="promptAnsweredCount" class="text-blue-700 dark:text-blue-400">0</strong> / 24</span>
+        </div>
+        <div class="flex items-center gap-1.5 font-bold text-slate-500">
+          <i class="fa-solid fa-circle-minus text-slate-400"></i>
+          <span>Skipped: <strong id="promptSkippedCount">24</strong></span>
+        </div>
+      </div>
+
+      <!-- Student Input Form -->
+      <div class="space-y-3.5 mb-5">
+        <div>
+          <label class="block text-xs font-bold text-slate-800 dark:text-slate-200 mb-1">
+            Student Full Name <span class="text-rose-500">*</span>
+          </label>
+          <div class="relative">
+            <i class="fa-solid fa-user absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+            <input id="promptStudentName" type="text" placeholder="Enter your full name (e.g. Rahul Sharma)" 
+                   class="w-full pl-9 pr-3.5 py-2.5 text-xs sm:text-sm rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-semibold focus:outline-hidden focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition shadow-2xs" />
+          </div>
+          <p id="promptNameError" class="text-[11px] text-rose-500 font-bold hidden mt-1">Please enter your full name before submitting.</p>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-800 dark:text-slate-200 mb-1">
+            Mobile / WhatsApp Number <span class="text-slate-400 font-normal text-[11px]">(Optional)</span>
+          </label>
+          <div class="relative">
+            <i class="fa-solid fa-phone absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+            <input id="promptStudentPhone" type="tel" placeholder="e.g. 9876543210" 
+                   class="w-full pl-9 pr-3.5 py-2.5 text-xs sm:text-sm rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-semibold focus:outline-hidden focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition shadow-2xs" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-col gap-2">
+        <button id="confirmSubmitBtn" onclick="confirmAndSubmitExam()" class="w-full py-3 sm:py-3.5 px-4 rounded-xl bg-blue-700 hover:bg-blue-800 active:scale-98 text-white font-black text-xs sm:text-sm shadow-md shadow-blue-700/30 flex items-center justify-center gap-2 transition">
+          <i class="fa-solid fa-paper-plane text-xs sm:text-sm"></i>
+          <span>Submit Test & View Results</span>
+        </button>
+        <button onclick="closeSubmitPromptModal()" class="w-full py-2.5 px-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-xs transition">
+          Continue Solving Questions
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- STEP 2: EXAM RESULT & SCORECARD MODAL -->
   <div id="resultModal" class="fixed inset-0 z-50 bg-slate-900/75 backdrop-blur-sm hidden items-center justify-center p-3 sm:p-4 overflow-y-auto">
     <div class="bg-white dark:bg-slate-900 rounded-3xl max-w-lg w-full p-5 sm:p-7 shadow-2xl border border-slate-200 dark:border-slate-800 text-center animate-fade-in my-auto max-h-[92vh] overflow-y-auto">
       
@@ -317,37 +384,15 @@
       <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 mx-auto flex items-center justify-center text-2xl sm:text-3xl mb-3 shadow-md">
         <i class="fa-solid fa-trophy"></i>
       </div>
-      <h3 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">Exam Scorecard & Submission</h3>
-      <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-        Santosh Kumar Jha &bull; SK Classes &bull; Created by Tejas
+      <h3 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">Exam Results</h3>
+      <p id="resultStudentHeading" class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+        Student Scorecard &bull; SK Classes
       </p>
 
-      <!-- Student Identification Inputs -->
-      <div class="mt-4 p-3.5 bg-slate-50 dark:bg-slate-800/70 rounded-2xl border border-slate-200 dark:border-slate-700 text-left space-y-2.5">
-        <div>
-          <label class="block text-[11px] font-bold text-slate-700 dark:text-slate-300 mb-1 flex items-center justify-between">
-            <span>Student Full Name <span class="text-rose-500">*</span></span>
-            <span class="text-[10px] text-slate-400 font-normal">Sent to Sir's WhatsApp</span>
-          </label>
-          <div class="relative">
-            <i class="fa-solid fa-user absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
-            <input id="modalStudentName" type="text" placeholder="Enter your name (e.g. Rahul Sharma)" 
-                   class="w-full pl-8 pr-3 py-2 text-xs sm:text-sm rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-semibold focus:outline-hidden focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition" />
-          </div>
-          <p id="nameValidationMsg" class="text-[10px] text-rose-500 font-bold hidden mt-1">Please enter your name before sending!</p>
-        </div>
-
-        <div>
-          <label class="block text-[11px] font-bold text-slate-700 dark:text-slate-300 mb-1 flex items-center justify-between">
-            <span>Your Mobile / WhatsApp Number</span>
-            <span class="text-[10px] text-slate-400 font-normal">Optional</span>
-          </label>
-          <div class="relative">
-            <i class="fa-solid fa-phone absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
-            <input id="modalStudentPhone" type="tel" placeholder="e.g. 9876543210" 
-                   class="w-full pl-8 pr-3 py-2 text-xs sm:text-sm rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-semibold focus:outline-hidden focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition" />
-          </div>
-        </div>
+      <!-- Success Delivery Banner -->
+      <div class="my-3.5 p-3 rounded-2xl bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-300 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300 text-xs font-bold flex items-center justify-center gap-2">
+        <i class="fa-solid fa-circle-check text-emerald-600 text-base"></i>
+        <span>Scorecard submitted & delivered to Santosh Sir!</span>
       </div>
 
       <!-- Performance Badges Grid -->
@@ -382,17 +427,8 @@
         </div>
       </div>
 
-      <!-- Delivery Status Banner (hidden until submitted) -->
-      <div id="deliveryStatusBanner" class="hidden mb-3 p-3 rounded-2xl text-xs font-bold text-center"></div>
-
-      <!-- PRIMARY ACTION: AUTOMATIC SUBMISSION & DELIVERY -->
-      <button id="submitExamBtn" onclick="submitExamScorecard()" class="w-full py-3.5 px-4 rounded-2xl bg-blue-700 hover:bg-blue-800 active:scale-98 text-white font-black text-xs sm:text-sm shadow-lg shadow-blue-700/30 flex items-center justify-center gap-2 transition mb-2">
-        <i class="fa-solid fa-paper-plane text-sm"></i>
-        <span>Submit Exam & Deliver Scorecard</span>
-      </button>
-
-      <!-- SECONDARY WHATSAPP ACTION (OPTIONAL) -->
-      <button id="sendWhatsappBtn" onclick="openWhatsAppScorecard()" class="w-full py-2.5 px-4 rounded-xl border border-emerald-300 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-950/40 hover:bg-emerald-100 dark:hover:bg-emerald-900/60 text-emerald-800 dark:text-emerald-300 font-bold text-xs flex items-center justify-center gap-2 transition mb-2">
+      <!-- WhatsApp Button (Optional) -->
+      <button onclick="openWhatsAppScorecard()" class="w-full py-2.5 px-4 rounded-xl border border-emerald-300 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-950/40 hover:bg-emerald-100 dark:hover:bg-emerald-900/60 text-emerald-800 dark:text-emerald-300 font-bold text-xs flex items-center justify-center gap-2 transition mb-2">
         <i class="fa-brands fa-whatsapp text-base text-emerald-600"></i>
         <span>Also Send Copy to Sir on WhatsApp (8683068609)</span>
       </button>
@@ -403,7 +439,7 @@
           <i class="fa-solid fa-copy text-xs"></i>
           <span id="copyBtnLabel">Copy</span>
         </button>
-        <button onclick="closeSubmitModal()" class="py-2.5 px-2 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold transition flex items-center justify-center gap-1">
+        <button onclick="closeResultModal()" class="py-2.5 px-2 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold transition flex items-center justify-center gap-1">
           <i class="fa-solid fa-eye text-xs"></i>
           <span>Solutions</span>
         </button>
@@ -1134,17 +1170,67 @@ ${breakdown}
     }
 
     const WEB3FORMS_ACCESS_KEY = "bd5ce9e5-d7b3-4e94-ad4d-79f3cf8f3670";
+    let examSubmitted = false;
 
-    async function submitExamScorecard() {
-      const nameInput = document.getElementById("modalStudentName");
-      const phoneInput = document.getElementById("modalStudentPhone");
-      const validationMsg = document.getElementById("nameValidationMsg");
-      
+    // Triggered whenever user clicks Submit or time expires
+    function openSubmitModal() {
+      if (examSubmitted) {
+        showResultModal();
+        return;
+      }
+      openSubmitPromptModal();
+    }
+
+    // Step 1: Prompt student for name and contact before submission
+    function openSubmitPromptModal() {
+      const attemptedCount = Object.keys(userSelections).length;
+      const skippedCount = questionsData.length - attemptedCount;
+
+      const ansEl = document.getElementById("promptAnsweredCount");
+      const skipEl = document.getElementById("promptSkippedCount");
+      if (ansEl) ansEl.innerText = attemptedCount;
+      if (skipEl) skipEl.innerText = skippedCount;
+
+      const savedName = localStorage.getItem("studentName") || "";
+      const savedPhone = localStorage.getItem("studentPhone") || "";
+      const nameInput = document.getElementById("promptStudentName");
+      const phoneInput = document.getElementById("promptStudentPhone");
+      if (nameInput) nameInput.value = savedName;
+      if (phoneInput) phoneInput.value = savedPhone;
+
+      const err = document.getElementById("promptNameError");
+      if (err) err.classList.add("hidden");
+
+      const modal = document.getElementById("submitPromptModal");
+      if (modal) {
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+      }
+
+      setTimeout(() => {
+        if (nameInput) nameInput.focus();
+      }, 100);
+    }
+
+    function closeSubmitPromptModal() {
+      const modal = document.getElementById("submitPromptModal");
+      if (modal) {
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+      }
+    }
+
+    // Step 2: Deliver scorecard, unlock answers, then show results modal
+    async function confirmAndSubmitExam() {
+      const nameInput = document.getElementById("promptStudentName");
+      const phoneInput = document.getElementById("promptStudentPhone");
+      const err = document.getElementById("promptNameError");
+
       const studentName = nameInput ? nameInput.value.trim() : "";
       const studentPhone = phoneInput ? phoneInput.value.trim() : "";
 
       if (!studentName) {
-        if (validationMsg) validationMsg.classList.remove("hidden");
+        if (err) err.classList.remove("hidden");
         if (nameInput) {
           nameInput.focus();
           nameInput.classList.add("border-rose-500", "ring-1", "ring-rose-500");
@@ -1152,34 +1238,31 @@ ${breakdown}
         return;
       }
 
-      if (validationMsg) validationMsg.classList.add("hidden");
+      if (err) err.classList.add("hidden");
       if (nameInput) nameInput.classList.remove("border-rose-500", "ring-1", "ring-rose-500");
 
       localStorage.setItem("studentName", studentName);
       if (studentPhone) localStorage.setItem("studentPhone", studentPhone);
 
+      const btn = document.getElementById("confirmSubmitBtn");
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin text-sm"></i> <span>Submitting Exam...</span>';
+      }
+
+      // Calculate performance metrics
       const { message, stats } = generateScorecardText(studentName, studentPhone);
 
-      // Reveal all answers for student review
+      // Stop exam timer
+      clearInterval(timerInterval);
+
+      // Mark exam as submitted & unlock step-by-step solutions
+      examSubmitted = true;
       questionsData.forEach(q => revealedAnswers[q.id] = true);
       renderQuestions();
       renderNavigators();
 
-      // Update UI to loading state
-      const banner = document.getElementById("deliveryStatusBanner");
-      const submitBtn = document.getElementById("submitExamBtn");
-      if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin text-sm"></i> <span>Delivering Scorecard...</span>';
-      }
-
-      if (banner) {
-        banner.className = "mb-3 p-2.5 rounded-xl bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-800 text-blue-800 dark:text-blue-300 text-xs font-bold text-center";
-        banner.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-1.5 text-blue-600"></i> Delivering your exam scorecard to Santosh Sir in background...';
-        banner.classList.remove("hidden");
-      }
-
-      // 1. Send automatic email alert via Web3Forms (Client-Side)
+      // 1. Deliver to Gmail via Web3Forms in background
       try {
         await fetch("https://api.web3forms.com/submit", {
           method: "POST",
@@ -1204,11 +1287,11 @@ ${breakdown}
             message: message
           })
         });
-      } catch (err) {
-        console.warn("Gmail delivery fetch:", err);
+      } catch (e) {
+        console.warn("Gmail delivery fetch:", e);
       }
 
-      // 2. Also log locally if dev server.py is running
+      // 2. Also record locally if dev server is running
       try {
         fetch("/api/submit-test", {
           method: "POST",
@@ -1223,25 +1306,64 @@ ${breakdown}
         }).catch(() => {});
       } catch (e) {}
 
-      // Update UI to success state
-      if (banner) {
-        banner.className = "mb-3 p-3 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-300 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300 text-xs font-bold text-center";
-        banner.innerHTML = '<i class="fa-solid fa-circle-check mr-1.5 text-emerald-600 text-sm"></i> Scorecard successfully submitted and delivered to Santosh Sir!';
+      // Close pre-submit prompt modal
+      closeSubmitPromptModal();
+
+      if (btn) {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fa-solid fa-paper-plane text-xs sm:text-sm"></i> <span>Submit Test & View Results</span>';
       }
 
-      if (submitBtn) {
-        submitBtn.disabled = false;
-        submitBtn.className = "w-full py-3.5 px-4 rounded-2xl bg-emerald-700 text-white font-black text-xs sm:text-sm shadow-md flex items-center justify-center gap-2 mb-2 cursor-default";
-        submitBtn.innerHTML = '<i class="fa-solid fa-check text-base"></i> <span>Submitted & Delivered!</span>';
+      // Step 3: Now show the official Results Modal!
+      showResultModal(stats);
+    }
+
+    // Step 3: Display results modal with scores & solutions
+    function showResultModal(stats) {
+      if (!stats) {
+        const studentName = localStorage.getItem("studentName") || "Student";
+        const studentPhone = localStorage.getItem("studentPhone") || "";
+        const gen = generateScorecardText(studentName, studentPhone);
+        stats = gen.stats;
+      }
+
+      const heading = document.getElementById("resultStudentHeading");
+      if (heading) {
+        heading.innerText = `Student: ${stats.studentName} • ${new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' })}`;
+      }
+
+      document.getElementById("modalCorrect").innerText = stats.correctCount;
+      document.getElementById("modalWrong").innerText = stats.wrongCount;
+      document.getElementById("modalSkipped").innerText = stats.skippedCount;
+      document.getElementById("modalAccuracy").innerText = `${stats.accuracy}%`;
+      document.getElementById("modalTotalMarks").innerText = `${stats.correctCount} / ${questionsData.length}`;
+      document.getElementById("modalTimeSpent").innerText = `${stats.timeSpentStr} • Net: ${stats.netMarks} Marks`;
+
+      const modal = document.getElementById("resultModal");
+      if (modal) {
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
       }
     }
 
-    function openWhatsAppScorecard() {
-      const nameInput = document.getElementById("modalStudentName");
-      const phoneInput = document.getElementById("modalStudentPhone");
-      const studentName = nameInput && nameInput.value.trim() ? nameInput.value.trim() : (localStorage.getItem("studentName") || "Student");
-      const studentPhone = phoneInput ? phoneInput.value.trim() : "";
+    function closeResultModal() {
+      const modal = document.getElementById("resultModal");
+      if (modal) {
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+      }
+    }
 
+    function restartExam() {
+      closeResultModal();
+      examSubmitted = false;
+      resetAllProgress();
+      setMode("exam");
+    }
+
+    function openWhatsAppScorecard() {
+      const studentName = localStorage.getItem("studentName") || "Student";
+      const studentPhone = localStorage.getItem("studentPhone") || "";
       const { message } = generateScorecardText(studentName, studentPhone);
       const teacherWhatsApp = "918683068609";
       const whatsappUrl = `https://wa.me/${teacherWhatsApp}?text=${encodeURIComponent(message)}`;
@@ -1249,11 +1371,8 @@ ${breakdown}
     }
 
     function copyScorecardText() {
-      const nameInput = document.getElementById("modalStudentName");
-      const phoneInput = document.getElementById("modalStudentPhone");
-      const studentName = nameInput && nameInput.value.trim() ? nameInput.value.trim() : (localStorage.getItem("studentName") || "Student");
-      const studentPhone = phoneInput ? phoneInput.value.trim() : "";
-
+      const studentName = localStorage.getItem("studentName") || "Student";
+      const studentPhone = localStorage.getItem("studentPhone") || "";
       const { message } = generateScorecardText(studentName, studentPhone);
 
       navigator.clipboard.writeText(message).then(() => {
@@ -1264,73 +1383,8 @@ ${breakdown}
           setTimeout(() => { label.innerText = orig; }, 2000);
         }
       }).catch(() => {
-        alert("Report ready! Please use the WhatsApp button to send directly.");
+        alert("Scorecard copied! You can share it anywhere.");
       });
-    }
-
-    function openSubmitModal() {
-      const savedName = localStorage.getItem("studentName") || "";
-      const savedPhone = localStorage.getItem("studentPhone") || "";
-      const nameInput = document.getElementById("modalStudentName");
-      const phoneInput = document.getElementById("modalStudentPhone");
-      if (nameInput && !nameInput.value) nameInput.value = savedName;
-      if (phoneInput && !phoneInput.value) phoneInput.value = savedPhone;
-
-      const attemptedCount = Object.keys(userSelections).length;
-      let correctCount = 0;
-      questionsData.forEach(q => {
-        if (userSelections[q.id] === q.correct) correctCount++;
-      });
-      const wrongCount = attemptedCount - correctCount;
-      const skippedCount = questionsData.length - attemptedCount;
-      const accuracy = attemptedCount > 0 ? Math.round((correctCount / attemptedCount) * 100) : 0;
-      const netMarks = ((correctCount * 2) - (wrongCount * 0.5)).toFixed(1);
-
-      let timeSpentStr = "00m 00s";
-      if (currentMode === "exam") {
-        const elapsed = Math.max(0, (25 * 60) - examTimeSeconds);
-        const m = Math.floor(elapsed / 60).toString().padStart(2, "0");
-        const s = (elapsed % 60).toString().padStart(2, "0");
-        timeSpentStr = `⏱️ ${m}m ${s}s (Timed)`;
-      } else {
-        const elapsed = Math.floor((Date.now() - pageStartTime) / 1000);
-        const m = Math.floor(elapsed / 60).toString().padStart(2, "0");
-        const s = (elapsed % 60).toString().padStart(2, "0");
-        timeSpentStr = `⏱️ ${m}m ${s}s (Practice)`;
-      }
-
-      document.getElementById("modalCorrect").innerText = correctCount;
-      document.getElementById("modalWrong").innerText = wrongCount;
-      document.getElementById("modalSkipped").innerText = skippedCount;
-      document.getElementById("modalAccuracy").innerText = `${accuracy}%`;
-      document.getElementById("modalTotalMarks").innerText = `${correctCount} / ${questionsData.length}`;
-      document.getElementById("modalTimeSpent").innerText = `${timeSpentStr} • Net: ${netMarks} Marks`;
-
-      const banner = document.getElementById("whatsappSentBanner");
-      if (banner) banner.classList.add("hidden");
-
-      const validationMsg = document.getElementById("nameValidationMsg");
-      if (validationMsg) validationMsg.classList.add("hidden");
-
-      const modal = document.getElementById("resultModal");
-      modal.classList.remove("hidden");
-      modal.classList.add("flex");
-    }
-
-    function closeSubmitModal() {
-      const modal = document.getElementById("resultModal");
-      modal.classList.add("hidden");
-      modal.classList.remove("flex");
-      // Once exam is submitted, reveal all answers to review
-      questionsData.forEach(q => revealedAnswers[q.id] = true);
-      renderQuestions();
-      renderNavigators();
-    }
-
-    function restartExam() {
-      closeSubmitModal();
-      resetAllProgress();
-      setMode("exam");
     }
 
     renderQuestions();

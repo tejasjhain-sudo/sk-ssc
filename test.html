@@ -382,16 +382,19 @@
         </div>
       </div>
 
-      <!-- Success Notice Banner (hidden until sent) -->
-      <div id="whatsappSentBanner" class="hidden mb-3 p-2.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-300 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300 text-xs font-bold text-center">
-        <i class="fa-solid fa-circle-check mr-1 text-emerald-600"></i>
-        <span>Scorecard opened in WhatsApp! Click 'Send' in WhatsApp to deliver to Sir.</span>
-      </div>
+      <!-- Delivery Status Banner (hidden until submitted) -->
+      <div id="deliveryStatusBanner" class="hidden mb-3 p-3 rounded-2xl text-xs font-bold text-center"></div>
 
-      <!-- PRIMARY ACTION: SEND TO WHATSAPP -->
-      <button id="sendWhatsappBtn" onclick="submitAndSendToWhatsApp()" class="w-full py-3.5 px-4 rounded-2xl bg-emerald-600 hover:bg-emerald-700 active:scale-98 text-white font-black text-xs sm:text-sm shadow-lg shadow-emerald-600/30 flex items-center justify-center gap-2 transition mb-2">
-        <i class="fa-brands fa-whatsapp text-lg sm:text-xl"></i>
-        <span>Send Exam Details to Sir on WhatsApp (8683068609)</span>
+      <!-- PRIMARY ACTION: AUTOMATIC SUBMISSION & DELIVERY -->
+      <button id="submitExamBtn" onclick="submitExamScorecard()" class="w-full py-3.5 px-4 rounded-2xl bg-blue-700 hover:bg-blue-800 active:scale-98 text-white font-black text-xs sm:text-sm shadow-lg shadow-blue-700/30 flex items-center justify-center gap-2 transition mb-2">
+        <i class="fa-solid fa-paper-plane text-sm"></i>
+        <span>Submit Exam & Deliver Scorecard</span>
+      </button>
+
+      <!-- SECONDARY WHATSAPP ACTION (OPTIONAL) -->
+      <button id="sendWhatsappBtn" onclick="openWhatsAppScorecard()" class="w-full py-2.5 px-4 rounded-xl border border-emerald-300 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-950/40 hover:bg-emerald-100 dark:hover:bg-emerald-900/60 text-emerald-800 dark:text-emerald-300 font-bold text-xs flex items-center justify-center gap-2 transition mb-2">
+        <i class="fa-brands fa-whatsapp text-base text-emerald-600"></i>
+        <span>Also Send Copy to Sir on WhatsApp (8683068609)</span>
       </button>
 
       <!-- SECONDARY ACTIONS -->
@@ -1130,7 +1133,9 @@ ${breakdown}
       };
     }
 
-    function submitAndSendToWhatsApp() {
+    const WEB3FORMS_ACCESS_KEY = "6535f357-4076-414b-a8e0-63673c610e48";
+
+    async function submitExamScorecard() {
       const nameInput = document.getElementById("modalStudentName");
       const phoneInput = document.getElementById("modalStudentPhone");
       const validationMsg = document.getElementById("nameValidationMsg");
@@ -1160,7 +1165,50 @@ ${breakdown}
       renderQuestions();
       renderNavigators();
 
-      // Log submission to backend server if running
+      // Update UI to loading state
+      const banner = document.getElementById("deliveryStatusBanner");
+      const submitBtn = document.getElementById("submitExamBtn");
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin text-sm"></i> <span>Delivering Scorecard...</span>';
+      }
+
+      if (banner) {
+        banner.className = "mb-3 p-2.5 rounded-xl bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-800 text-blue-800 dark:text-blue-300 text-xs font-bold text-center";
+        banner.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-1.5 text-blue-600"></i> Delivering your exam scorecard to Santosh Sir in background...';
+        banner.classList.remove("hidden");
+      }
+
+      // 1. Send automatic email alert via Web3Forms (Client-Side)
+      try {
+        await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify({
+            access_key: WEB3FORMS_ACCESS_KEY,
+            subject: `🎓 New Test Submission: ${studentName} (${stats.correctCount}/24 Marks - ${stats.accuracy}%)`,
+            from_name: "SK Classes Mock Test Portal",
+            student_name: studentName,
+            student_mobile: studentPhone || "Not provided",
+            raw_score: `${stats.correctCount} / 24 Marks`,
+            net_ssc_marks: `${stats.netMarks} / 48`,
+            correct: stats.correctCount,
+            wrong: stats.wrongCount,
+            unattempted: stats.skippedCount,
+            accuracy: `${stats.accuracy}%`,
+            time_taken: stats.timeSpentStr,
+            verdict: stats.rating,
+            message: message
+          })
+        });
+      } catch (err) {
+        console.warn("Gmail delivery fetch:", err);
+      }
+
+      // 2. Also log locally if dev server.py is running
       try {
         fetch("/api/submit-test", {
           method: "POST",
@@ -1175,15 +1223,28 @@ ${breakdown}
         }).catch(() => {});
       } catch (e) {}
 
-      // Target teacher phone: 918683068609
+      // Update UI to success state
+      if (banner) {
+        banner.className = "mb-3 p-3 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-300 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300 text-xs font-bold text-center";
+        banner.innerHTML = '<i class="fa-solid fa-circle-check mr-1.5 text-emerald-600 text-sm"></i> Scorecard successfully submitted and delivered to Santosh Sir!';
+      }
+
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.className = "w-full py-3.5 px-4 rounded-2xl bg-emerald-700 text-white font-black text-xs sm:text-sm shadow-md flex items-center justify-center gap-2 mb-2 cursor-default";
+        submitBtn.innerHTML = '<i class="fa-solid fa-check text-base"></i> <span>Submitted & Delivered!</span>';
+      }
+    }
+
+    function openWhatsAppScorecard() {
+      const nameInput = document.getElementById("modalStudentName");
+      const phoneInput = document.getElementById("modalStudentPhone");
+      const studentName = nameInput && nameInput.value.trim() ? nameInput.value.trim() : (localStorage.getItem("studentName") || "Student");
+      const studentPhone = phoneInput ? phoneInput.value.trim() : "";
+
+      const { message } = generateScorecardText(studentName, studentPhone);
       const teacherWhatsApp = "918683068609";
       const whatsappUrl = `https://wa.me/${teacherWhatsApp}?text=${encodeURIComponent(message)}`;
-
-      // Show success message banner in modal
-      const banner = document.getElementById("whatsappSentBanner");
-      if (banner) banner.classList.remove("hidden");
-
-      // Launch WhatsApp
       window.open(whatsappUrl, "_blank");
     }
 

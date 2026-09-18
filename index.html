@@ -1,15 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>SK Classes | Santosh Kumar Jha | Dwarka Mor, New Delhi</title>
-  
+  <title>SSC by SK | Created by Tejas</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- FontAwesome 6 Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <script>
     tailwind.config = {
       darkMode: "class",
@@ -17,1125 +15,1266 @@
         extend: {
           colors: {
             brand: {
-              50: "#f0f7ff",
-              100: "#e0effe",
-              600: "#0284c7",
-              700: "#0369a1",
-              800: "#075985",
-              900: "#0c4a6e"
+              50: "#eef2ff",
+              100: "#e0e7ff",
+              200: "#c7d2fe",
+              500: "#6366f1",
+              600: "#4f46e5",
+              700: "#4338ca",
+              800: "#3730a3",
+              900: "#312e81",
             }
           }
         }
       }
     }
   </script>
-
   <style>
-    @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap");
-    
+    @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
     body {
       font-family: "Plus Jakarta Sans", sans-serif;
       -webkit-tap-highlight-color: transparent;
     }
-    
-    .nav-link {
-      position: relative;
-      transition: color 0.15s ease;
+    .question-card {
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
     }
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: -4px;
-      left: 0;
-      background-color: #0284c7;
-      transition: width 0.2s ease;
+    .option-btn {
+      transition: all 0.12s ease-in-out;
+      touch-action: manipulation;
     }
-    .nav-link:hover::after {
-      width: 100%;
+    .option-btn:active {
+      transform: scale(0.985);
     }
-    
-    .pro-card {
-      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
     }
-    .pro-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.08);
+    ::-webkit-scrollbar-track {
+      background: transparent;
     }
-    .dark .pro-card:hover {
-      box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.35);
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 9999px;
     }
-    
-    .safe-bottom {
-      padding-bottom: max(10px, env(safe-area-inset-bottom));
+    .dark ::-webkit-scrollbar-thumb {
+      background: #475569;
     }
-    
-    /* Hero dynamic text rotating animation */
-    .hero-rotate-wrap {
-      display: inline-block;
-      vertical-align: bottom;
-      position: relative;
-    }
-    .hero-rotate-item {
-      display: inline-block;
-      will-change: transform, opacity, filter;
-      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
-                  opacity 0.3s ease, 
-                  filter 0.3s ease;
-    }
-    .hero-rotate-item.is-exiting {
-      opacity: 0;
-      transform: translateY(-16px);
-      filter: blur(3px);
-    }
-    .hero-rotate-item.is-entering-prep {
-      opacity: 0;
-      transform: translateY(16px);
-      filter: blur(3px);
-      transition: none !important;
-    }
-    .hero-rotate-item.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-      filter: blur(0px);
+    @supports (padding-bottom: env(safe-area-inset-bottom)) {
+      .safe-bottom {
+        padding-bottom: calc(0.75rem + env(safe-area-inset-bottom));
+      }
     }
   </style>
 </head>
-<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen antialiased transition-colors duration-200 pb-20 md:pb-0">
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen transition-colors duration-200 pb-20 lg:pb-8">
 
-  <!-- 1. TOP UTILITY ANNOUNCEMENT BAR (COMPACT & MOBILE-OPTIMIZED) -->
-  <div class="bg-blue-900 text-blue-100 text-xs py-1.5 px-3 sm:px-4 border-b border-blue-800">
-    <div class="max-w-7xl mx-auto flex items-center justify-between gap-2 text-[11px] sm:text-xs">
-      <div class="flex items-center gap-1.5 sm:gap-2 truncate">
-        <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500 text-white font-black text-[9px] sm:text-[10px] uppercase shrink-0 shadow-xs">
-          <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
-          2026 Open
-        </span>
-        <span class="font-bold text-white truncate">Home Tuition &amp; Center Batches &bull; Dwarka Mor</span>
-        <span class="text-blue-300 hidden md:inline">&bull;</span>
-        <span class="text-blue-200 hidden md:inline">Class 8th-10th &bull; SSC &bull; Police &bull; Banking</span>
-      </div>
-
-      <div class="flex items-center gap-2.5 sm:gap-4 shrink-0 font-bold">
-        <a href="tel:8683068609" class="hover:text-white transition flex items-center gap-1 text-white text-[11px] sm:text-xs">
-          <i class="fa-solid fa-phone text-[10px] text-emerald-400"></i>
-          <span>8683068609</span>
-        </a>
-        <a href="https://wa.me/918683068609?text=Hello%20Santosh%20Sir" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white text-[10px] sm:text-[11px] font-bold px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg transition flex items-center gap-1 shadow-xs">
-          <i class="fa-brands fa-whatsapp text-xs"></i>
-          <span class="hidden xs:inline">WhatsApp</span>
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- 2. HIGH-END PROFESSIONAL HEADER -->
-  <header class="sticky top-0 z-50 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800/80">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <!-- TOP HEADER WITH "CREATED BY TEJAS" -->
+  <header class="sticky top-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16 sm:h-20">
         
-        <!-- BRAND LOGO (SOLID FLAT PRESTIGE BLUE, ZERO GRADIENTS) -->
-        <a href="index.html" class="flex items-center gap-2.5 sm:gap-3.5 group shrink-0">
-          <div class="h-10 w-10 sm:h-12 sm:w-12 rounded-xl bg-blue-800 text-white flex items-center justify-center border border-blue-900 shadow-sm shrink-0">
-            <span class="font-black text-lg sm:text-xl tracking-tight text-white">S<span class="text-amber-400">K</span></span>
+        <!-- Logo & Header Branding -->
+        <div class="flex items-center gap-2.5 sm:gap-3.5">
+          <div class="h-10 w-10 sm:h-11 sm:w-11 rounded-xl bg-slate-900 dark:bg-slate-800 text-white flex items-center justify-center border border-slate-800 dark:border-slate-700 shadow-sm shrink-0">
+            <span class="font-black text-lg tracking-tight text-white">S<span class="text-amber-400">K</span></span>
           </div>
           <div>
-            <div class="flex items-center gap-1.5 sm:gap-2">
-              <span class="text-lg sm:text-2xl font-black tracking-tight text-slate-950 dark:text-white uppercase">
-                SK <span class="text-blue-800 dark:text-blue-400 font-extrabold">CLASSES</span>
+            <div class="flex items-center flex-wrap gap-1.5 sm:gap-2">
+              <span class="text-lg sm:text-2xl font-black tracking-tight text-slate-900 dark:text-white uppercase">
+                SSC <span class="text-brand-600 dark:text-brand-500">by SK</span>
               </span>
-              <span class="hidden sm:inline-flex px-2 py-0.5 rounded text-[10px] font-bold bg-blue-50 text-blue-900 dark:bg-slate-800 dark:text-slate-300 border border-blue-200 dark:border-slate-700">
-                ESTD 2006
-              </span>
-              <span class="hidden lg:inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold bg-amber-50 text-amber-900 dark:bg-amber-950/60 dark:text-amber-300 border border-amber-300/60 dark:border-amber-800">
-                <i class="fa-solid fa-crown text-[9px] text-amber-500"></i>
-                Created by Tejas
+              
+              <!-- PROMINENT "CREATED BY TEJAS" HEADER BADGE -->
+              <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] sm:text-xs font-bold bg-amber-50 text-amber-800 dark:bg-amber-950/60 dark:text-amber-300 border border-amber-300 dark:border-amber-700/60 shadow-xs">
+                <i class="fa-solid fa-crown text-[9px] sm:text-[10px] text-amber-500"></i>
+                <span>Created by Tejas</span>
               </span>
             </div>
-            <p class="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 font-medium truncate max-w-[200px] xs:max-w-none">
-              Santosh Kumar Jha &bull; Dwarka Mor, New Delhi
+            <p class="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 font-medium hidden md:block">
+              Santosh Kumar Jha (SK Sir) &bull; Direction & Distance Reasoning &bull; Questions 1 to 24
             </p>
           </div>
-        </a>
+        </div>
 
-        <!-- DESKTOP NAVIGATION -->
-        <nav class="hidden lg:flex items-center gap-6 text-sm font-bold text-slate-700 dark:text-slate-300">
-          <a href="#courses" class="nav-link hover:text-blue-700 dark:hover:text-white">Courses</a>
-          <a href="#one-on-one" class="nav-link text-emerald-700 dark:emerald-400 hover:text-emerald-800 font-extrabold flex items-center gap-1.5">
-            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            <span>Home Tuition &amp; 1-on-1</span>
-          </a>
-          <a href="#notes" class="nav-link hover:text-blue-700 dark:hover:text-white">Handwritten Notes</a>
-          <a href="#dpp" class="nav-link hover:text-blue-700 dark:hover:text-white">Daily Practice (DPP)</a>
-          <a href="#mentor" class="nav-link hover:text-blue-700 dark:hover:text-white">Santosh Sir</a>
-          <a href="#contact" class="nav-link hover:text-blue-700 dark:hover:text-white">Location</a>
-        </nav>
-
-        <!-- RIGHT ACTIONS -->
+        <!-- Controls & Actions -->
         <div class="flex items-center gap-1.5 sm:gap-3">
-          <!-- Direct Online Test Link -->
-          <a href="test.html" class="hidden sm:inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-blue-50 hover:bg-blue-100 dark:bg-slate-800 dark:hover:bg-slate-700 text-blue-900 dark:text-blue-300 border border-blue-200 dark:border-slate-700 text-xs font-bold transition">
-            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-            <span>Free SSC Mock Test (24 Qs)</span>
-          </a>
 
-          <!-- Dark/Light Mode -->
-          <button onclick="toggleDarkMode()" class="h-9 w-9 sm:h-10 sm:w-10 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 flex items-center justify-center transition" title="Toggle Dark/Light">
-            <i id="themeIcon" class="fa-regular fa-moon text-sm"></i>
+          <!-- Mode Switcher -->
+          <div class="bg-slate-100 dark:bg-slate-800 p-0.5 sm:p-1 rounded-xl flex items-center text-[11px] sm:text-xs font-semibold">
+            <button id="modePracticeBtn" onclick="setMode('practice')" class="px-2.5 sm:px-3 py-1.5 rounded-lg transition-all bg-white dark:bg-slate-700 text-brand-700 dark:text-white shadow-sm flex items-center gap-1 sm:gap-1.5">
+              <i class="fa-solid fa-graduation-cap"></i>
+              <span class="hidden xs:inline sm:inline">Practice</span>
+            </button>
+            <button id="modeExamBtn" onclick="setMode('exam')" class="px-2.5 sm:px-3 py-1.5 rounded-lg transition-all text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white flex items-center gap-1 sm:gap-1.5">
+              <i class="fa-solid fa-stopwatch"></i>
+              <span class="hidden xs:inline sm:inline">Mock Test</span>
+            </button>
+          </div>
+
+          <!-- Dark/Light Mode Toggle -->
+          <button onclick="toggleDarkMode()" class="h-9 w-9 sm:h-10 sm:w-10 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 flex items-center justify-center transition" title="Toggle Theme">
+            <i id="themeIcon" class="fa-regular fa-moon text-sm sm:text-base"></i>
           </button>
 
-          <!-- Direct Mobile One-Tap Call Button (Visible on phones) -->
-          <a href="tel:8683068609" class="sm:hidden h-9 w-9 rounded-xl bg-blue-700 active:scale-95 text-white flex items-center justify-center shadow-xs" title="Call Santosh Sir">
-            <i class="fa-solid fa-phone text-xs"></i>
-          </a>
-
-          <!-- Desktop Call Button -->
-          <a href="tel:8683068609" class="hidden sm:inline-flex bg-blue-700 hover:bg-blue-800 active:scale-95 text-white font-bold text-xs sm:text-sm px-4 py-2.5 rounded-xl transition items-center gap-2 shadow-sm">
-            <i class="fa-solid fa-phone text-xs text-white"></i>
-            <span>8683068609</span>
-          </a>
-
-          <!-- Mobile Hamburger Toggle -->
-          <button onclick="toggleMobileNav()" class="lg:hidden h-9 w-9 sm:h-10 sm:w-10 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 flex items-center justify-center hover:bg-slate-100 dark:hover:bg-slate-800">
-            <i class="fa-solid fa-bars text-sm"></i>
+          <!-- Exam Mode Submit Button -->
+          <button id="actionHeaderBtn" onclick="openSubmitModal()" class="bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white font-semibold text-xs sm:text-sm px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl shadow-md transition flex items-center gap-1.5">
+            <i class="fa-solid fa-paper-plane"></i>
+            <span>Submit</span>
           </button>
         </div>
 
       </div>
-    </div>
-
-    <!-- MOBILE DROPDOWN NAVIGATION (OPTIMIZED TOUCH TARGETS) -->
-    <div id="mobileNavMenu" class="hidden lg:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-4 space-y-2 shadow-2xl">
-      <a href="#courses" onclick="toggleMobileNav()" class="flex items-center justify-between py-2.5 px-3 rounded-xl font-bold text-sm text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800">
-        <span class="flex items-center gap-2.5"><i class="fa-solid fa-graduation-cap text-blue-700 w-4"></i> Courses &amp; Batches</span>
-        <i class="fa-solid fa-chevron-right text-xs text-slate-400"></i>
-      </a>
-      <a href="#one-on-one" onclick="toggleMobileNav()" class="flex items-center justify-between py-2.5 px-3 rounded-xl font-black text-sm bg-emerald-50 text-emerald-800 dark:bg-emerald-950/50 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
-        <span class="flex items-center gap-2.5"><i class="fa-solid fa-house-user text-emerald-600 w-4"></i> Home Tuition &amp; 1-on-1</span>
-        <i class="fa-solid fa-chevron-right text-xs text-emerald-600"></i>
-      </a>
-      <a href="#notes" onclick="toggleMobileNav()" class="flex items-center justify-between py-2.5 px-3 rounded-xl font-bold text-sm text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800">
-        <span class="flex items-center gap-2.5"><i class="fa-solid fa-book-open text-blue-700 w-4"></i> Handwritten Notes PDF</span>
-        <i class="fa-solid fa-chevron-right text-xs text-slate-400"></i>
-      </a>
-      <a href="#dpp" onclick="toggleMobileNav()" class="flex items-center justify-between py-2.5 px-3 rounded-xl font-bold text-sm text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800">
-        <span class="flex items-center gap-2.5"><i class="fa-solid fa-file-lines text-amber-600 w-4"></i> Daily Practice Papers (DPP)</span>
-        <i class="fa-solid fa-chevron-right text-xs text-slate-400"></i>
-      </a>
-      <a href="#mentor" onclick="toggleMobileNav()" class="flex items-center justify-between py-2.5 px-3 rounded-xl font-bold text-sm text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800">
-        <span class="flex items-center gap-2.5"><i class="fa-solid fa-chalkboard-user text-indigo-700 w-4"></i> Santosh Sir Profile</span>
-        <i class="fa-solid fa-chevron-right text-xs text-slate-400"></i>
-      </a>
-      <a href="#contact" onclick="toggleMobileNav()" class="flex items-center justify-between py-2.5 px-3 rounded-xl font-bold text-sm text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800">
-        <span class="flex items-center gap-2.5"><i class="fa-solid fa-location-dot text-rose-600 w-4"></i> Center Location &amp; Contact</span>
-        <i class="fa-solid fa-chevron-right text-xs text-slate-400"></i>
-      </a>
-      
-      <div class="pt-3 border-t border-slate-100 dark:border-slate-800 grid grid-cols-2 gap-2">
-        <a href="tel:8683068609" class="text-center py-2.5 rounded-xl bg-blue-700 text-white font-bold text-xs shadow-sm flex items-center justify-center gap-1.5 active:scale-95 transition">
-          <i class="fa-solid fa-phone text-xs"></i>
-          <span>Call Sir</span>
-        </a>
-        <a href="https://wa.me/918683068609?text=Hello%20Santosh%20Sir,%20I%20want%20to%20know%20about%20your%20classes%20and%20home%20tuition." target="_blank" class="text-center py-2.5 rounded-xl bg-emerald-600 text-white font-bold text-xs shadow-sm flex items-center justify-center gap-1.5 active:scale-95 transition">
-          <i class="fa-brands fa-whatsapp text-sm"></i>
-          <span>WhatsApp Sir</span>
-        </a>
-      </div>
-      <a href="test.html" class="block w-full text-center py-2.5 rounded-xl bg-blue-50 dark:bg-slate-800 text-blue-900 dark:text-blue-300 font-bold text-xs border border-blue-200 dark:border-slate-700 shadow-xs">
-        <i class="fa-solid fa-stopwatch mr-1 text-blue-700"></i> Free 24-Q SSC Reasoning Mock Test
-      </a>
     </div>
   </header>
 
-  <!-- 3. HERO SECTION (PROFESSIONAL INSTITUTIONAL SPOTLIGHT) -->
-  <section class="py-12 sm:py-20 border-b border-slate-200/80 dark:border-slate-800/80 bg-white dark:bg-slate-900">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+  <!-- SUB-BAR: STATS, TIMER & SEARCH -->
+  <section class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 py-2.5 sm:py-3.5 sticky top-16 sm:top-20 z-30 shadow-xs">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-2.5 sm:gap-4">
         
-        <!-- LEFT TEXT COLUMN -->
-        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+        <!-- Live Counters -->
+        <div class="flex items-center justify-between sm:justify-start gap-3 sm:gap-6 text-xs sm:text-sm overflow-x-auto pb-1 sm:pb-0">
+          <div class="flex items-center gap-1.5">
+            <span class="text-slate-400 font-medium">Total:</span>
+            <span id="statTotal" class="font-bold text-slate-900 dark:text-white bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded-md">24 Qs</span>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <span class="text-slate-400 font-medium">Selected:</span>
+            <span id="statAttempted" class="font-bold text-brand-600 dark:text-brand-400">0</span>
+          </div>
+          <div id="scoreWrapper" class="hidden items-center gap-1.5">
+            <span class="text-slate-400 font-medium">Score:</span>
+            <span id="statScore" class="font-bold text-emerald-600 dark:text-emerald-400">0 / 24</span>
+          </div>
           
-          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 dark:bg-slate-800 text-blue-950 dark:text-blue-200 text-xs font-bold border border-blue-200 dark:border-slate-700">
-            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            <span>Dwarka Mor &bull; Home Tuition &amp; Center Batches &bull; Teaching Since 2006</span>
-          </div>
-
-          <h1 class="text-2xl xs:text-3xl sm:text-5xl lg:text-6xl font-black text-slate-950 dark:text-white tracking-tight leading-[1.18]">
-            <span class="block">Build Absolute Mastery with</span>
-            <span class="hero-rotate-wrap mt-1 sm:mt-2">
-              <a 
-                id="heroRotatingText" 
-                href="#mentor" 
-                class="hero-rotate-item is-visible text-slate-900 dark:text-white underline decoration-slate-400 dark:decoration-slate-600 hover:decoration-brand-500 decoration-4 underline-offset-8 cursor-pointer select-none"
-                title="Click to jump to section"
-              >
-                Santosh Kumar Jha
-              </a>
-            </span>
-          </h1>
-
-          <p class="text-sm sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-medium max-w-2xl mx-auto lg:mx-0">
-            18+ years of dedicated coaching in Mathematics and Logical Reasoning. Special offline batches &amp; <strong>Personal Home Tuition in Dwarka Mor &amp; West Delhi</strong> for <strong>Class 8th, 9th &amp; 10th School Foundations</strong> and Competitive Aspirants: <strong>SSC, Banking, Railway &amp; Delhi Police</strong>.
-          </p>
-
-          <!-- KEY CREDENTIAL METRICS -->
-          <div class="grid grid-cols-3 gap-2.5 sm:gap-3 max-w-lg mx-auto lg:mx-0 pt-1">
-            <div class="p-3 sm:p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/80 text-center">
-              <span class="block text-xl sm:text-2xl font-black text-slate-900 dark:text-white">2006</span>
-              <span class="text-[10px] sm:text-[11px] font-bold text-slate-500 uppercase tracking-wider">Established</span>
-            </div>
-            <div class="p-3 sm:p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/80 text-center">
-              <span class="block text-xl sm:text-2xl font-black text-slate-900 dark:text-white">18+ Yrs</span>
-              <span class="text-[10px] sm:text-[11px] font-bold text-slate-500 uppercase tracking-wider">Experience</span>
-            </div>
-            <div class="p-3 sm:p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/80 text-center">
-              <span class="block text-xl sm:text-2xl font-black text-emerald-600 dark:text-emerald-400">Home &amp; Center</span>
-              <span class="text-[10px] sm:text-[11px] font-bold text-slate-500 uppercase tracking-wider">Flexible</span>
-            </div>
-          </div>
-
-          <!-- CTAS (CLEAN PROFESSIONAL MOBILE 2x2 GRID, DESKTOP FLEX) -->
-          <div class="grid grid-cols-2 sm:flex sm:flex-wrap items-center justify-center lg:justify-start gap-2.5 sm:gap-3 pt-2">
-            <a href="tel:8683068609" class="bg-blue-700 hover:bg-blue-800 active:scale-95 text-white font-bold text-xs sm:text-sm px-4 sm:px-6 py-3 sm:py-3.5 rounded-xl transition shadow-sm flex items-center justify-center gap-2">
-              <i class="fa-solid fa-phone text-xs"></i>
-              <span>Call Sir</span>
-            </a>
-            <a href="https://wa.me/918683068609?text=Hello%20Santosh%20Sir,%20I%20want%20to%20know%20about%20your%20coaching%20classes%20and%20home%20tuition." target="_blank" class="bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white font-bold text-xs sm:text-sm px-4 sm:px-5 py-3 sm:py-3.5 rounded-xl transition shadow-sm flex items-center justify-center gap-2">
-              <i class="fa-brands fa-whatsapp text-sm sm:text-base"></i>
-              <span>WhatsApp</span>
-            </a>
-            <a href="#one-on-one" class="bg-white hover:bg-slate-50 text-slate-900 border border-slate-300 font-bold text-xs sm:text-sm px-4 sm:px-5 py-3 sm:py-3.5 rounded-xl transition shadow-xs flex items-center justify-center gap-2">
-              <i class="fa-solid fa-house-user text-blue-700"></i>
-              <span>Home Tuition</span>
-            </a>
-            <a href="test.html" class="bg-blue-50 hover:bg-blue-100 text-blue-900 border border-blue-200 font-bold text-xs sm:text-sm px-4 sm:px-5 py-3 sm:py-3.5 rounded-xl transition shadow-xs flex items-center justify-center gap-2">
-              <i class="fa-solid fa-stopwatch text-blue-700"></i>
-              <span>SSC Mock Test</span>
-            </a>
-          </div>
-
-        </div>
-
-        <!-- RIGHT COLUMN: FEATURED TEACHER PORTRAIT CARD -->
-        <div class="lg:col-span-5">
-          <div class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-7 shadow-lg relative">
-            
-            <div class="flex flex-col sm:flex-row items-center sm:items-start gap-5 pb-5 border-b border-slate-100 dark:border-slate-800">
-              <!-- TEACHER REAL PHOTO PROMINENTLY FRAMED -->
-              <div class="relative shrink-0">
-                <img 
-                  src="teacher.jpg" 
-                  alt="Santosh Kumar Jha (SK Sir)" 
-                  class="w-28 h-36 sm:w-32 sm:h-40 rounded-2xl object-cover object-top border-2 border-slate-200 dark:border-slate-700 shadow-md"
-                />
-                <span class="absolute -bottom-2 -right-2 bg-emerald-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full border-2 border-white dark:border-slate-900 shadow">
-                  <i class="fa-solid fa-check"></i> Verified
-                </span>
-              </div>
-
-              <div class="space-y-1 text-center sm:text-left">
-                <span class="text-[11px] font-black uppercase tracking-wider text-emerald-600 dark:text-emerald-400 block">
-                  Senior Faculty &amp; Director
-                </span>
-                <h3 class="text-2xl font-black text-slate-900 dark:text-white leading-tight">
-                  Santosh Kumar Jha
-                </h3>
-                <p class="text-xs font-bold text-slate-500">Popularly known as SK Sir</p>
-                <p class="text-xs text-slate-600 dark:text-slate-300 font-medium pt-1">
-                  18+ years mentoring students in Mathematics, Science &amp; Competitive Reasoning.
-                </p>
-              </div>
-            </div>
-
-            <div class="pt-4 space-y-3 text-xs sm:text-sm font-medium">
-              <div class="flex items-center gap-3 text-slate-700 dark:text-slate-300">
-                <i class="fa-solid fa-house-user text-blue-700 text-base w-5 text-center"></i>
-                <span><strong>Home Tuition:</strong> Available in Dwarka Mor &amp; West Delhi</span>
-              </div>
-              <div class="flex items-center gap-3 text-slate-700 dark:text-slate-300">
-                <i class="fa-solid fa-location-dot text-rose-500 text-base w-5 text-center"></i>
-                <span><strong>Center:</strong> Dwarka Mor, New Delhi (Near Metro)</span>
-              </div>
-              <div class="flex items-center gap-3 text-slate-700 dark:text-slate-300">
-                <i class="fa-solid fa-phone text-emerald-600 text-base w-5 text-center"></i>
-                <span><strong>Helpline:</strong> <a href="tel:8683068609" class="font-extrabold text-blue-700 hover:underline">8683068609</a></span>
-              </div>
-              <div class="flex items-center gap-3 text-slate-700 dark:text-slate-300">
-                <i class="fa-solid fa-clock text-amber-500 text-base w-5 text-center"></i>
-                <span><strong>Batches:</strong> Morning, Evening &amp; Custom Home Slots</span>
-              </div>
-            </div>
-
-            <div class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 flex gap-2">
-              <a href="tel:8683068609" class="flex-1 bg-slate-900 hover:bg-slate-800 text-white font-bold py-2.5 rounded-xl text-xs text-center transition">
-                <i class="fa-solid fa-phone mr-1"></i> Call Sir
-              </a>
-              <a href="https://wa.me/918683068609" target="_blank" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 rounded-xl text-xs text-center transition">
-                <i class="fa-brands fa-whatsapp mr-1"></i> WhatsApp
-              </a>
-            </div>
-
+          <!-- Exam Countdown Timer -->
+          <div id="examTimerBadge" class="hidden items-center gap-1.5 bg-rose-50 text-rose-600 dark:bg-rose-950/50 dark:text-rose-400 px-2.5 py-1 rounded-lg font-mono font-bold text-xs">
+            <i class="fa-regular fa-clock animate-pulse"></i>
+            <span id="examTimerText">25:00</span>
           </div>
         </div>
 
-      </div>
-    </div>
-  </section>
-
-  <!-- 1-ON-1 PERSONAL CLASSES & HOME TUITION SECTION -->
-  <section id="one-on-one" class="py-14 sm:py-20 bg-gradient-to-b from-blue-50/70 via-white to-slate-50 border-b border-slate-200/80 dark:border-slate-800/80">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-10 border-2 border-blue-100 dark:border-slate-800 shadow-xl relative overflow-hidden">
-        
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          
-          <div class="lg:col-span-8 space-y-4">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 dark:bg-emerald-950/50 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 text-xs font-bold">
-              <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-              <span>Home Tuition &amp; 1-on-1 Direct Personal Mentorship</span>
-            </div>
-
-            <h2 class="text-2xl sm:text-4xl font-black tracking-tight text-slate-950 dark:text-white leading-tight">
-              Need Focused Personal Attention? <br class="hidden sm:inline" />
-              Book Home Tuition &amp; Personal Calls with Santosh Sir
-            </h2>
-
-            <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl font-medium">
-              Overcome difficult concepts and personal doubts with private <strong>one-to-one home tuition at your doorstep in West Delhi</strong>, or via dedicated <strong>phone and video calls</strong> directly with Santosh Kumar Jha.
-            </p>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs font-medium text-slate-700 dark:text-slate-200">
-              <div class="flex items-center gap-3 p-3.5 rounded-xl bg-blue-50/60 dark:bg-slate-800/60 border border-blue-100 dark:border-slate-700">
-                <i class="fa-solid fa-house-user text-blue-700 dark:text-blue-400 text-lg shrink-0"></i>
-                <span><strong>Personal Home Tuition:</strong> Dedicated 1-to-1 tutoring in Dwarka Mor, Janakpuri, Uttam Nagar &amp; West Delhi</span>
-              </div>
-              <div class="flex items-center gap-3 p-3.5 rounded-xl bg-emerald-50/60 dark:bg-slate-800/60 border border-emerald-100 dark:border-slate-700">
-                <i class="fa-solid fa-phone-volume text-emerald-600 dark:text-emerald-400 text-lg shrink-0"></i>
-                <span><strong>Direct Personal Calls:</strong> Speak 1-on-1 with Santosh Sir to resolve doubts &amp; test errors</span>
-              </div>
-              <div class="flex items-center gap-3 p-3.5 rounded-xl bg-indigo-50/60 dark:bg-slate-800/60 border border-indigo-100 dark:border-slate-700">
-                <i class="fa-solid fa-user-graduate text-indigo-600 dark:text-indigo-400 text-lg shrink-0"></i>
-                <span><strong>Class 8th to 10th Private Tutoring:</strong> Board exam preparation &amp; NCERT foundation</span>
-              </div>
-              <div class="flex items-center gap-3 p-3.5 rounded-xl bg-amber-50/60 dark:bg-slate-800/60 border border-amber-100 dark:border-slate-700">
-                <i class="fa-solid fa-gauge-high text-amber-600 dark:text-amber-400 text-lg shrink-0"></i>
-                <span><strong>SSC &amp; Govt Exam Strategy:</strong> Speed drills, sectional test reviews &amp; shortcut tricks</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="lg:col-span-4 bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 text-white p-6 sm:p-7 rounded-2xl shadow-xl text-center space-y-4">
-            <div class="w-12 h-12 rounded-2xl bg-white/10 text-amber-300 flex items-center justify-center text-xl font-bold mx-auto border border-white/20 shadow-inner">
-              <i class="fa-solid fa-house-laptop"></i>
-            </div>
-            <div>
-              <h3 class="text-lg font-black text-white">Book Home Tuition / Call</h3>
-              <p class="text-xs text-blue-200 mt-1">Limited weekly slots for personalized home visits &amp; private calls.</p>
-            </div>
-            <div class="space-y-2 pt-1">
-              <a href="https://wa.me/918683068609?text=Hello%20Santosh%20Sir,%20I%20want%20to%20inquire%20about%20Home%20Tuition%20and%201-on-1%20personal%20mentorship%20classes." target="_blank" class="w-full bg-emerald-500 hover:bg-emerald-400 text-white font-bold py-3 px-4 rounded-xl text-xs flex items-center justify-center gap-2 transition shadow-md">
-                <i class="fa-brands fa-whatsapp text-base"></i>
-                <span>Book on WhatsApp</span>
-              </a>
-              <a href="tel:8683068609" class="w-full bg-white hover:bg-blue-50 text-blue-900 font-black py-3 px-4 rounded-xl text-xs flex items-center justify-center gap-2 transition shadow-sm">
-                <i class="fa-solid fa-phone text-blue-700"></i>
-                <span>Call Sir Directly (8683068609)</span>
-              </a>
-            </div>
-            <span class="block text-[11px] text-blue-200 font-medium">Dwarka Mor &bull; West Delhi Home Visits &bull; Online Mentorship</span>
-          </div>
-
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- 4. COURSES OFFERED SECTION (PROMINENTLY FEATURED) -->
-  <section id="courses" class="py-14 sm:py-20 border-b border-slate-200/80 dark:border-slate-800/80">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
-        <div>
-          <span class="text-xs font-black uppercase tracking-wider text-slate-500 block">Course Catalog</span>
-          <h2 class="text-2xl sm:text-3xl font-black text-slate-950 dark:text-white mt-1">
-            Classroom Courses & Batches
-          </h2>
-          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1 font-medium">
-            Directly taught by Santosh Kumar Jha with personalized attention and chapter-wise tests.
-          </p>
-        </div>
-
-        <!-- CATEGORY TABS -->
-        <div class="flex items-center gap-1.5 p-1 bg-slate-200/70 dark:bg-slate-800 rounded-xl text-xs font-bold self-start flex-wrap">
-          <button onclick="filterCourses('all')" id="tabAll" class="px-3 py-1.5 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-xs">All Batches</button>
-          <button onclick="filterCourses('one-on-one')" id="tabOne" class="px-3 py-1.5 rounded-lg text-emerald-700 dark:text-emerald-400 hover:text-emerald-800 font-extrabold flex items-center gap-1">
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-            Home Tuition &amp; 1-on-1
-          </button>
-          <button onclick="filterCourses('school')" id="tabSchool" class="px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white">Class 8th-10th</button>
-          <button onclick="filterCourses('competitive')" id="tabComp" class="px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white">Govt. Exams</button>
-        </div>
-      </div>
-
-      <!-- COURSE CARDS GRID -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="coursesGrid">
-        <!-- HOME TUITION & 1-ON-1 PERSONAL CLASSES CARD -->
-        <div class="course-card pro-card bg-white dark:bg-slate-900 rounded-2xl border-2 border-emerald-600 p-6 flex flex-col justify-between shadow-lg relative ring-2 ring-emerald-500/20" data-category="one-on-one">
-          <div>
-            <div class="flex items-center justify-between mb-3">
-              <span class="px-2.5 py-0.5 rounded text-[11px] font-black bg-emerald-100 text-emerald-800 border border-emerald-300">
-                <i class="fa-solid fa-house-user mr-1"></i> Home Tuition &amp; Mentorship
-              </span>
-              <span class="text-xs font-bold text-emerald-700">Direct SK Sir</span>
-            </div>
-            <h3 class="text-lg font-black text-slate-900 dark:text-white mb-2">Home Tuition &amp; 1-on-1 Mentorship</h3>
-            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-4 font-medium">
-              Private 1-to-1 tutoring at your residence in West Delhi (Dwarka Mor, Janakpuri, Uttam Nagar) or direct phone/video doubt calls with Santosh Sir. Tailored to student's exact learning pace.
-            </p>
-            <div class="space-y-2 text-xs font-semibold text-slate-700 dark:text-slate-300">
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Doorstep home tutoring in West Delhi</div>
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Direct personal doubt-clearing phone &amp; video calls</div>
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Dedicated Class 8th–10th or SSC/Police prep</div>
-            </div>
-          </div>
-
-          <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
-            <span class="text-xs font-semibold text-slate-500">Limited Weekly Slots</span>
-            <a href="https://wa.me/918683068609?text=Hello%20Santosh%20Sir,%20I%20want%20to%20book%20Home%20Tuition%20/%201-on-1%20personal%20classes." target="_blank" class="text-xs font-bold bg-emerald-600 hover:bg-emerald-700 text-white px-3.5 py-1.5 rounded-lg transition flex items-center gap-1 shadow-xs">
-              Book Slot <i class="fa-solid fa-arrow-right text-[10px]"></i>
-            </a>
-          </div>
-        </div>
-        
-        <!-- COURSE 1 -->
-        <div class="course-card pro-card bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 flex flex-col justify-between" data-category="school">
-          <div>
-            <div class="flex items-center justify-between mb-3">
-              <span class="px-2.5 py-0.5 rounded text-[11px] font-bold bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-300">
-                School Academy
-              </span>
-              <span class="text-xs font-bold text-emerald-600">CBSE & State Board</span>
-            </div>
-            <h3 class="text-lg font-black text-slate-900 dark:text-white mb-2">Class 8th, 9th & 10th (Maths & Science)</h3>
-            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-              Complete conceptual foundation. Special board-exam target batch for Class 10th with NCERT line-by-line coverage and Exemplar questions.
-            </p>
-            <div class="space-y-2 text-xs font-semibold text-slate-700 dark:text-slate-300">
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Daily Practice Papers (DPP) & Notes</div>
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Small batch size & individual focus</div>
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Weekly Mock Tests & Board Answer Writing</div>
-            </div>
-          </div>
-
-          <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
-            <span class="text-xs font-semibold text-slate-500">Timing: Evening Slots</span>
-            <a href="https://wa.me/918683068609?text=Inquiring%20about%20Class%208th-10th%20Batches" target="_blank" class="text-xs font-bold text-slate-900 dark:text-white hover:text-brand-600 transition flex items-center gap-1">
-              Enroll Now <i class="fa-solid fa-arrow-right text-[10px]"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- COURSE 2 -->
-        <div class="course-card pro-card bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 flex flex-col justify-between" data-category="competitive">
-          <div>
-            <div class="flex items-center justify-between mb-3">
-              <span class="px-2.5 py-0.5 rounded text-[11px] font-bold bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-300">
-                Staff Selection
-              </span>
-              <span class="text-xs font-bold text-amber-500">Top Selections</span>
-            </div>
-            <h3 class="text-lg font-black text-slate-900 dark:text-white mb-2">SSC (CGL, CHSL, CPO, MTS, GD)</h3>
-            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-              Comprehensive Quantitative Aptitude and Logical Reasoning. Special short-trick techniques for high-speed question solving.
-            </p>
-            <div class="space-y-2 text-xs font-semibold text-slate-700 dark:text-slate-300">
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Direction, Distance & Puzzle Masterclasses</div>
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Free Access to 24-Q Online Mock Portal</div>
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Past 10-Year Question Bank discussion</div>
-            </div>
-          </div>
-
-          <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
-            <span class="text-xs font-semibold text-slate-500">Tier-1 & Tier-2 Batch</span>
-            <a href="https://wa.me/918683068609?text=Inquiring%20about%20SSC%20Batches" target="_blank" class="text-xs font-bold text-slate-900 dark:text-white hover:text-brand-600 transition flex items-center gap-1">
-              Enroll Now <i class="fa-solid fa-arrow-right text-[10px]"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- COURSE 3 -->
-        <div class="course-card pro-card bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 flex flex-col justify-between" data-category="competitive">
-          <div>
-            <div class="flex items-center justify-between mb-3">
-              <span class="px-2.5 py-0.5 rounded text-[11px] font-bold bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-300">
-                Banking Sector
-              </span>
-              <span class="text-xs font-bold text-indigo-500">PO & Clerk</span>
-            </div>
-            <h3 class="text-lg font-black text-slate-900 dark:text-white mb-2">Banking (IBPS, SBI & RBI)</h3>
-            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-              Focus on intense sectional speed. High-level seating arrangements, floor puzzles, and advanced Data Interpretation (DI).
-            </p>
-            <div class="space-y-2 text-xs font-semibold text-slate-700 dark:text-slate-300">
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Fast calculation & fraction shortcuts</div>
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Prelims + Mains comprehensive coverage</div>
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Daily Banking DPPs & Timer Practice</div>
-            </div>
-          </div>
-
-          <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
-            <span class="text-xs font-semibold text-slate-500">Prelims + Mains</span>
-            <a href="https://wa.me/918683068609?text=Inquiring%20about%20Banking%20Batches" target="_blank" class="text-xs font-bold text-slate-900 dark:text-white hover:text-brand-600 transition flex items-center gap-1">
-              Enroll Now <i class="fa-solid fa-arrow-right text-[10px]"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- COURSE 4 -->
-        <div class="course-card pro-card bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 flex flex-col justify-between" data-category="competitive">
-          <div>
-            <div class="flex items-center justify-between mb-3">
-              <span class="px-2.5 py-0.5 rounded text-[11px] font-bold bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-300">
-                Railway Board
-              </span>
-              <span class="text-xs font-bold text-blue-500">CBT-1 & CBT-2</span>
-            </div>
-            <h3 class="text-lg font-black text-slate-900 dark:text-white mb-2">Railway (RRB NTPC, Group D, ALP)</h3>
-            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-              Complete Arithmetic, General Science, and Logical Reasoning with 15-year previous exam pattern analysis.
-            </p>
-            <div class="space-y-2 text-xs font-semibold text-slate-700 dark:text-slate-300">
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Science (Physics, Chem, Bio) coverage</div>
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Numerical problem solving shortcuts</div>
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Regular test drills & revision sets</div>
-            </div>
-          </div>
-
-          <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
-            <span class="text-xs font-semibold text-slate-500">Weekend Batches Available</span>
-            <a href="https://wa.me/918683068609?text=Inquiring%20about%20Railway%20Batches" target="_blank" class="text-xs font-bold text-slate-900 dark:text-white hover:text-brand-600 transition flex items-center gap-1">
-              Enroll Now <i class="fa-solid fa-arrow-right text-[10px]"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- COURSE 5 -->
-        <div class="course-card pro-card bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 flex flex-col justify-between" data-category="competitive">
-          <div>
-            <div class="flex items-center justify-between mb-3">
-              <span class="px-2.5 py-0.5 rounded text-[11px] font-bold bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-300">
-                Police Recruitment
-              </span>
-              <span class="text-xs font-bold text-rose-500">High Marks Goal</span>
-            </div>
-            <h3 class="text-lg font-black text-slate-900 dark:text-white mb-2">Delhi Police Constable, HC & SI</h3>
-            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-              Specialized coaching for Delhi Police Constable (Executive), Head Constable & Sub-Inspector through SSC CPO.
-            </p>
-            <div class="space-y-2 text-xs font-semibold text-slate-700 dark:text-slate-300">
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Full Reasoning & Maths scoring tricks</div>
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Computer knowledge and GK practice</div>
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Physical & medical exam guidance</div>
-            </div>
-          </div>
-
-          <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
-            <span class="text-xs font-semibold text-slate-500">Special Police Batch</span>
-            <a href="https://wa.me/918683068609?text=Inquiring%20about%20Delhi%20Police%20Batches" target="_blank" class="text-xs font-bold text-slate-900 dark:text-white hover:text-brand-600 transition flex items-center gap-1">
-              Enroll Now <i class="fa-solid fa-arrow-right text-[10px]"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- COURSE 6: ONLINE TEST PORTAL -->
-        <div class="course-card pro-card bg-gradient-to-br from-blue-50 to-indigo-50/60 dark:bg-slate-800 text-slate-900 dark:text-white rounded-2xl p-6 flex flex-col justify-between border-2 border-blue-500/40 shadow-sm" data-category="all">
-          <div>
-            <div class="flex items-center justify-between mb-3">
-              <span class="px-2.5 py-0.5 rounded text-[11px] font-bold bg-blue-100 text-blue-900 dark:bg-blue-900/50 dark:text-blue-300 border border-blue-200">
-                Online Portal
-              </span>
-              <span class="text-xs font-bold text-emerald-700 dark:text-emerald-400">24 Questions Live</span>
-            </div>
-            <h3 class="text-lg font-black text-slate-950 dark:text-white mb-2">SSC by SK Online Mock Test</h3>
-            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-4 font-medium">
-              Real-time test interface for Direction &amp; Distance Reasoning. Interactive option selection, instant score calculation, and review mode.
-            </p>
-            <div class="space-y-2 text-xs font-semibold text-slate-700 dark:text-slate-300">
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Cracku-style clean interface</div>
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Mobile &amp; tablet optimized layout</div>
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Step-by-step Cartesian coordinate solutions</div>
-            </div>
-          </div>
-
-          <div class="mt-6 pt-4 border-t border-blue-200/60 dark:border-slate-700">
-            <a href="test.html" class="w-full text-center bg-blue-700 hover:bg-blue-800 text-white font-bold py-2.5 px-4 rounded-xl text-xs transition flex items-center justify-center gap-2 shadow-sm">
-              <span>Start Free Test Now</span>
-              <i class="fa-solid fa-arrow-up-right-from-square text-[11px]"></i>
-            </a>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- 5. HANDWRITTEN NOTES SECTION -->
-  <section id="notes" class="py-14 sm:py-20 bg-white dark:bg-slate-900 border-b border-slate-200/80 dark:border-slate-800/80">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="max-w-3xl mb-10">
-        <span class="text-xs font-black uppercase tracking-wider text-slate-500 block">Classroom Study Material</span>
-        <h2 class="text-2xl sm:text-3xl font-black text-slate-950 dark:text-white mt-1">
-          Handwritten Notes by Santosh Sir
-        </h2>
-        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1 font-medium">
-          Handwritten formula sheets, speed calculation diaries, and reasoning shortcuts prepared for students.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-        
-        <!-- NOTE 1 -->
-        <div class="pro-card bg-slate-50 dark:bg-slate-800/50 p-5 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 flex flex-col justify-between space-y-4">
-          <div>
-            <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-700 dark:bg-blue-900/50 dark:text-blue-300 flex items-center justify-center font-bold text-sm mb-3">
-              <i class="fa-solid fa-book"></i>
-            </div>
-            <span class="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-blue-50 dark:bg-slate-700 text-blue-800 dark:text-slate-200 border border-blue-200 dark:border-slate-600">
-              Class 10th Maths
-            </span>
-            <h4 class="font-bold text-sm text-slate-900 dark:text-white mt-2">Class 10 Formula &amp; Theorem Diary</h4>
-            <p class="text-xs text-slate-500 mt-1 leading-relaxed">
-              Trigonometric identities, circles theorems, coordinate geometry &amp; surface areas.
-            </p>
-          </div>
-          <button onclick="requestNotes('Class 10 Formula & Theorem Diary')" class="w-full bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 rounded-xl text-xs transition flex items-center justify-center gap-1.5 shadow-sm">
-            <i class="fa-solid fa-download text-[11px]"></i>
-            <span>Get Notes PDF</span>
-          </button>
-        </div>
-
-        <!-- NOTE 2 -->
-        <div class="pro-card bg-slate-50 dark:bg-slate-800/50 p-5 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 flex flex-col justify-between space-y-4">
-          <div>
-            <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 dark:bg-amber-900/50 dark:text-amber-300 flex items-center justify-center font-bold text-sm mb-3">
-              <i class="fa-solid fa-calculator"></i>
-            </div>
-            <span class="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-amber-50 dark:bg-slate-700 text-amber-800 dark:text-slate-200 border border-amber-200 dark:border-slate-600">
-              Arithmetic Shortcuts
-            </span>
-            <h4 class="font-bold text-sm text-slate-900 dark:text-white mt-2">Fast Math Calculation Handbook</h4>
-            <p class="text-xs text-slate-500 mt-1 leading-relaxed">
-              Percentage fractions, successive discounts, ratio unit methods &amp; CI-SI tables.
-            </p>
-          </div>
-          <button onclick="requestNotes('Fast Math Calculation Handbook')" class="w-full bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 rounded-xl text-xs transition flex items-center justify-center gap-1.5 shadow-sm">
-            <i class="fa-solid fa-download text-[11px]"></i>
-            <span>Get Notes PDF</span>
-          </button>
-        </div>
-
-        <!-- NOTE 3 -->
-        <div class="pro-card bg-slate-50 dark:bg-slate-800/50 p-5 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 flex flex-col justify-between space-y-4">
-          <div>
-            <div class="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-700 dark:bg-indigo-900/50 dark:text-indigo-300 flex items-center justify-center font-bold text-sm mb-3">
-              <i class="fa-solid fa-compass"></i>
-            </div>
-            <span class="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-indigo-50 dark:bg-slate-700 text-indigo-800 dark:text-slate-200 border border-indigo-200 dark:border-slate-600">
-              Reasoning Special
-            </span>
-            <h4 class="font-bold text-sm text-slate-900 dark:text-white mt-2">Direction Sense 2D Master Notes</h4>
-            <p class="text-xs text-slate-500 mt-1 leading-relaxed">
-              Cartesian grid coordinates, sunrise/sunset shadow directions &amp; shortest hypotenuse.
-            </p>
-          </div>
-          <button onclick="requestNotes('Direction Sense 2D Master Notes')" class="w-full bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 rounded-xl text-xs transition flex items-center justify-center gap-1.5 shadow-sm">
-            <i class="fa-solid fa-download text-[11px]"></i>
-            <span>Get Notes PDF</span>
-          </button>
-        </div>
-
-        <!-- NOTE 4 -->
-        <div class="pro-card bg-slate-50 dark:bg-slate-800/50 p-5 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 flex flex-col justify-between space-y-4">
-          <div>
-            <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 dark:bg-emerald-900/50 dark:text-emerald-300 flex items-center justify-center font-bold text-sm mb-3">
-              <i class="fa-solid fa-atom"></i>
-            </div>
-            <span class="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-emerald-50 dark:bg-slate-700 text-emerald-800 dark:text-slate-200 border border-emerald-200 dark:border-slate-600">
-              Railway &amp; Police
-            </span>
-            <h4 class="font-bold text-sm text-slate-900 dark:text-white mt-2">General Science Quick Revision</h4>
-            <p class="text-xs text-slate-500 mt-1 leading-relaxed">
-              Physics units, chemical equations, and biology human anatomy points frequently asked.
-            </p>
-          </div>
-          <button onclick="requestNotes('General Science Quick Revision')" class="w-full bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 rounded-xl text-xs transition flex items-center justify-center gap-1.5 shadow-sm">
-            <i class="fa-solid fa-download text-[11px]"></i>
-            <span>Get Notes PDF</span>
-          </button>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- 6. DAILY PRACTICE PAPERS (DPP) SECTION -->
-  <section id="dpp" class="py-14 sm:py-20 border-b border-slate-200/80 dark:border-slate-800/80">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
-        <div>
-          <span class="text-xs font-black uppercase tracking-wider text-emerald-600 block">Daily Assignment Drills</span>
-          <h2 class="text-2xl sm:text-3xl font-black text-slate-950 dark:text-white mt-1">
-            Daily Practice Papers (DPP)
-          </h2>
-          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1 font-medium">
-            Daily question sets given in Dwarka Mor offline batches to build high problem-solving speed.
-          </p>
-        </div>
-        <a href="https://wa.me/918683068609?text=Please%20add%20me%20to%20the%20Daily%20DPP%20broadcast%20group." target="_blank" class="text-xs font-bold bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2.5 rounded-xl transition flex items-center gap-1.5 self-start shadow-xs">
-          <i class="fa-brands fa-whatsapp"></i>
-          <span>Join DPP WhatsApp Broadcast</span>
-        </a>
-      </div>
-
-      <!-- DPP LIST -->
-      <div class="space-y-3">
-        
-        <div class="bg-white dark:bg-slate-900 p-4 sm:p-5 rounded-2xl border border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div class="flex items-start sm:items-center gap-3.5">
-            <div class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-950 dark:text-white font-black text-sm flex items-center justify-center shrink-0">
-              01
-            </div>
-            <div>
-              <div class="flex items-center gap-2">
-                <h4 class="text-sm font-bold text-slate-900 dark:text-white">DPP #01: Direction Sense & 2D Grid Reasoning</h4>
-                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300">24 Questions</span>
-              </div>
-              <p class="text-xs text-slate-500 mt-0.5">Straight line distance, 90-degree turns, compass directions & coordinate solutions</p>
-            </div>
-          </div>
-          <div class="flex items-center gap-2 self-end sm:self-auto">
-            <a href="test.html" class="px-3.5 py-2 rounded-xl bg-blue-700 hover:bg-blue-800 text-white text-xs font-bold transition shadow-xs">
-              Solve Online Test
-            </a>
-            <button onclick="requestNotes('DPP 01: Direction Sense & 2D Grid')" class="px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 text-xs font-bold transition">
-              <i class="fa-solid fa-download mr-1"></i> PDF
-            </button>
-          </div>
-        </div>
-
-        <div class="bg-white dark:bg-slate-900 p-4 sm:p-5 rounded-2xl border border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div class="flex items-start sm:items-center gap-3.5">
-            <div class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-950 dark:text-white font-black text-sm flex items-center justify-center shrink-0">
-              02
-            </div>
-            <div>
-              <div class="flex items-center gap-2">
-                <h4 class="text-sm font-bold text-slate-900 dark:text-white">DPP #02: Class 10 Trigonometry &amp; Applications</h4>
-                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700 dark:bg-blue-950/60 dark:text-blue-300">Board Special</span>
-              </div>
-              <p class="text-xs text-slate-500 mt-0.5">Heights &amp; Distances, Trigonometric Identities, 4-Mark NCERT Exemplar Problems</p>
-            </div>
-          </div>
-          <div class="flex items-center gap-2 self-end sm:self-auto">
-            <button onclick="requestNotes('DPP 02: Class 10 Trigonometry')" class="px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 text-xs font-bold transition">
-              <i class="fa-solid fa-download mr-1"></i> PDF
-            </button>
-          </div>
-        </div>
-
-        <div class="bg-white dark:bg-slate-900 p-4 sm:p-5 rounded-2xl border border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div class="flex items-start sm:items-center gap-3.5">
-            <div class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-950 dark:text-white font-black text-sm flex items-center justify-center shrink-0">
-              03
-            </div>
-            <div>
-              <div class="flex items-center gap-2">
-                <h4 class="text-sm font-bold text-slate-900 dark:text-white">DPP #03: Arithmetic Percentage &amp; Profit-Loss</h4>
-                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-amber-50 text-amber-700 dark:bg-amber-950/60 dark:text-amber-300">SSC &amp; Banking</span>
-              </div>
-              <p class="text-xs text-slate-500 mt-0.5">30 Speed questions on fraction conversions, marked price, and discount calculations</p>
-            </div>
-          </div>
-          <div class="flex items-center gap-2 self-end sm:self-auto">
-            <button onclick="requestNotes('DPP 03: Arithmetic Percentage &amp; Profit-Loss')" class="px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 text-xs font-bold transition">
-              <i class="fa-solid fa-download mr-1"></i> PDF
-            </button>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- 7. ABOUT THE EDUCATOR (EXECUTIVE SPOTLIGHT) -->
-  <section id="mentor" class="py-14 sm:py-20 bg-white dark:bg-slate-900 border-b border-slate-200/80 dark:border-slate-800/80">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-        
-        <div class="lg:col-span-5 flex justify-center">
-          <div class="relative max-w-sm">
-            <img 
-              src="teacher.jpg" 
-              alt="Santosh Kumar Jha (SK Sir)" 
-              class="w-72 h-96 sm:w-80 sm:h-[420px] rounded-3xl object-cover object-top border-4 border-slate-100 dark:border-slate-800 shadow-xl"
+        <!-- Quick Filters & Search -->
+        <div class="flex items-center gap-2">
+          <div class="relative flex-1 sm:w-64">
+            <i class="fa-solid fa-search absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+            <input 
+              type="text" 
+              id="searchInput" 
+              oninput="handleSearch()" 
+              placeholder="Search questions or terms..." 
+              class="w-full pl-7 pr-3 py-1.5 text-xs bg-slate-100 dark:bg-slate-800 rounded-lg border border-transparent focus:border-brand-500 focus:bg-white dark:focus:bg-slate-900 focus:outline-none transition"
             />
-            <div class="absolute bottom-4 left-4 right-4 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md p-4 rounded-2xl text-slate-900 dark:text-white border border-slate-200 dark:border-slate-700 shadow-xl">
-              <span class="text-[10px] font-black text-blue-700 dark:text-blue-400 uppercase tracking-wider block">Founder &amp; Head Faculty</span>
-              <h4 class="text-lg font-black text-slate-950 dark:text-white">Santosh Kumar Jha</h4>
-              <p class="text-xs text-slate-600 dark:text-slate-300 font-medium">Dwarka Mor &bull; Classroom &amp; Home Tuition Since 2006</p>
+          </div>
+
+
+
+          <button onclick="resetAllProgress()" title="Reset All" class="text-xs text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/30 px-2.5 py-1.5 rounded-lg font-medium transition flex items-center gap-1">
+            <i class="fa-solid fa-rotate-left text-[11px]"></i>
+            <span class="hidden sm:inline">Reset</span>
+          </button>
+
+          <!-- Mobile Navigator Drawer Trigger -->
+          <button onclick="toggleMobileNav()" class="lg:hidden text-xs bg-brand-50 dark:bg-brand-950/60 text-brand-700 dark:text-brand-300 hover:bg-brand-100 px-2.5 py-1.5 rounded-lg font-semibold border border-brand-200 dark:border-brand-900 transition flex items-center gap-1.5">
+            <i class="fa-solid fa-grip text-xs"></i>
+            <span>Q-Grid</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <main class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-5 sm:py-7">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
+      
+      <!-- QUESTIONS LIST -->
+      <div class="lg:col-span-8 space-y-4 sm:space-y-6" id="questionsContainer">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <!-- DESKTOP / TABLET STICKY SIDEBAR -->
+      <aside class="hidden lg:block lg:col-span-4 space-y-6">
+        
+        <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-5 shadow-sm sticky top-36">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="font-bold text-slate-900 dark:text-white text-xs sm:text-sm uppercase tracking-wide flex items-center gap-2">
+              <i class="fa-solid fa-table-cells text-brand-600"></i>
+              Question Navigator
+            </h3>
+            <span class="text-xs text-slate-400 font-semibold" id="paletteCount">24 Questions</span>
+          </div>
+
+          <!-- Navigator Grid -->
+          <div class="grid grid-cols-6 gap-2" id="navigatorGridDesktop">
+            <!-- Rendered by JS -->
+          </div>
+
+          <div class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-between text-[11px] gap-2 text-slate-500 dark:text-slate-400">
+            <div class="flex items-center gap-1.5">
+              <span class="w-3 h-3 rounded bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 inline-block"></span>
+              <span>Unattempted</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span class="w-3 h-3 rounded bg-brand-600 text-white inline-block"></span>
+              <span>Selected</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span class="w-3 h-3 rounded bg-amber-500 text-white inline-block"></span>
+              <span>Marked</span>
             </div>
           </div>
-        </div>
 
-        <div class="lg:col-span-7 space-y-5">
-          <span class="text-xs font-black uppercase tracking-wider text-slate-500 block">About The Mentor</span>
-          <h2 class="text-2xl sm:text-4xl font-black text-slate-950 dark:text-white">
-            Teaching with Dedication &amp; Concept Clarity Since 2006
-          </h2>
-          <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
-            For over 18 years, <strong>Santosh Kumar Jha (SK Sir)</strong> has been a trusted mentor for thousands of students in West Delhi. He conducts both offline classroom sessions at <strong>Dwarka Mor</strong> and <strong>personalized home tuition</strong> across West Delhi with deep focus on conceptual clarity.
-          </p>
-          <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
-            Whether preparing a Class 9–10 student to conquer board exam fears or coaching aspirants to secure prestigious ranks in SSC, Banking, Railways, and Delhi Police, every student benefits from direct mentorship and continuous doubt resolution.
-          </p>
-
-          <div class="pt-2 flex flex-wrap gap-3 text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200">
-            <span class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-50 dark:bg-slate-800 text-blue-900 dark:text-blue-300 border border-blue-200 dark:border-slate-700">
-              <i class="fa-solid fa-house-user text-blue-700 dark:text-blue-400"></i> Home Tuition in West Delhi
-            </span>
-            <span class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-              <i class="fa-solid fa-check text-emerald-600"></i> Direct Faculty Mentoring
-            </span>
-            <span class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-              <i class="fa-solid fa-check text-emerald-600"></i> Chapter-wise Speed DPPs
-            </span>
-            <span class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-              <i class="fa-solid fa-check text-emerald-600"></i> Dwarka Mor Classroom Center
-            </span>
+          <!-- Shortcut Reference Card -->
+          <div class="mt-5 p-3.5 rounded-xl bg-gradient-to-br from-indigo-50 to-blue-50 dark:from-slate-800/80 dark:to-indigo-950/40 border border-indigo-100/70 dark:border-slate-700/60">
+            <div class="flex items-start gap-2.5">
+              <div class="text-brand-600 dark:text-brand-400 text-base mt-0.5">
+                <i class="fa-solid fa-lightbulb"></i>
+              </div>
+              <div class="text-[11px] text-slate-600 dark:text-slate-300 space-y-1">
+                <div class="font-bold text-slate-900 dark:text-white">Exam Speed Rules</div>
+                <p>&bull; North = +Y, South = -Y</p>
+                <p>&bull; East = +X, West = -X</p>
+                <p>&bull; Pythagorean triplets: (3,4,5), (5,12,13)</p>
+                <p>&bull; Distance = &radic;(&Delta;x&sup2; + &Delta;y&sup2;)</p>
+              </div>
+            </div>
           </div>
+
+          <!-- Free Topicwise List -->
+          <div class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800">
+            <h4 class="text-xs font-bold text-slate-700 dark:text-slate-300 mb-2 uppercase tracking-wider flex items-center gap-1.5">
+              <i class="fa-solid fa-book-bookmark text-brand-500"></i> Free SSC Topics
+            </h4>
+            <div class="flex flex-wrap gap-1.5 max-h-36 overflow-y-auto pr-1">
+              <span class="text-[10px] bg-brand-100 dark:bg-brand-900/60 text-brand-800 dark:text-brand-200 px-2 py-0.5 rounded font-semibold">SSC Directions</span>
+              <span class="text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded">Data Interpretation</span>
+              <span class="text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded">Geometry</span>
+              <span class="text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded">Linear Equations</span>
+              <span class="text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded">Number Systems</span>
+              <span class="text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded">Coding Decoding</span>
+              <span class="text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded">Puzzles</span>
+              <span class="text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded">Syllogisms</span>
+            </div>
+          </div>
+
         </div>
 
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- MOBILE / TABLET FLOATING SLIDE-OVER DRAWER -->
+  <div id="mobileDrawer" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs hidden transition-opacity">
+    <div class="absolute bottom-0 left-0 right-0 max-h-[85vh] bg-white dark:bg-slate-900 rounded-t-3xl p-5 shadow-2xl border-t border-slate-200 dark:border-slate-800 overflow-y-auto safe-bottom">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-grip text-brand-600"></i>
+          <h3 class="font-bold text-sm text-slate-900 dark:text-white uppercase tracking-wider">Quick Navigator (1 - 24)</h3>
+        </div>
+        <button onclick="toggleMobileNav()" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-900 flex items-center justify-center">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="grid grid-cols-6 sm:grid-cols-8 gap-2.5 my-4" id="navigatorGridMobile">
+        <!-- Rendered by JS -->
+      </div>
+
+      <div class="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-around text-xs text-slate-500">
+        <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded bg-slate-200 dark:bg-slate-700"></span> Unattempted</span>
+        <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded bg-brand-600"></span> Selected</span>
+        <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded bg-amber-500"></span> Marked</span>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- 8. LOCATION & CONTACT -->
-  <section id="contact" class="py-14 sm:py-20 border-b border-slate-200/80 dark:border-slate-800/80">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <!-- FIXED BOTTOM BAR FOR MOBILE -->
+  <div class="lg:hidden fixed bottom-0 left-0 right-0 z-30 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 px-4 py-2 safe-bottom shadow-lg flex items-center justify-between">
+    <div class="flex items-center gap-2 text-xs font-semibold text-slate-700 dark:text-slate-300">
+      <span class="text-slate-400">Selected:</span>
+      <span id="mobileBottomAnswered" class="text-brand-600 font-bold">0</span> / 24
+    </div>
+    <div class="flex items-center gap-2">
+      <button onclick="toggleMobileNav()" class="bg-brand-600 text-white active:scale-95 px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-md">
+        <i class="fa-solid fa-list-ol"></i>
+        <span>Jump to Q</span>
+      </button>
+      <button id="mobileSubmitBtn" onclick="openSubmitModal()" class="flex bg-emerald-600 text-white active:scale-95 px-3 py-1.5 rounded-xl text-xs font-bold items-center gap-1.5 shadow-md">
+        <i class="fa-solid fa-check"></i>
+        <span>Submit</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- EXAM RESULT MODAL -->
+  <div id="resultModal" class="fixed inset-0 z-50 bg-slate-900/75 backdrop-blur-sm hidden items-center justify-center p-3 sm:p-4 overflow-y-auto">
+    <div class="bg-white dark:bg-slate-900 rounded-3xl max-w-lg w-full p-5 sm:p-7 shadow-2xl border border-slate-200 dark:border-slate-800 text-center animate-fade-in my-auto max-h-[92vh] overflow-y-auto">
       
-      <div class="text-center max-w-2xl mx-auto mb-10">
-        <span class="text-xs font-black uppercase tracking-wider text-slate-500 block">Admissions &amp; Inquiries</span>
-        <h2 class="text-2xl sm:text-3xl font-black text-slate-950 dark:text-white mt-1">
-          Visit Center or Call Sir
-        </h2>
-        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1">
-          Direct counseling, batch registration, and home tuition booking at Dwarka Mor, New Delhi.
-        </p>
+      <!-- Icon & Title -->
+      <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 mx-auto flex items-center justify-center text-2xl sm:text-3xl mb-3 shadow-md">
+        <i class="fa-solid fa-trophy"></i>
+      </div>
+      <h3 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">Exam Scorecard & Submission</h3>
+      <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+        Santosh Kumar Jha &bull; SK Classes &bull; Created by Tejas
+      </p>
+
+      <!-- Student Identification Inputs -->
+      <div class="mt-4 p-3.5 bg-slate-50 dark:bg-slate-800/70 rounded-2xl border border-slate-200 dark:border-slate-700 text-left space-y-2.5">
+        <div>
+          <label class="block text-[11px] font-bold text-slate-700 dark:text-slate-300 mb-1 flex items-center justify-between">
+            <span>Student Full Name <span class="text-rose-500">*</span></span>
+            <span class="text-[10px] text-slate-400 font-normal">Sent to Sir's WhatsApp</span>
+          </label>
+          <div class="relative">
+            <i class="fa-solid fa-user absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+            <input id="modalStudentName" type="text" placeholder="Enter your name (e.g. Rahul Sharma)" 
+                   class="w-full pl-8 pr-3 py-2 text-xs sm:text-sm rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-semibold focus:outline-hidden focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition" />
+          </div>
+          <p id="nameValidationMsg" class="text-[10px] text-rose-500 font-bold hidden mt-1">Please enter your name before sending!</p>
+        </div>
+
+        <div>
+          <label class="block text-[11px] font-bold text-slate-700 dark:text-slate-300 mb-1 flex items-center justify-between">
+            <span>Your Mobile / WhatsApp Number</span>
+            <span class="text-[10px] text-slate-400 font-normal">Optional</span>
+          </label>
+          <div class="relative">
+            <i class="fa-solid fa-phone absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+            <input id="modalStudentPhone" type="tel" placeholder="e.g. 9876543210" 
+                   class="w-full pl-8 pr-3 py-2 text-xs sm:text-sm rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-semibold focus:outline-hidden focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition" />
+          </div>
+        </div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-        
-        <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 text-center space-y-2">
-          <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-slate-800 text-blue-700 dark:text-blue-300 flex items-center justify-center mx-auto text-base">
-            <i class="fa-solid fa-location-dot text-rose-500"></i>
-          </div>
-          <h4 class="font-bold text-sm text-slate-900 dark:text-white">Coaching Center &amp; Home Tuition</h4>
-          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-            <strong>Classroom:</strong> Dwarka Mor, New Delhi (Near Metro)<br>
-            <strong>Home Tuition:</strong> Dwarka, Janakpuri, Uttam Nagar &amp; nearby
-          </p>
+      <!-- Performance Badges Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 my-4 text-center">
+        <div class="bg-emerald-50 dark:bg-emerald-950/40 p-2.5 rounded-2xl border border-emerald-200 dark:border-emerald-900/40">
+          <span class="text-[10px] text-emerald-700 dark:text-emerald-400 block font-bold uppercase">Correct</span>
+          <span id="modalCorrect" class="text-lg sm:text-xl font-black text-emerald-600 dark:text-emerald-400">0</span>
         </div>
-
-        <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 text-center space-y-2">
-          <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-slate-800 text-emerald-700 dark:text-emerald-300 flex items-center justify-center mx-auto text-base">
-            <i class="fa-solid fa-phone text-emerald-600"></i>
-          </div>
-          <h4 class="font-bold text-sm text-slate-900 dark:text-white">Phone Support</h4>
-          <p class="text-xs text-slate-600 dark:text-slate-400">
-            Call Santosh Sir directly: <br>
-            <a href="tel:8683068609" class="font-extrabold text-blue-700 dark:text-blue-400 text-base hover:underline">8683068609</a>
-          </p>
+        <div class="bg-rose-50 dark:bg-rose-950/40 p-2.5 rounded-2xl border border-rose-200 dark:border-rose-900/40">
+          <span class="text-[10px] text-rose-700 dark:text-rose-400 block font-bold uppercase">Wrong</span>
+          <span id="modalWrong" class="text-lg sm:text-xl font-black text-rose-600 dark:text-rose-400">0</span>
         </div>
-
-        <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 text-center space-y-2">
-          <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-slate-800 text-emerald-700 dark:text-emerald-300 flex items-center justify-center mx-auto text-base">
-            <i class="fa-brands fa-whatsapp text-emerald-600"></i>
-          </div>
-          <h4 class="font-bold text-sm text-slate-900 dark:text-white">WhatsApp Chat</h4>
-          <p class="text-xs text-slate-600 dark:text-slate-400">
-            Batch timings, fee &amp; home tuition slots:<br>
-            <a href="https://wa.me/918683068609?text=Hello%20Santosh%20Sir,%20I%20want%20information%20about%20your%20classes%20and%20home%20tuition." target="_blank" class="font-bold text-emerald-600 text-xs hover:underline">Click here to Chat on WhatsApp</a>
-          </p>
+        <div class="bg-slate-100 dark:bg-slate-800 p-2.5 rounded-2xl border border-slate-200 dark:border-slate-700">
+          <span class="text-[10px] text-slate-600 dark:text-slate-400 block font-bold uppercase">Skipped</span>
+          <span id="modalSkipped" class="text-lg sm:text-xl font-black text-slate-700 dark:text-slate-200">0</span>
         </div>
+        <div class="bg-blue-50 dark:bg-blue-950/40 p-2.5 rounded-2xl border border-blue-200 dark:border-blue-900/40">
+          <span class="text-[10px] text-blue-700 dark:text-blue-400 block font-bold uppercase">Accuracy</span>
+          <span id="modalAccuracy" class="text-lg sm:text-xl font-black text-blue-600 dark:text-blue-400">0%</span>
+        </div>
+      </div>
 
+      <!-- Final Score Banner -->
+      <div class="bg-gradient-to-r from-blue-50 via-indigo-50 to-blue-50 dark:from-slate-800 dark:via-slate-800/80 dark:to-slate-800 p-3 rounded-2xl border border-blue-200/80 dark:border-slate-700 flex justify-between items-center text-xs sm:text-sm font-bold mb-4">
+        <div class="text-left">
+          <span class="text-slate-500 dark:text-slate-400 text-[11px] block">Time Spent & Net Score</span>
+          <span id="modalTimeSpent" class="text-slate-800 dark:text-slate-200 font-semibold text-xs">⏱️ 00m 00s</span>
+        </div>
+        <div class="text-right">
+          <span class="text-[10px] text-slate-500 uppercase block">Total Marks</span>
+          <span id="modalTotalMarks" class="text-blue-700 dark:text-blue-400 font-black text-lg sm:text-xl">0 / 24</span>
+        </div>
+      </div>
+
+      <!-- Success Notice Banner (hidden until sent) -->
+      <div id="whatsappSentBanner" class="hidden mb-3 p-2.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-300 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300 text-xs font-bold text-center">
+        <i class="fa-solid fa-circle-check mr-1 text-emerald-600"></i>
+        <span>Scorecard opened in WhatsApp! Click 'Send' in WhatsApp to deliver to Sir.</span>
+      </div>
+
+      <!-- PRIMARY ACTION: SEND TO WHATSAPP -->
+      <button id="sendWhatsappBtn" onclick="submitAndSendToWhatsApp()" class="w-full py-3.5 px-4 rounded-2xl bg-emerald-600 hover:bg-emerald-700 active:scale-98 text-white font-black text-xs sm:text-sm shadow-lg shadow-emerald-600/30 flex items-center justify-center gap-2 transition mb-2">
+        <i class="fa-brands fa-whatsapp text-lg sm:text-xl"></i>
+        <span>Send Exam Details to Sir on WhatsApp (8683068609)</span>
+      </button>
+
+      <!-- SECONDARY ACTIONS -->
+      <div class="grid grid-cols-3 gap-2 mt-2 text-xs">
+        <button onclick="copyScorecardText()" class="py-2.5 px-2 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold transition flex items-center justify-center gap-1">
+          <i class="fa-solid fa-copy text-xs"></i>
+          <span id="copyBtnLabel">Copy</span>
+        </button>
+        <button onclick="closeSubmitModal()" class="py-2.5 px-2 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold transition flex items-center justify-center gap-1">
+          <i class="fa-solid fa-eye text-xs"></i>
+          <span>Solutions</span>
+        </button>
+        <button onclick="restartExam()" class="py-2.5 px-2 rounded-xl bg-blue-700 hover:bg-blue-800 text-white font-bold transition flex items-center justify-center gap-1 shadow-xs">
+          <i class="fa-solid fa-rotate-right text-xs"></i>
+          <span>Retake</span>
+        </button>
       </div>
 
     </div>
-  </section>
+  </div>
 
-  <!-- 9. FOOTER (INSTITUTIONAL NAVY) -->
-  <footer class="bg-slate-900 text-slate-300 py-10 text-xs border-t border-slate-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3">
-      <div class="flex items-center justify-center gap-2">
-        <span class="font-black text-white text-sm tracking-tight">SK CLASSES &bull; SANTOSH KUMAR JHA</span>
-        <span class="text-[10px] px-2 py-0.5 rounded bg-blue-950 text-amber-300 border border-blue-800 font-bold">SINCE 2006</span>
-      </div>
-      <p class="text-[11px] text-slate-400">
-        Dwarka Mor, New Delhi &bull; Phone: 8683068609 &bull; Classroom Batches &amp; Home Tuition &bull; Class 8-10, SSC, Banking, Railway, Delhi Police
+  <!-- FOOTER -->
+  <footer class="mt-12 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 py-6 text-center text-xs text-slate-500 dark:text-slate-400">
+    <div class="max-w-7xl mx-auto px-4 space-y-1.5">
+      <p class="font-bold text-slate-800 dark:text-slate-200">
+        SSC BY SK &copy; 2026 &bull; Created with &hearts; by Tejas
       </p>
-      <p class="text-slate-500 font-semibold text-[11px] pt-3 border-t border-slate-800">
-        &copy; 2006–2026 Santosh Kumar Jha &bull; Created with &hearts; by Tejas
-      </p>
+      <p class="text-[11px]">Fully optimized for Mobile, Tablet, and Desktop practice.</p>
     </div>
   </footer>
 
-  <!-- 10. MOBILE BOTTOM FLOATING ACTION BAR (OPTIMIZED FOR MOBILE CUSTOMERS) -->
-  <div class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 p-2 safe-bottom shadow-2xl flex items-center justify-around gap-1.5 text-xs">
-    <a href="tel:8683068609" class="flex-1 bg-blue-700 text-white font-black py-2.5 rounded-xl text-center flex items-center justify-center gap-1.5 shadow-sm active:scale-95 transition">
-      <i class="fa-solid fa-phone text-xs"></i> Call
-    </a>
-    <a href="https://wa.me/918683068609?text=Hello%20Santosh%20Sir,%20I%20want%20to%20know%20about%20Home%20Tuition%20and%20Coaching%20classes." target="_blank" class="flex-1 bg-emerald-600 text-white font-black py-2.5 rounded-xl text-center flex items-center justify-center gap-1.5 shadow-sm active:scale-95 transition">
-      <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp
-    </a>
-    <a href="#one-on-one" class="flex-1 border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white font-bold py-2.5 rounded-xl text-center flex items-center justify-center gap-1 active:scale-95 transition">
-      <i class="fa-solid fa-house-user text-blue-700"></i> Tuition
-    </a>
-    <a href="test.html" class="flex-1 bg-blue-50 text-blue-900 border border-blue-200 font-bold py-2.5 rounded-xl text-center flex items-center justify-center gap-1 shadow-xs active:scale-95 transition">
-      <i class="fa-solid fa-pen-to-square text-blue-700"></i> Test
-    </a>
-  </div>
-
+  <!-- SCRIPT -->
   <script>
+    const questionsData = [
+  {
+    "id": 1,
+    "text": "Sona goes to a park every day for walking. One morning, she started walking from her home and walked 40 km towards the north. Then she turned to the right and walked 60 km. Again, she turned right and walked 40 km. Lastly, she took a left turn and walked 60 km. In which direction and how far is she from her home?",
+    "options": {
+      "A": "East, 90 km",
+      "B": "West, 120 km",
+      "C": "West, 60 km",
+      "D": "East, 120 km"
+    },
+    "correct": "D",
+    "explanation": "Home = (0, 0).<br>&bull; North 40 km &rarr; (0, 40).<br>&bull; Turn right (East) 60 km &rarr; (60, 40).<br>&bull; Turn right (South) 40 km &rarr; (60, 0).<br>&bull; Turn left (East) 60 km &rarr; (60 + 60, 0) = (120, 0).<br>Coordinates: (+120, 0) &rarr; Direction is <b>East</b> and straight distance is <b>120 km</b>."
+  },
+  {
+    "id": 2,
+    "text": "A person starts from point Z and moves 7 km towards the South. He turns right and moves 5 km, turns right, and moves 3 km, then turns right and moves 1 km. He takes a left turn and moves 4 km to reach a point X. How much and in which direction does he need to move now to reach point Z?",
+    "options": {
+      "A": "4 km South",
+      "B": "4 km East",
+      "C": "4 km West",
+      "D": "6 km East"
+    },
+    "correct": "B",
+    "explanation": "Point Z = (0, 0).<br>&bull; South 7 km &rarr; (0, -7).<br>&bull; Right (West) 5 km &rarr; (-5, -7).<br>&bull; Right (North) 3 km &rarr; (-5, -4).<br>&bull; Right (East) 1 km &rarr; (-4, -4).<br>&bull; Left (North) 4 km &rarr; (-4, -4 + 4) = (-4, 0) [Point X].<br>From X (-4, 0) to reach Z (0, 0), he needs to travel +4 km East &rarr; <b>4 km East</b>."
+  },
+  {
+    "id": 3,
+    "text": "Anurag and Bhavna started driving from the same point. Anurag drove North for 11 km, then turns right and covers 13 km. Bhavna goes West and covers 15 km, then turns right and covers 11 km. How far apart are they from each other in a straight line?",
+    "options": {
+      "A": "28 km",
+      "B": "26 km",
+      "C": "52 km",
+      "D": "50 km"
+    },
+    "correct": "A",
+    "explanation": "Starting point = (0, 0).<br>&bull; Anurag: North 11 km &rarr; (0, 11), then right (East) 13 km &rarr; (13, 11).<br>&bull; Bhavna: West 15 km &rarr; (-15, 0), then right (North) 11 km &rarr; (-15, 11).<br>Both are at the same North elevation (y = 11).<br>Straight line distance between them = 13 - (-15) = 13 + 15 = <b>28 km</b>."
+  },
+  {
+    "id": 4,
+    "text": "Point A is 35 m to the north of Point B. Point C is 28 m to the west of Point B. Point D is 25 m to the south of Point C. Point E is 14 m to the west of Point D. Point F is 40 m to the north of Point E. In which direction is Point B with respect to Point F?",
+    "options": {
+      "A": "West",
+      "B": "North-east",
+      "C": "North",
+      "D": "South-east"
+    },
+    "correct": "D",
+    "explanation": "Let Point B = (0, 0).<br>&bull; Point A is 35 m north of B &rarr; (0, 35).<br>&bull; Point C is 28 m west of B &rarr; (-28, 0).<br>&bull; Point D is 25 m south of C &rarr; (-28, -25).<br>&bull; Point E is 14 m west of D &rarr; (-28 - 14, -25) = (-42, -25).<br>&bull; Point F is 40 m north of E &rarr; (-42, -25 + 40) = (-42, 15).<br>Vector from F (-42, 15) to B (0, 0): &Delta;x = +42 (East), &Delta;y = -15 (South).<br>Therefore, Point B is in the <b>South-east</b> with respect to Point F."
+  },
+  {
+    "id": 5,
+    "text": "Aunt Gloria walked out of her house and walked 65 m towards the east. She took a left turn and walked 28 m. Again, she took a left turn and walked 110 m to reach a public library. How far (shortest distance) and in which direction is the library from Aunt Gloria\u2019s house?",
+    "options": {
+      "A": "48 m, North-East",
+      "B": "48 m, North-West",
+      "C": "53 m, North-East",
+      "D": "53 m, North-West"
+    },
+    "correct": "D",
+    "explanation": "House = (0, 0).<br>&bull; 65 m East &rarr; (65, 0).<br>&bull; Left turn (North) 28 m &rarr; (65, 28).<br>&bull; Left turn (West) 110 m &rarr; (65 - 110, 28) = (-45, 28) [Library].<br>Direction: West and North &rarr; <b>North-West</b>.<br>Shortest distance = &radic;(45&sup2; + 28&sup2;) = &radic;(2025 + 784) = &radic;2809 = <b>53 m</b>."
+  },
+  {
+    "id": 6,
+    "text": "Town Q is to the north of Town P. Town R is to the west of Town Q. Town S is to the north of Town R. Town T is to the east of Town S. What is the position of Town T with respect to Town R? (All positions are arranged in GRID pattern).",
+    "options": {
+      "A": "East",
+      "B": "South",
+      "C": "North-east",
+      "D": "South-east"
+    },
+    "correct": "C",
+    "explanation": "1. Town R is taken as reference point (0, 0).<br>2. Town S is north of Town R &rarr; Position is (0, +y).<br>3. Town T is east of Town S &rarr; Position is (+x, +y).<br>Therefore, Town T is in the <b>North-east</b> direction with respect to Town R."
+  },
+  {
+    "id": 7,
+    "text": "A man is standing in the park facing North. He turns 90&deg; towards the left and walks 40 km. He again takes a 90&deg; turn towards the right and walks 50 km. He takes the next 90&deg; turn towards the right and walks 60 km. Lastly, he takes 90&deg; turn towards the right and walks 50 km. How much distance is he from the starting point?",
+    "options": {
+      "A": "40 km",
+      "B": "60 km",
+      "C": "50 km",
+      "D": "20 km"
+    },
+    "correct": "D",
+    "explanation": "Start point = (0, 0), initial facing = North.<br>&bull; 90&deg; Left turn (facing West) & walks 40 km &rarr; (-40, 0).<br>&bull; 90&deg; Right turn (facing North) & walks 50 km &rarr; (-40, 50).<br>&bull; 90&deg; Right turn (facing East) & walks 60 km &rarr; (-40 + 60, 50) = (20, 50).<br>&bull; 90&deg; Right turn (facing South) & walks 50 km &rarr; (20, 50 - 50) = (20, 0).<br>Distance from (0, 0) to (20, 0) = <b>20 km</b>."
+  },
+  {
+    "id": 8,
+    "text": "Shruti departs from her home and walks 47 m towards the west. She then turns right and walks 18 m. She turns left and walks 53 m. She takes a final left turn and walks 30 m. How far is she from a pole which is exactly 12 m to the south of her home?<br><span class='text-xs text-slate-400'>(Assume that all the turns are 90&deg; turns only.)</span>",
+    "options": {
+      "A": "100 m",
+      "B": "105 m",
+      "C": "90 m",
+      "D": "110 m"
+    },
+    "correct": "A",
+    "explanation": "Home = (0, 0).<br>&bull; 47 m West &rarr; (-47, 0).<br>&bull; Turns right (North) and walks 18 m &rarr; (-47, 18).<br>&bull; Turns left (West) and walks 53 m &rarr; (-47 - 53, 18) = (-100, 18).<br>&bull; Turns left (South) and walks 30 m &rarr; (-100, 18 - 30) = (-100, -12).<br>Pole is 12 m south of home &rarr; (0, -12).<br>Distance between (-100, -12) and (0, -12) = |-100 - 0| = <b>100 m</b>."
+  },
+  {
+    "id": 9,
+    "text": "Indira starts from point A, which is 7 km towards East of point B. From point A, she drives 4 km towards East. From here, she takes a left turn and drives 9 km. She then takes a left turn, drives 9 km and stops at point C. If from point C, Indira drives 9 km towards South, how far will she be from point B?",
+    "options": {
+      "A": "2 km",
+      "B": "4 km",
+      "C": "1 km",
+      "D": "3 km"
+    },
+    "correct": "A",
+    "explanation": "Let Point B = (0, 0).<br>&bull; Point A is 7 km East of B &rarr; A = (7, 0).<br>&bull; From A, drives 4 km East &rarr; (11, 0).<br>&bull; Left turn (North) 9 km &rarr; (11, 9).<br>&bull; Left turn (West) 9 km &rarr; (11 - 9, 9) = (2, 9) [Point C].<br>&bull; From C, drives 9 km South &rarr; (2, 9 - 9) = (2, 0).<br>Distance from Point B (0, 0) to (2, 0) = 2 - 0 = <b>2 km</b>."
+  },
+  {
+    "id": 10,
+    "text": "P is to the north of Q. T is to the east of Q and S is to the east of P. S is to the north-east of T and south-west of R. What is the position of R with respect to Q? (All positions are arranged in GRID pattern)",
+    "options": {
+      "A": "North-east",
+      "B": "South-west",
+      "C": "East",
+      "D": "South"
+    },
+    "correct": "A",
+    "explanation": "Let Q = (0, 0).<br>&bull; P is north of Q: (0, +y).<br>&bull; T is east of Q: (+x, 0).<br>&bull; S is east of P: (+xS, +yP). Since S is North-East of T, xS > xT > 0 and yP > 0.<br>&bull; S is South-West of R &rarr; R is North-East of S.<br>&bull; Therefore, R has coordinates (xR, yR) with xR > 0 and yR > 0.<br>With respect to Q (0, 0), point R is in the <b>North-east</b> direction."
+  },
+  {
+    "id": 11,
+    "text": "Salman starts from his office and drives 29 km towards South. Then he turns right and drives 16 km, again he turns right and drives 29 km. Finally he turns right and drives 13 km. At what distance is he from his start point in a straight line?",
+    "options": {
+      "A": "29 km",
+      "B": "3 km",
+      "C": "16 km",
+      "D": "13 km"
+    },
+    "correct": "B",
+    "explanation": "Start point = (0, 0).<br>&bull; Drives 29 km South &rarr; (0, -29).<br>&bull; Turns right (West) and drives 16 km &rarr; (-16, -29).<br>&bull; Turns right (North) and drives 29 km &rarr; (-16, 0).<br>&bull; Turns right (East) and drives 13 km &rarr; (-16 + 13, 0) = (-3, 0).<br>Straight line distance from (0, 0) to (-3, 0) = |-3| = <b>3 km</b>."
+  },
+  {
+    "id": 12,
+    "text": "Mehar drives 19 km East from his home. He then takes a left turn and drives 11 km. He again takes a left turn and drives 19 km. How far is he from starting point in a straight line?",
+    "options": {
+      "A": "30 km",
+      "B": "11 km",
+      "C": "19 km",
+      "D": "21 km"
+    },
+    "correct": "B",
+    "explanation": "Start point = (0, 0).<br>&bull; 19 km East &rarr; (19, 0).<br>&bull; Left turn (North) 11 km &rarr; (19, 11).<br>&bull; Left turn (West) 19 km &rarr; (19 - 19, 11) = (0, 11).<br>Straight line distance from (0, 0) to (0, 11) = <b>11 km</b>."
+  },
+  {
+    "id": 13,
+    "text": "Manoj starts from point A and drives X km towards the south and then turns left and drives Y km. He then takes a right turn and drives for 4 km to reach point D. If Manoj drove a total of 17 km between Points A and D, and both X and Y are perfect squares where X > Y, then what is the value of X ?",
+    "options": {
+      "A": "4",
+      "B": "11",
+      "C": "5",
+      "D": "9"
+    },
+    "correct": "D",
+    "explanation": "Total distance = X + Y + 4 = 17 km &rarr; X + Y = 13 km.<br>Both X and Y are perfect squares and X > Y.<br>The perfect squares summing to 13 are 9 and 4 (3&sup2; = 9, 2&sup2; = 4).<br>Since X > Y, X = 9 and Y = 4.<br>Hence, the value of X is <b>9</b>."
+  },
+  {
+    "id": 14,
+    "text": "X, from his house, ran 200 steps towards the east and then ran 30 steps after turning to his right to reach a monastery. He then ran 30 steps towards his right and reached a point W. He then turned again towards his right and ran 30 steps. From there, turning towards his right he ran 130 steps. He then turned towards his left and ran 10 steps to reach a bakery. In which direction is the bakery with respect to X\u2019s house?",
+    "options": {
+      "A": "East",
+      "B": "South-East",
+      "C": "North-East",
+      "D": "North"
+    },
+    "correct": "C",
+    "explanation": "House = (0, 0).<br>&bull; 200 steps East &rarr; (200, 0).<br>&bull; Right (South) 30 steps &rarr; (200, -30) [Monastery].<br>&bull; Right (West) 30 steps &rarr; (170, -30) [Point W].<br>&bull; Right (North) 30 steps &rarr; (170, 0).<br>&bull; Right (East) 130 steps &rarr; (170 + 130, 0) = (300, 0).<br>&bull; Left (North) 10 steps &rarr; (300, 10) [Bakery].<br>Bakery is at (+300, +10), which is in the <b>North-East</b> of X's house."
+  },
+  {
+    "id": 15,
+    "text": "Shalini drives 5 km North, then she turns East and drives 12 km. After this, she turns North and drives 4 km. Again she turns East and drives 5 km. What is the total distance covered by Shalini?",
+    "options": {
+      "A": "22 km",
+      "B": "9 km",
+      "C": "12 km",
+      "D": "26 km"
+    },
+    "correct": "D",
+    "explanation": "Total distance covered is the sum of all segments:<br>Total Distance = 5 km + 12 km + 4 km + 5 km = <b>26 km</b>."
+  },
+  {
+    "id": 16,
+    "text": "Manohar cycles X km towards west and then turns right and cycles Y km to reach his office. Now, the shortest distance between the starting point and his office is 13 km. What can be the value of X and Y, respectively, (in km)?",
+    "options": {
+      "A": "12 and 5",
+      "B": "8 and 5",
+      "C": "11 and 6",
+      "D": "6 and 7"
+    },
+    "correct": "A",
+    "explanation": "By Pythagoras theorem: X&sup2; + Y&sup2; = 13&sup2; = 169.<br>Evaluating options:<br>&bull; A: 12&sup2; + 5&sup2; = 144 + 25 = 169 (Exact match!)<br>&bull; B: 8&sup2; + 5&sup2; = 64 + 25 = 89<br>&bull; C: 11&sup2; + 6&sup2; = 121 + 36 = 157<br>&bull; D: 6&sup2; + 7&sup2; = 36 + 49 = 85<br>Therefore, values are <b>12 and 5</b>."
+  },
+  {
+    "id": 17,
+    "text": "A boy walks 15 m north, turns right and walks 20 m. Again, he turns right and walks 15 m. Finally, he turns to his left and moves 20 m. What is the distance now from his original position?",
+    "options": {
+      "A": "40 m",
+      "B": "46 m",
+      "C": "50 m",
+      "D": "45 m"
+    },
+    "correct": "A",
+    "explanation": "Origin = (0, 0).<br>&bull; 15 m North &rarr; (0, 15).<br>&bull; Turn right (East) 20 m &rarr; (20, 15).<br>&bull; Turn right (South) 15 m &rarr; (20, 0).<br>&bull; Turn left (East) 20 m &rarr; (20 + 20, 0) = (40, 0).<br>Distance from original position = <b>40 m</b>."
+  },
+  {
+    "id": 18,
+    "text": "B is west of E. A is north-west of B. F is north-east of B. D is south-east of F, such that F is north-west of E and D is south-east of E as well. If C is south-west of E, what is the position of A with respect to E? (All positions are arranged in GRID pattern)",
+    "options": {
+      "A": "South-east",
+      "B": "North-east",
+      "C": "South-west",
+      "D": "North-west"
+    },
+    "correct": "D",
+    "explanation": "1. B is west of E &rarr; relative to E, B is at (-x, 0).<br>2. A is north-west of B &rarr; A is to the West and North of B.<br>3. Moving west from an already west point keeps it west, and moving north gives positive y.<br>Thus, A is strictly West and North of E, which is <b>North-west</b>."
+  },
+  {
+    "id": 19,
+    "text": "Gurman drove 28 km towards the West, took a left turn and drove 22 km. She then took a right turn and drove 18 km. She again took a right turn and drove 22 km. How far is she from starting point in a straight line?",
+    "options": {
+      "A": "28 km",
+      "B": "32 km",
+      "C": "26 km",
+      "D": "46 km"
+    },
+    "correct": "D",
+    "explanation": "Start point = (0, 0).<br>&bull; West 28 km &rarr; (-28, 0).<br>&bull; Left turn (South) 22 km &rarr; (-28, -22).<br>&bull; Right turn (West) 18 km &rarr; (-28 - 18, -22) = (-46, -22).<br>&bull; Right turn (North) 22 km &rarr; (-46, -22 + 22) = (-46, 0).<br>Distance from starting point = |-46| = <b>46 km</b>."
+  },
+  {
+    "id": 20,
+    "text": "Pooja drives 4 km towards east from point A. She takes a right turn and drives 2 km. Then she takes a left turn and drives 3 km. Again, she takes a left turn and drives 2 km to reach point B. How far and towards which direction should she drive now in order to reach point A again?",
+    "options": {
+      "A": "7 km towards west",
+      "B": "4 km towards south",
+      "C": "4 km towards east",
+      "D": "5 km towards north"
+    },
+    "correct": "A",
+    "explanation": "Point A = (0, 0).<br>&bull; East 4 km &rarr; (4, 0).<br>&bull; Right turn (South) 2 km &rarr; (4, -2).<br>&bull; Left turn (East) 3 km &rarr; (4 + 3, -2) = (7, -2).<br>&bull; Left turn (North) 2 km &rarr; (7, -2 + 2) = (7, 0) [Point B].<br>To return to Point A (0, 0) from Point B (7, 0), she needs to go <b>7 km towards west</b>."
+  },
+  {
+    "id": 21,
+    "text": "Point A is 30 m to the east of Point B. Point C is 43 m to the south of Point A. Point C is 45 m to the east of Point D. Point E is 14 m to the south of Point D. Point F is 35 m to the east of Point E. In which direction is Point B with respect to Point F?",
+    "options": {
+      "A": "North-east",
+      "B": "North-west",
+      "C": "South-west",
+      "D": "West"
+    },
+    "correct": "B",
+    "explanation": "Let Point B = (0, 0).<br>&bull; Point A = (30, 0)<br>&bull; Point C = (30, -43)<br>&bull; Point D = (30 - 45, -43) = (-15, -43)<br>&bull; Point E = (-15, -43 - 14) = (-15, -57)<br>&bull; Point F = (-15 + 35, -57) = (20, -57)<br>Direction of Point B (0, 0) from Point F (20, -57):<br>&Delta;x = -20 (West), &Delta;y = +57 (North).<br>Therefore, Point B is in the <b>North-west</b> direction from Point F."
+  },
+  {
+    "id": 22,
+    "text": "Rohit drives 3 km towards north from point A. He takes a left turn and drives 4 km. Again he takes a left turn and drives 6 km. Finally, he takes a left turn and drives 4 km to reach point B. How far and towards which direction should he drive in order to reach point A again?",
+    "options": {
+      "A": "4 km towards south",
+      "B": "3 km towards east",
+      "C": "3 km towards north",
+      "D": "2 km towards west"
+    },
+    "correct": "C",
+    "explanation": "Point A = (0, 0).<br>&bull; North 3 km &rarr; (0, 3).<br>&bull; Left turn (West) 4 km &rarr; (-4, 3).<br>&bull; Left turn (South) 6 km &rarr; (-4, -3).<br>&bull; Left turn (East) 4 km &rarr; (0, -3) [Point B].<br>To return to Point A (0, 0) from Point B (0, -3), Rohit must go <b>3 km towards north</b>."
+  },
+  {
+    "id": 23,
+    "text": "Nitin departs from his home and walks 45 m towards the east. He then turns left and walks 48 m. He turns left again and walks 27 m. He takes a final left turn and walks 55 m. How far is he from a pole which is exactly 7 m to the south of his home?<br><span class='text-xs text-slate-400'>(Assume that all the turns are 90&deg; turns only.)</span>",
+    "options": {
+      "A": "28 m",
+      "B": "16 m",
+      "C": "31 m",
+      "D": "18 m"
+    },
+    "correct": "D",
+    "explanation": "Home = (0, 0).<br>&bull; 45 m East &rarr; (45, 0).<br>&bull; Turns left (North) 48 m &rarr; (45, 48).<br>&bull; Turns left (West) 27 m &rarr; (45 - 27, 48) = (18, 48).<br>&bull; Turns left (South) 55 m &rarr; (18, 48 - 55) = (18, -7).<br>The pole is located 7 m south of home &rarr; (0, -7).<br>Distance between (18, -7) and (0, -7) is |18 - 0| = <b>18 m</b>."
+  },
+  {
+    "id": 24,
+    "text": "Shilpa goes to a park every day for walking. One morning, she started walking from her home and walked 40 km towards the north. Then she turned to the right and walked 60 km. Again, she turned right and walked 40 km. Lastly, she took a left turn and walked 30 km. How far is she from her home?",
+    "options": {
+      "A": "140 km",
+      "B": "90 km",
+      "C": "100 km",
+      "D": "60 km"
+    },
+    "correct": "B",
+    "explanation": "Home = (0, 0).<br>&bull; North 40 km &rarr; (0, 40).<br>&bull; Right turn (East) 60 km &rarr; (60, 40).<br>&bull; Right turn (South) 40 km &rarr; (60, 0).<br>&bull; Left turn (East) 30 km &rarr; (60 + 30, 0) = (90, 0).<br>Distance from home = <b>90 km</b>."
+  }
+];
+
+    let currentMode = "practice";
+    let userSelections = {};
+    let markedForReview = {};
+    let revealedAnswers = {};
+    let examTimeSeconds = 25 * 60;
+    let timerInterval = null;
+    let pageStartTime = Date.now();
+
     // Default to clean, professional light theme. Only enable dark if user explicitly chose it.
     if (localStorage.getItem("theme") === "dark") {
       document.documentElement.classList.add("dark");
       const icon = document.getElementById("themeIcon");
-      if (icon) icon.className = "fa-regular fa-sun text-sm";
+      if (icon) icon.className = "fa-regular fa-sun text-sm sm:text-base";
     } else {
       document.documentElement.classList.remove("dark");
       const icon = document.getElementById("themeIcon");
-      if (icon) icon.className = "fa-regular fa-moon text-sm";
+      if (icon) icon.className = "fa-regular fa-moon text-sm sm:text-base";
     }
 
     function toggleDarkMode() {
       const isDark = document.documentElement.classList.toggle("dark");
       localStorage.setItem("theme", isDark ? "dark" : "light");
       const icon = document.getElementById("themeIcon");
-      if (icon) icon.className = isDark ? "fa-regular fa-sun text-sm" : "fa-regular fa-moon text-sm";
+      if (icon) icon.className = isDark ? "fa-regular fa-sun text-sm sm:text-base" : "fa-regular fa-moon text-sm sm:text-base";
     }
 
     function toggleMobileNav() {
-      const menu = document.getElementById("mobileNavMenu");
-      menu.classList.toggle("hidden");
+      const drawer = document.getElementById("mobileDrawer");
+      drawer.classList.toggle("hidden");
     }
 
-    function filterCourses(category) {
-      const cards = document.querySelectorAll(".course-card");
-      const tabAll = document.getElementById("tabAll");
-      const tabOne = document.getElementById("tabOne");
-      const tabSchool = document.getElementById("tabSchool");
-      const tabComp = document.getElementById("tabComp");
+    function setMode(mode) {
+      currentMode = mode;
+      const practiceBtn = document.getElementById("modePracticeBtn");
+      const examBtn = document.getElementById("modeExamBtn");
+      const actionHeaderBtn = document.getElementById("actionHeaderBtn");
+      const mobileSubmitBtn = document.getElementById("mobileSubmitBtn");
+      const timerBadge = document.getElementById("examTimerBadge");
+      
+      if (mode === "practice") {
+        practiceBtn.className = "px-2.5 sm:px-3 py-1.5 rounded-lg transition-all bg-white dark:bg-slate-700 text-brand-700 dark:text-white shadow-sm flex items-center gap-1 sm:gap-1.5";
+        examBtn.className = "px-2.5 sm:px-3 py-1.5 rounded-lg transition-all text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white flex items-center gap-1 sm:gap-1.5";
+        
+        mobileSubmitBtn.classList.remove("hidden");
+        mobileSubmitBtn.classList.add("flex");
+        timerBadge.classList.add("hidden");
+        timerBadge.classList.remove("flex");
+        
+        clearInterval(timerInterval);
+      } else {
+        examBtn.className = "px-2.5 sm:px-3 py-1.5 rounded-lg transition-all bg-white dark:bg-slate-700 text-brand-700 dark:text-white shadow-sm flex items-center gap-1 sm:gap-1.5";
+        practiceBtn.className = "px-2.5 sm:px-3 py-1.5 rounded-lg transition-all text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white flex items-center gap-1 sm:gap-1.5";
+        actionHeaderBtn.classList.remove("hidden");
+        mobileSubmitBtn.classList.remove("hidden");
+        mobileSubmitBtn.classList.add("flex");
+        timerBadge.classList.remove("hidden");
+        timerBadge.classList.add("flex");
+        
+        
+        revealedAnswers = {};
+        startExamTimer();
+      }
+      renderQuestions();
+      renderNavigators();
+      updateStats();
+    }
 
-      [tabAll, tabOne, tabSchool, tabComp].forEach(t => {
-        if (t) t.className = "px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white shrink-0";
+    function startExamTimer() {
+      clearInterval(timerInterval);
+      examTimeSeconds = 25 * 60;
+      updateTimerDisplay();
+      timerInterval = setInterval(() => {
+        examTimeSeconds--;
+        updateTimerDisplay();
+        if (examTimeSeconds <= 0) {
+          clearInterval(timerInterval);
+          alert("Exam time has expired! Auto-submitting your test.");
+          openSubmitModal();
+        }
+      }, 1000);
+    }
+
+    function updateTimerDisplay() {
+      const minutes = Math.floor(examTimeSeconds / 60);
+      const seconds = examTimeSeconds % 60;
+      document.getElementById("examTimerText").innerText = 
+        `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+    }
+
+    function renderQuestions(filterQuery = "") {
+      const container = document.getElementById("questionsContainer");
+      container.innerHTML = "";
+
+      const filtered = questionsData.filter(q => {
+        if (!filterQuery) return true;
+        const textToSearch = (q.text + " " + Object.values(q.options).join(" ") + " Question " + q.id).toLowerCase();
+        return textToSearch.includes(filterQuery.toLowerCase());
       });
 
-      if (category === "all") {
-        tabAll.className = "px-3.5 py-2 rounded-xl bg-white dark:bg-slate-700 text-blue-900 dark:text-white shadow-xs font-black shrink-0";
-      } else if (category === "one-on-one") {
-        if (tabOne) tabOne.className = "px-3.5 py-2 rounded-xl bg-white dark:bg-slate-700 text-emerald-700 dark:text-emerald-400 shadow-xs font-black shrink-0";
-      } else if (category === "school") {
-        tabSchool.className = "px-3.5 py-2 rounded-xl bg-white dark:bg-slate-700 text-blue-900 dark:text-white shadow-xs font-black shrink-0";
-      } else if (category === "competitive") {
-        tabComp.className = "px-3.5 py-2 rounded-xl bg-white dark:bg-slate-700 text-blue-900 dark:text-white shadow-xs font-black shrink-0";
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="p-10 text-center bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800">
+            <i class="fa-solid fa-magnifying-glass text-3xl text-slate-400 mb-2"></i>
+            <h4 class="text-sm font-bold text-slate-700 dark:text-slate-200">No matching questions found</h4>
+            <p class="text-xs text-slate-400 mt-0.5">Try searching another term or question number.</p>
+          </div>
+        `;
+        return;
       }
 
-      cards.forEach(card => {
-        const cCat = card.getAttribute("data-category");
-        if (category === "all" || cCat === category || cCat === "all") {
-          card.classList.remove("hidden");
+      filtered.forEach((q) => {
+        const userChoice = userSelections[q.id];
+        const isRevealed = revealedAnswers[q.id];
+        const isMarked = markedForReview[q.id];
+
+        const card = document.createElement("div");
+        card.id = `q-card-${q.id}`;
+        card.className = `question-card bg-white dark:bg-slate-900 rounded-2xl border ${isMarked ? "border-amber-400 dark:border-amber-500 ring-2 ring-amber-400/20" : "border-slate-200 dark:border-slate-800"} p-4 sm:p-6 shadow-xs`;
+
+        let cardHTML = `
+          <!-- Question Header -->
+          <div class="flex items-start justify-between gap-3 mb-3 sm:mb-4">
+            <div class="flex items-center gap-2">
+              <span class="inline-flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-brand-50 text-brand-700 dark:bg-brand-950/60 dark:text-brand-300 font-bold text-xs">
+                #${q.id}
+              </span>
+              <span class="text-[11px] font-semibold uppercase tracking-wider text-slate-400">
+                Question ${q.id}
+              </span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <button onclick="toggleBookmark(${q.id})" title="Mark for review" class="text-xs px-2.5 py-1.5 rounded-lg border transition ${isMarked ? "bg-amber-50 text-amber-600 border-amber-300 dark:bg-amber-950/30" : "border-slate-200 dark:border-slate-800 text-slate-400 hover:text-slate-600"}">
+                <i class="${isMarked ? "fa-solid" : "fa-regular"} fa-bookmark"></i>
+                <span class="hidden sm:inline ml-1 text-xs">${isMarked ? "Marked" : "Mark"}</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Question Body -->
+          <div class="text-slate-900 dark:text-slate-100 text-xs sm:text-base leading-relaxed font-medium mb-4 sm:mb-5">
+            ${q.text}
+          </div>
+
+          <!-- Options Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5 mb-3 sm:mb-4">
+        `;
+
+        ["A", "B", "C", "D"].forEach(letter => {
+          const optText = q.options[letter];
+          let btnClass = "border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-800/40 text-slate-700 dark:text-slate-300 hover:border-brand-300 dark:hover:border-slate-700";
+          let badgeClass = "bg-white dark:bg-slate-700 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-600";
+
+          // IMPORTANT: DO NOT SHOW REAL ANSWER ON CLICK!
+          // Only show real answer if isRevealed is TRUE (when user clicked 'Show answer' or after submitting test)
+          if (isRevealed) {
+            if (letter === q.correct) {
+              btnClass = "border-emerald-500 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-200 font-bold ring-1 ring-emerald-500";
+              badgeClass = "bg-emerald-600 text-white border-transparent";
+            } else if (userChoice === letter) {
+              btnClass = "border-rose-400 bg-rose-50 dark:bg-rose-950/40 text-rose-800 dark:text-rose-200 font-bold ring-1 ring-rose-400";
+              badgeClass = "bg-rose-600 text-white border-transparent";
+            }
+          } else {
+            // Option clicked: ONLY select it! Keep it neutral brand color, NEVER reveal if right or wrong.
+            if (userChoice === letter) {
+              btnClass = "border-brand-600 bg-brand-50 dark:bg-brand-950/60 text-brand-700 dark:text-brand-300 font-bold ring-2 ring-brand-500/30";
+              badgeClass = "bg-brand-600 text-white border-transparent";
+            }
+          }
+
+          cardHTML += `
+            <button 
+              onclick="selectOption(${q.id}, '${letter}')"
+              class="option-btn text-left p-2.5 sm:p-3 rounded-xl border flex items-center gap-2.5 sm:gap-3 min-h-[46px] ${btnClass}"
+            >
+              <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg flex items-center justify-center font-bold text-xs shrink-0 ${badgeClass}">
+                ${letter}
+              </span>
+              <span class="text-xs sm:text-sm font-medium leading-snug">${optText}</span>
+            </button>
+          `;
+        });
+
+        cardHTML += `</div>`;
+
+
+
+        // Solution Block: ONLY visible when isRevealed is TRUE
+        if (isRevealed) {
+          cardHTML += `
+            <div class="mt-3 sm:mt-4 p-3.5 sm:p-4 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80">
+              <div class="flex items-center gap-1.5 text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wide mb-1.5">
+                <i class="fa-solid fa-check-circle"></i>
+                <span>Correct Answer: Option ${q.correct} (${q.options[q.correct]})</span>
+              </div>
+              <div class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 space-y-1 leading-relaxed">
+                <div class="font-semibold text-slate-700 dark:text-slate-200">Step-by-step Solution:</div>
+                <div>${q.explanation}</div>
+              </div>
+            </div>
+          `;
+        }
+
+        card.innerHTML = cardHTML;
+        container.appendChild(card);
+      });
+    }
+
+    // Clicking an option only selects it; never reveals answer
+    function selectOption(qId, letter) {
+      if (userSelections[qId] === letter) {
+        delete userSelections[qId];
+      } else {
+        userSelections[qId] = letter;
+      }
+      renderQuestions(document.getElementById("searchInput").value);
+      renderNavigators();
+      updateStats();
+    }
+
+    // Only revealed when clicking "Show answer"
+    function toggleAnswer(qId) {
+      revealedAnswers[qId] = !revealedAnswers[qId];
+      renderQuestions(document.getElementById("searchInput").value);
+    }
+
+    function revealAllAnswers() {
+      const allRevealed = questionsData.every(q => revealedAnswers[q.id]);
+      questionsData.forEach(q => {
+        revealedAnswers[q.id] = !allRevealed;
+      });
+      document.getElementById("btnRevealAll").innerHTML = allRevealed ? 
+        "<i class='fa-regular fa-eye text-[11px]'></i><span class='hidden sm:inline'>Show All</span>" : 
+        "<i class='fa-regular fa-eye-slash text-[11px]'></i><span class='hidden sm:inline'>Hide All</span>";
+      renderQuestions(document.getElementById("searchInput").value);
+    }
+
+    function toggleBookmark(qId) {
+      markedForReview[qId] = !markedForReview[qId];
+      renderQuestions(document.getElementById("searchInput").value);
+      renderNavigators();
+    }
+
+    function resetAllProgress() {
+      if (confirm("Reset all chosen answers and progress?")) {
+        userSelections = {};
+        markedForReview = {};
+        revealedAnswers = {};
+        if (currentMode === "exam") {
+          startExamTimer();
+        }
+        renderQuestions();
+        renderNavigators();
+        updateStats();
+      }
+    }
+
+    function handleSearch() {
+      const query = document.getElementById("searchInput").value;
+      renderQuestions(query);
+    }
+
+    function renderNavigators() {
+      renderNavGrid("navigatorGridDesktop");
+      renderNavGrid("navigatorGridMobile");
+    }
+
+    function renderNavGrid(containerId) {
+      const grid = document.getElementById(containerId);
+      if (!grid) return;
+      grid.innerHTML = "";
+
+      questionsData.forEach(q => {
+        const isAttempted = !!userSelections[q.id];
+        const isMarked = !!markedForReview[q.id];
+
+        let bgClass = "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:bg-slate-200";
+
+        if (isMarked) {
+          bgClass = "bg-amber-500 text-white font-bold border-amber-600";
+        } else if (isAttempted) {
+          bgClass = "bg-brand-600 text-white font-bold border-brand-700";
+        }
+
+        const btn = document.createElement("button");
+        btn.onclick = () => {
+          scrollToQuestion(q.id);
+          const drawer = document.getElementById("mobileDrawer");
+          if (!drawer.classList.contains("hidden")) {
+            drawer.classList.add("hidden");
+          }
+        };
+        btn.className = `h-9 rounded-xl border text-xs flex items-center justify-center transition-all ${bgClass} active:scale-95`;
+        btn.innerText = q.id;
+        grid.appendChild(btn);
+      });
+    }
+
+    function scrollToQuestion(qId) {
+      const el = document.getElementById(`q-card-${qId}`);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "center" });
+        el.classList.add("ring-4", "ring-brand-500/40");
+        setTimeout(() => {
+          el.classList.remove("ring-4", "ring-brand-500/40");
+        }, 1200);
+      }
+    }
+
+    function updateStats() {
+      const attemptedCount = Object.keys(userSelections).length;
+      document.getElementById("statAttempted").innerText = attemptedCount;
+      const mbBottom = document.getElementById("mobileBottomAnswered");
+      if (mbBottom) mbBottom.innerText = attemptedCount;
+    }
+
+    function generateScorecardText(studentName, studentPhone) {
+      const attemptedCount = Object.keys(userSelections).length;
+      let correctCount = 0;
+      questionsData.forEach(q => {
+        if (userSelections[q.id] === q.correct) correctCount++;
+      });
+      const wrongCount = attemptedCount - correctCount;
+      const skippedCount = questionsData.length - attemptedCount;
+      const accuracy = attemptedCount > 0 ? ((correctCount / attemptedCount) * 100).toFixed(1) : "0.0";
+      
+      // Time spent calculation
+      let timeSpentStr = "N/A";
+      if (currentMode === "exam") {
+        const elapsed = Math.max(0, (25 * 60) - examTimeSeconds);
+        const m = Math.floor(elapsed / 60);
+        const s = elapsed % 60;
+        timeSpentStr = `${m}m ${s}s (Timed Exam)`;
+      } else {
+        const elapsed = Math.floor((Date.now() - pageStartTime) / 1000);
+        const m = Math.floor(elapsed / 60);
+        const s = elapsed % 60;
+        timeSpentStr = `${m}m ${s}s (Practice Mode)`;
+      }
+
+      // Performance Rating
+      let rating = "Needs Focus";
+      if (correctCount >= 20) rating = "🌟 Outstanding (Tier-1 Qualified)";
+      else if (correctCount >= 15) rating = "👍 Good Score (Strong Potential)";
+      else if (correctCount >= 10) rating = "⚠️ Average (Revise 2D Coordinates)";
+      else rating = "🚨 Needs Conceptual Coaching";
+
+      // SSC Marking Scheme: +2 for Correct, -0.5 for Wrong
+      const netMarks = ((correctCount * 2) - (wrongCount * 0.5)).toFixed(1);
+      const totalPossibleMarks = questionsData.length * 2;
+
+      // Question breakdown
+      let breakdown = "";
+      questionsData.forEach(q => {
+        const userAns = userSelections[q.id];
+        const qNum = q.id < 10 ? `0${q.id}` : `${q.id}`;
+        if (!userAns) {
+          breakdown += `Q${qNum}: ⚪ Skipped (Ans: ${q.correct})\n`;
+        } else if (userAns === q.correct) {
+          breakdown += `Q${qNum}: ✅ Correct (Opt ${q.correct})\n`;
         } else {
-          card.classList.add("hidden");
+          breakdown += `Q${qNum}: ❌ Wrong (Selected: ${userAns} | Correct: ${q.correct})\n`;
         }
       });
+
+      const now = new Date();
+      const dateStr = now.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
+      const timeStr = now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
+
+      const message = 
+`📊 *SK CLASSES - STUDENT EXAM REPORT*
+━━━━━━━━━━━━━━━━━━━━━
+👤 *Student:* ${studentName}
+${studentPhone ? `📱 *Mobile:* ${studentPhone}\n` : ''}📅 *Date:* ${dateStr}, ${timeStr}
+⏱️ *Time Spent:* ${timeSpentStr}
+
+📝 *EXAM INFORMATION:*
+• Subject: Reasoning (Direction & Distance)
+• Level: SSC CGL / CHSL / Banking Tier-1
+• Total Questions: ${questionsData.length}
+
+📈 *PERFORMANCE SCORECARD:*
+• 🏆 *Raw Score:* ${correctCount} / ${questionsData.length} Qs
+• 🎯 *Net Marks (SSC +2 / -0.5):* ${netMarks} / ${totalPossibleMarks}
+• ✅ *Correct:* ${correctCount}
+• ❌ *Wrong:* ${wrongCount}
+• ⚪ *Skipped:* ${skippedCount}
+• 🎯 *Accuracy:* ${accuracy}%
+• 🏅 *Verdict:* ${rating}
+
+📋 *DETAILED QUESTION BREAKDOWN:*
+${breakdown}
+━━━━━━━━━━━━━━━━━━━━━
+👨‍🏫 *SK Classes & Home Tuition*
+📍 Dwarka Mor, New Delhi | 📞 8683068609`;
+
+      return {
+        message,
+        stats: {
+          studentName,
+          studentPhone,
+          correctCount,
+          wrongCount,
+          skippedCount,
+          attemptedCount,
+          accuracy,
+          timeSpentStr,
+          netMarks,
+          totalPossibleMarks,
+          rating
+        }
+      };
     }
 
-    function requestNotes(title) {
-      const text = `Hello Santosh Sir,%0A%0AI want to get the PDF for: *${encodeURIComponent(title)}*.%0APlease share it with me on WhatsApp.`;
-      window.open(`https://wa.me/918683068609?text=${text}`, '_blank');
+    function submitAndSendToWhatsApp() {
+      const nameInput = document.getElementById("modalStudentName");
+      const phoneInput = document.getElementById("modalStudentPhone");
+      const validationMsg = document.getElementById("nameValidationMsg");
+      
+      const studentName = nameInput ? nameInput.value.trim() : "";
+      const studentPhone = phoneInput ? phoneInput.value.trim() : "";
+
+      if (!studentName) {
+        if (validationMsg) validationMsg.classList.remove("hidden");
+        if (nameInput) {
+          nameInput.focus();
+          nameInput.classList.add("border-rose-500", "ring-1", "ring-rose-500");
+        }
+        return;
+      }
+
+      if (validationMsg) validationMsg.classList.add("hidden");
+      if (nameInput) nameInput.classList.remove("border-rose-500", "ring-1", "ring-rose-500");
+
+      localStorage.setItem("studentName", studentName);
+      if (studentPhone) localStorage.setItem("studentPhone", studentPhone);
+
+      const { message, stats } = generateScorecardText(studentName, studentPhone);
+
+      // Reveal all answers for student review
+      questionsData.forEach(q => revealedAnswers[q.id] = true);
+      renderQuestions();
+      renderNavigators();
+
+      // Log submission to backend server if running
+      try {
+        fetch("/api/submit-test", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            timestamp: new Date().toISOString(),
+            studentName,
+            studentPhone,
+            stats,
+            userSelections
+          })
+        }).catch(() => {});
+      } catch (e) {}
+
+      // Target teacher phone: 918683068609
+      const teacherWhatsApp = "918683068609";
+      const whatsappUrl = `https://wa.me/${teacherWhatsApp}?text=${encodeURIComponent(message)}`;
+
+      // Show success message banner in modal
+      const banner = document.getElementById("whatsappSentBanner");
+      if (banner) banner.classList.remove("hidden");
+
+      // Launch WhatsApp
+      window.open(whatsappUrl, "_blank");
     }
 
-    // Dynamic Hero Text Rotation (every 2 seconds with smooth transitions)
-    (function initHeroRotation() {
-      const rotatingEl = document.getElementById("heroRotatingText");
-      if (!rotatingEl) return;
+    function copyScorecardText() {
+      const nameInput = document.getElementById("modalStudentName");
+      const phoneInput = document.getElementById("modalStudentPhone");
+      const studentName = nameInput && nameInput.value.trim() ? nameInput.value.trim() : (localStorage.getItem("studentName") || "Student");
+      const studentPhone = phoneInput ? phoneInput.value.trim() : "";
 
-      const heroItems = [
-        { text: "Santosh Kumar Jha", href: "#mentor", decoration: "decoration-blue-400 dark:decoration-blue-600" },
-        { text: "Personal Home Tuition", href: "#one-on-one", decoration: "decoration-emerald-500 dark:decoration-emerald-400" },
-        { text: "1-on-1 Mentorship Calls", href: "#one-on-one", decoration: "decoration-blue-600 dark:decoration-blue-400" },
-        { text: "SSC, Banking & Railway", href: "#courses", decoration: "decoration-indigo-500 dark:decoration-indigo-400" },
-        { text: "Class 8th to 10th Maths", href: "#courses", decoration: "decoration-amber-500 dark:decoration-amber-400" },
-        { text: "18+ Years Proven Trust", href: "#mentor", decoration: "decoration-blue-500 dark:decoration-blue-400" },
-        { text: "Daily DPPs & Notes", href: "#dpp", decoration: "decoration-purple-500 dark:decoration-purple-400" }
-      ];
+      const { message } = generateScorecardText(studentName, studentPhone);
 
-      let currentIndex = 0;
-      let isAnimating = false;
+      navigator.clipboard.writeText(message).then(() => {
+        const label = document.getElementById("copyBtnLabel");
+        if (label) {
+          const orig = label.innerText;
+          label.innerText = "Copied!";
+          setTimeout(() => { label.innerText = orig; }, 2000);
+        }
+      }).catch(() => {
+        alert("Report ready! Please use the WhatsApp button to send directly.");
+      });
+    }
 
-      function rotateHeroText() {
-        if (isAnimating) return;
-        isAnimating = true;
+    function openSubmitModal() {
+      const savedName = localStorage.getItem("studentName") || "";
+      const savedPhone = localStorage.getItem("studentPhone") || "";
+      const nameInput = document.getElementById("modalStudentName");
+      const phoneInput = document.getElementById("modalStudentPhone");
+      if (nameInput && !nameInput.value) nameInput.value = savedName;
+      if (phoneInput && !phoneInput.value) phoneInput.value = savedPhone;
 
-        // 1. Smooth exit (slide up + fade out + subtle blur)
-        rotatingEl.classList.remove("is-visible");
-        rotatingEl.classList.add("is-exiting");
+      const attemptedCount = Object.keys(userSelections).length;
+      let correctCount = 0;
+      questionsData.forEach(q => {
+        if (userSelections[q.id] === q.correct) correctCount++;
+      });
+      const wrongCount = attemptedCount - correctCount;
+      const skippedCount = questionsData.length - attemptedCount;
+      const accuracy = attemptedCount > 0 ? Math.round((correctCount / attemptedCount) * 100) : 0;
+      const netMarks = ((correctCount * 2) - (wrongCount * 0.5)).toFixed(1);
 
-        setTimeout(() => {
-          // 2. Next item
-          currentIndex = (currentIndex + 1) % heroItems.length;
-          const nextItem = heroItems[currentIndex];
-
-          // 3. Update text & destination
-          rotatingEl.textContent = nextItem.text;
-          rotatingEl.setAttribute("href", nextItem.href);
-
-          // 4. Update decoration styling smoothly
-          rotatingEl.className = `hero-rotate-item is-entering-prep text-slate-900 dark:text-white underline ${nextItem.decoration} hover:decoration-brand-500 decoration-4 underline-offset-8 cursor-pointer select-none`;
-
-          // Force reflow
-          void rotatingEl.offsetWidth;
-
-          // 5. Smooth enter (slide in from below + fade in + blur clear)
-          rotatingEl.classList.remove("is-entering-prep");
-          rotatingEl.classList.add("is-visible");
-
-          setTimeout(() => {
-            isAnimating = false;
-          }, 350);
-        }, 280);
+      let timeSpentStr = "00m 00s";
+      if (currentMode === "exam") {
+        const elapsed = Math.max(0, (25 * 60) - examTimeSeconds);
+        const m = Math.floor(elapsed / 60).toString().padStart(2, "0");
+        const s = (elapsed % 60).toString().padStart(2, "0");
+        timeSpentStr = `⏱️ ${m}m ${s}s (Timed)`;
+      } else {
+        const elapsed = Math.floor((Date.now() - pageStartTime) / 1000);
+        const m = Math.floor(elapsed / 60).toString().padStart(2, "0");
+        const s = (elapsed % 60).toString().padStart(2, "0");
+        timeSpentStr = `⏱️ ${m}m ${s}s (Practice)`;
       }
 
-      // Exact 2-second interval
-      let heroTimer = setInterval(rotateHeroText, 2000);
+      document.getElementById("modalCorrect").innerText = correctCount;
+      document.getElementById("modalWrong").innerText = wrongCount;
+      document.getElementById("modalSkipped").innerText = skippedCount;
+      document.getElementById("modalAccuracy").innerText = `${accuracy}%`;
+      document.getElementById("modalTotalMarks").innerText = `${correctCount} / ${questionsData.length}`;
+      document.getElementById("modalTimeSpent").innerText = `${timeSpentStr} • Net: ${netMarks} Marks`;
 
-      // Pause on hover for reader comfort; resume on mouseleave
-      const heroContainer = rotatingEl.closest("h1");
-      if (heroContainer) {
-        heroContainer.addEventListener("mouseenter", () => clearInterval(heroTimer));
-        heroContainer.addEventListener("mouseleave", () => {
-          clearInterval(heroTimer);
-          heroTimer = setInterval(rotateHeroText, 2000);
-        });
-      }
-    })();
+      const banner = document.getElementById("whatsappSentBanner");
+      if (banner) banner.classList.add("hidden");
+
+      const validationMsg = document.getElementById("nameValidationMsg");
+      if (validationMsg) validationMsg.classList.add("hidden");
+
+      const modal = document.getElementById("resultModal");
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+    }
+
+    function closeSubmitModal() {
+      const modal = document.getElementById("resultModal");
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
+      // Once exam is submitted, reveal all answers to review
+      questionsData.forEach(q => revealedAnswers[q.id] = true);
+      renderQuestions();
+      renderNavigators();
+    }
+
+    function restartExam() {
+      closeSubmitModal();
+      resetAllProgress();
+      setMode("exam");
+    }
+
+    renderQuestions();
+    renderNavigators();
+    updateStats();
   </script>
 </body>
 </html>
